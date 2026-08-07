@@ -29,6 +29,7 @@ const LSBattle = (() => {
   <div class="battle-lobby">
     <h2>大師對戰</h2>
     <p class="muted">與歷代文字學大師過招：答對造成傷害（連擊加成），答錯挨大師一擊。目前精通 <b>${mastered}</b> 字（閃卡升到第 4 盒＋答對 2 次以上算精通），精通越多、解鎖越多大師。</p>
+    <p class="muted"><b>創作說明：</b>人物插畫是 AI 輔助的教學想像圖，不是歷史肖像復原；對戰台詞是本站戲劇化創作，不是史料原句。</p>
     <div class="roster">${MASTERS.map(m => {
       const locked = mastered < m.unlock;
       return `<div class="card master-card ${locked ? 'locked' : ''}">

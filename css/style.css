@@ -378,6 +378,13 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 textarea.io { width: 100%; min-height: 90px; font-family: monospace; font-size: .8rem; border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--card); color: var(--ink); }
 
 .foot { text-align: center; padding: 1.2rem 1rem calc(6rem + env(safe-area-inset-bottom)); color: var(--ink-soft); font-size: .8rem; line-height: 1.8; }
+.foot a { color: inherit; text-underline-offset: .18em; }
+
+.legal-page { max-width: 860px; margin: 0 auto; padding: 1rem; }
+.legal-page .card { margin-bottom: 1rem; }
+.legal-page h2 { margin-top: 0; }
+.legal-page li + li { margin-top: .45rem; }
+.legal-meta { color: var(--ink-soft); font-size: .9rem; }
 
 @media (max-width: 480px) {
   .brand h1 { font-size: 1.15rem; }

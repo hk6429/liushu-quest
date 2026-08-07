@@ -26,6 +26,7 @@ npm run validate   # 純讀 schema／來源／雙軸分類／精確 220 字驗�
 npm run content    # 24 字、雙軸契約與文案護欄測試
 npm run philology  # 引用層級、《說文》三態與 shard/output 對齊測試
 npm run teacher    # T01–T10 教學鷹架與文案護欄測試
+npm run copyright  # 權利聲明、引用歸因、26 圖來源與第三方授權護欄
 npm run logic      # 成長、題組、存檔遷移與安全匯入規則測試
 npm run smoke      # Playwright 端到端煙霧測試（需本機 Chrome）
 npm test           # 上述全部純讀測試；不執行 merge、不造成 dirty
@@ -44,3 +45,7 @@ python3 -m http.server 8080
 ## 部署
 
 Cloudflare Pages（liushu-quest.pages.dev）＋ Netlify（liushu-quest.netlify.app）鏡射。
+
+## 權利與來源
+
+原創教學文字、程式與人為編排的權利範圍，以及《說文解字》公版原典、教育部校核連結、AI 生成配圖和第三方元件的界線，見 [`rights.html`](rights.html)、[`docs/asset-provenance.md`](docs/asset-provenance.md) 與 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。台灣著作權風險審查紀錄見 [`docs/copyright-audit-2026-08-07.md`](docs/copyright-audit-2026-08-07.md)。
