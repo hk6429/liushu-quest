@@ -19,7 +19,7 @@ function render(file, symbol) {
 
 const concept = render('js/concept.js', 'LSConcept');
 const story = render('js/story.js', 'LSStory');
-const order = ['象形', '指事', '會意', '形聲', '轉注', '假借'];
+const order = ['象形', '指事', '會意', '假借', '形聲', '轉注'];
 
 function assertInOrder(html, labels, scope) {
   const plain = html.replace(/<[^>]*>/g, '');
