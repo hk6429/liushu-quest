@@ -37,6 +37,12 @@ await page.goto(`http://localhost:${port}/`);
 await step('概念導讀載入', async () => {
   await page.waitForSelector('#view-concept .card h2', { timeout: 8000 });
 });
+await step('造字故事載入', async () => {
+  await page.click('[data-view="story"]');
+  await page.waitForSelector('#view-story .story-card h3');
+  const n = await page.locator('#view-story h3').count();
+  if (n < 7) throw new Error('故事章節只有 ' + n);
+});
 await step('字例總覽＋開字卡', async () => {
   await page.click('[data-view="browse"]');
   await page.waitForSelector('.char-tile');

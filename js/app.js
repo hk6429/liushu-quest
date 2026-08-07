@@ -2,6 +2,7 @@
 const LSApp = (() => {
   const views = {
     concept: () => LSConcept.render(el('view-concept')),
+    story: () => LSStory.render(el('view-story')),
     browse: renderBrowse,
     flash: () => LSFlash.render(el('view-flash')),
     quiz: () => LSQuiz.render(el('view-quiz')),

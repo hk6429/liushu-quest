@@ -91,6 +91,15 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 1rem; }
 .concept-toc { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .4rem; }
 .example-chars { font-size: 1.5rem; letter-spacing: .35em; font-weight: 700; color: var(--cinnabar-dark); }
 
+/* ── 說文引文與故事 ── */
+.shuowen-quote {
+  border-left: 4px solid var(--cinnabar); background: var(--paper-deep);
+  padding: .5rem .8rem; border-radius: 0 .4rem .4rem 0;
+  font-size: .95rem; margin: .3rem 0 .7rem;
+}
+.story-card h3 { color: var(--cinnabar-dark); margin-top: 1.3rem; letter-spacing: .06em; }
+.story-card p { text-indent: 0; }
+
 /* ── 字例總覽 ── */
 .filterbar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; align-items: center; }
 .filterbar select, .filterbar input {
