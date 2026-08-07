@@ -74,9 +74,19 @@ await step('對戰：挑戰第一位大師＋作答', async () => {
   await page.click('[data-view="battle"]');
   await page.waitForSelector('.master-card');
   await page.locator('.master-card .btn').first().click();
+  await page.waitForSelector('.battle-arena .fighter-player');
+  const fighters = await page.locator('.battle-arena .fighter').count();
+  if (fighters !== 2) throw new Error(`對戰角色數=${fighters}`);
+  const [playerBox, enemyBox] = await Promise.all([
+    page.locator('.fighter-player').boundingBox(),
+    page.locator('.fighter-enemy').boundingBox()
+  ]);
+  if (!playerBox || !enemyBox || playerBox.x >= enemyBox.x) throw new Error('雙方角色未呈左右對峙');
   await page.waitForSelector('#battleArea .opt');
   await page.locator('#battleArea .opt').first().click();
   await page.waitForSelector('#bFb .feedback');
+  const hpValues = await page.locator('.battle-arena [role="progressbar"]').evaluateAll(nodes => nodes.map(n => Number(n.getAttribute('aria-valuenow'))));
+  if (!hpValues.some(v => v < 100)) throw new Error(`作答後氣力未更新：${hpValues.join('/')}`);
   await page.click('#bNext');
   await page.waitForSelector('#battleArea .opt');
 });
