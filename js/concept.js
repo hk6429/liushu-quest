@@ -53,6 +53,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-會意">三</span> 會意：字加字，合出新意思</h2>
+  <figure class="story-fig"><img src="img/concept/04-compound.webp" alt="人與樹、日與月，以及重複的樹木、水波與金錠組合出新意義" width="1200" height="676" loading="lazy"></figure>
   ${sw('會意者，比類合誼，以見指撝，武信是也。')}
   <p><b>文字加文字</b>，把兩個以上的字（部件）組起來，會合出新的意思。許慎舉的例字：「止＋戈」為武、「人＋言」為信。</p>
   <p class="example-chars">休 步 明 森 淼 鑫</p>
@@ -64,6 +65,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-假借">四</span> 假借：本無其字，開口借字</h2>
+  <figure class="story-fig"><img src="img/concept/05-loan.webp" alt="同音借用與為原義另造新字的情境流程" width="1200" height="676" loading="lazy"></figure>
   ${sw('假借者，本無其字，依聲託事，令長是也。')}
   <p>想表達的概念<b>本來沒有字</b>（尤其是「我、你、的、了」這種抽象詞），就借一個<b>同音、近音</b>的現成字來用。借了之後有兩種結局：</p>
   <h3>細部分類（小學生版）</h3>
@@ -74,6 +76,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-形聲">五</span> 形聲：半邊表義＋半邊表音，量產開始</h2>
+  <figure class="story-fig"><img src="img/concept/06-phonetic.webp" alt="意義類別與聲音線索以六種位置組合成完整字形" width="1200" height="676" loading="lazy"></figure>
   ${sw('形聲者，以事為名，取譬相成，江河是也。')}
   <p>一半<b>形符</b>表達意義類別，一半<b>聲符</b>提示讀音。這是漢字最能量產的造字法，<b>中文裡九成左右的字都是形聲字</b>。許慎舉的例字「江、河」：氵表示跟水有關，「工」「可」提示讀音。</p>
   <p class="example-chars">江 河 晴 想 園 聞</p>
@@ -83,6 +86,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-轉注">六</span> 轉注：時空改變，同義字互相解釋</h2>
+  <figure class="story-fig"><img src="img/concept/07-transfer.webp" alt="不同時空與地域的同義字跨越橋梁彼此解釋" width="1200" height="676" loading="lazy"></figure>
   ${sw('轉注者，建類一首，同意相受，考老是也。')}
   <p>隨著<b>時間與地域</b>的改變，語音起了變化，同一個意思造出了不同的字；這些字<b>意思相同、可以互相注釋</b>。最經典的一對：</p>
   <p class="example-chars">考 ⇄ 老</p>

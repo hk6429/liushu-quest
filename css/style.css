@@ -99,6 +99,12 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 1rem; }
 }
 .story-card h3 { color: var(--cinnabar-dark); margin-top: 1.3rem; letter-spacing: .06em; }
 .story-card p { text-indent: 0; }
+.story-characters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0 1.2rem; }
+.story-characters figure { overflow: hidden; border: 1px solid var(--line); border-radius: .65rem; background: var(--paper-deep); }
+.story-characters img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.story-characters figcaption { display: grid; gap: .15rem; padding: .55rem .65rem; line-height: 1.35; }
+.story-characters figcaption b { color: var(--cinnabar-dark); }
+.story-characters figcaption span { color: var(--ink-soft); font-size: .78rem; }
 
 /* ── 字例總覽 ── */
 .filterbar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; align-items: center; }
@@ -153,11 +159,11 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 1rem; }
 .hp-fill { height: 100%; background: linear-gradient(90deg, var(--green), #7ba86f); transition: width .4s; }
 .hp-fill.enemy { background: linear-gradient(90deg, var(--cinnabar), #d4735e); }
 .battle-head { display: flex; gap: 1rem; align-items: center; margin-bottom: .8rem; }
-.battle-avatar { font-size: 2rem; }
+.battle-avatar { width: 72px; height: 72px; object-fit: cover; border-radius: 50%; border: 2px solid var(--gold); box-shadow: var(--shadow); }
 .combo-tag { font-weight: 700; color: var(--gold); }
 .roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; }
 .master-card { text-align: center; padding: .8rem .5rem; }
-.master-card .avatar { font-size: 2.2rem; }
+.master-portrait { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: .55rem; border: 1px solid var(--line); margin-bottom: .45rem; }
 .master-card .name { font-weight: 700; margin: .2rem 0; }
 .master-card.locked { opacity: .5; filter: grayscale(1); }
 .master-card .beaten { color: var(--green); font-size: .82rem; }
@@ -180,6 +186,9 @@ textarea.io { width: 100%; min-height: 90px; font-family: monospace; font-size: 
   .brand h1 { font-size: 1.15rem; }
   .flashcard .headchar { font-size: 3.4rem; }
   main { padding: .7rem; }
+  .story-characters { grid-template-columns: 1fr; }
+  .story-characters figure { display: grid; grid-template-columns: 42% 1fr; align-items: center; }
+  .battle-avatar { width: 54px; height: 54px; }
 }
 
 /* ── 插圖 ── */

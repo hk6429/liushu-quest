@@ -4,6 +4,11 @@ const LSStory = (() => {
 <div class="card story-card">
   <h2>倉頡爺爺的造字大冒險</h2>
   <p class="muted">——一個關於「人類怎麼發明字」的故事。傳說僅供趣味，字例可都是真的！</p>
+  <div class="story-characters" aria-label="故事人物">
+    <figure><img src="img/characters/cangjie.webp" alt="四目倉頡爺爺，手持毛筆與竹簡" width="800" height="1000" loading="eager"><figcaption><b>倉頡</b><span>四目史官・造字冒險家</span></figcaption></figure>
+    <figure><img src="img/characters/aman.webp" alt="活潑好奇的小徒弟阿滿" width="800" height="1000" loading="lazy"><figcaption><b>阿滿</b><span>最會問倒師父的小徒弟</span></figcaption></figure>
+    <figure><img src="img/characters/huangdi.webp" alt="手持竹簡的黃帝" width="800" height="1000" loading="lazy"><figcaption><b>黃帝</b><span>一道問題，催生造字任務</span></figcaption></figure>
+  </div>
 
   <h3>楔子：打結打到快抓狂的一天</h3>
   <figure class="story-fig"><img src="img/story/00-prologue.webp" alt="倉頡在掛滿繩結的庫房裡翻找，黃帝拿著竹簡出現在門口" loading="lazy"></figure>
