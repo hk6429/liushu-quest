@@ -8,10 +8,11 @@
   "content": "node scripts/content.test.mjs",
   "philology": "node scripts/philology.test.mjs",
   "teacher": "node scripts/teacher.test.mjs",
+  "char-images": "node scripts/char-images.test.mjs",
   "copyright": "node scripts/copyright.test.mjs",
   "logic": "node scripts/logic.mjs",
   "smoke": "node scripts/smoke.mjs",
-  "test": "npm run validate && npm run content && npm run philology && npm run teacher && npm run copyright && npm run logic && npm run smoke"
+  "test": "npm run validate && npm run content && npm run philology && npm run teacher && npm run char-images && npm run copyright && npm run logic && npm run smoke"
  },
  "devDependencies": {
   "playwright-core": "^1.62.1"

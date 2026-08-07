@@ -126,8 +126,13 @@ const LSApp = (() => {
     const ov = document.createElement('div');
     ov.className = 'char-detail-overlay';
     ov.innerHTML = `<div class="card char-detail" role="dialog" aria-modal="true" aria-labelledby="charDetailTitle" tabindex="-1">
+      <button type="button" class="dialog-close-icon" data-close-dialog aria-label="關閉字卡">×</button>
       <h2 class="headchar" id="charDetailTitle">${c.char}</h2>
       <p><span class="muted">${c.zhuyin}</span>　<span class="pill cat-${c.category}">${c.category}${c.sub ? '・' + c.sub : ''}</span><span class="pill lv-${c.level}">${c.level}</span>${c.disputed ? '<span class="disputed-mark">⚡歸類有爭議</span>' : ''}</p>
+      <figure class="char-illustration">
+        <img src="img/chars/${c.id}.webp" width="1200" height="675" alt="${c.char}的字形與本義教學情境圖">
+        <figcaption>字形與本義情境圖（AI 生成教學想像）</figcaption>
+      </figure>
       <p>${c.explain}</p>
       ${c.disputed && c.dispute_note ? `<p class="muted">⚡ ${c.dispute_note}</p>` : ''}
       ${typeof LSEvidence !== 'undefined' ? LSEvidence.render(c) : ''}

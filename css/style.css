@@ -220,11 +220,23 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .char-tile.mastered { outline: 2px solid var(--green); }
 .char-tile:hover { border-color: var(--cinnabar); transform: translateY(-1px); }
 .char-detail-overlay {
-  position: fixed; inset: 0; background: rgba(40, 30, 15, .55); z-index: 50;
+  position: fixed; inset: 0; background: rgba(40, 30, 15, .55); z-index: 2147483647;
   display: flex; align-items: center; justify-content: center; padding: 1rem;
 }
 .char-detail { max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto; }
 .char-detail .headchar { font-size: 3.2rem; font-weight: 700; color: var(--cinnabar-dark); line-height: 1.1; }
+.dialog-close-icon {
+  position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px;
+  margin: -.2rem -.2rem .2rem .5rem; border: 1.5px solid var(--cinnabar); border-radius: 50%;
+  background: rgba(255, 253, 247, .96); color: var(--cinnabar); font-size: 1.65rem; line-height: 1;
+  box-shadow: var(--shadow);
+}
+.char-illustration {
+  overflow: hidden; margin: .75rem 0; border: 1px solid var(--line); border-radius: .7rem;
+  background: #faf8f3; box-shadow: 0 4px 14px rgba(76, 55, 30, .08);
+}
+.char-illustration img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.char-illustration figcaption { padding: .35rem .55rem; color: var(--ink-soft); font-size: .72rem; text-align: center; }
 
 /* ── 閃卡 ── */
 .flashcard {

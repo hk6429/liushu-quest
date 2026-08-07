@@ -105,9 +105,16 @@ await step('字例總覽＋開字卡', async () => {
   if (parseFloat(outline) < 3) throw new Error(`鍵盤焦點環不足：${outline}`);
   await page.keyboard.press('Enter');
   await page.waitForSelector('.char-detail[role="dialog"][aria-modal="true"]');
+  const illustration = await page.locator('.char-detail .char-illustration img').evaluate(img => ({
+    src: img.getAttribute('src'), alt: img.getAttribute('alt'), width: img.naturalWidth, height: img.naturalHeight
+  }));
+  if (!illustration.src?.startsWith('img/chars/') || !illustration.alt?.includes('教學情境圖')) throw new Error(`字卡配圖語意不完整：${JSON.stringify(illustration)}`);
+  if (illustration.width * 9 !== illustration.height * 16) throw new Error(`字卡配圖不是 16:9：${illustration.width}x${illustration.height}`);
+  const closeSize = await page.locator('.dialog-close-icon').evaluate(button => button.getBoundingClientRect().width);
+  if (closeSize < 44) throw new Error(`字卡頂端關閉按鈕不足 44px：${closeSize}`);
   if (!await page.locator('.char-detail .evidence-block').count()) throw new Error('字卡沒有分類證據');
   if (await page.locator('.char-detail .evidence-source, .char-detail .evidence-quote').count()) throw new Error('學生字卡仍顯示外部原文或來源');
-  if (!await page.locator('[data-close-dialog]').evaluate(e => e === document.activeElement)) throw new Error('dialog 開啟後未移入焦點');
+  if (!await page.locator('.dialog-close-icon').evaluate(e => e === document.activeElement)) throw new Error('dialog 開啟後未移入頂端關閉按鈕');
   await page.keyboard.press('Escape');
   if (await page.locator('.char-detail').count()) throw new Error('Escape 未關閉 dialog');
   if (!await firstTile.evaluate(e => e === document.activeElement)) throw new Error('dialog 關閉後未恢復焦點');
