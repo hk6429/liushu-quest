@@ -598,5 +598,77 @@
     "shuowen": "口齗骨也。象口齒之形，止聲。",
     "disputed": true,
     "dispute_note": "甲骨文純象形；今形加「止」為聲符，說文即注「止聲」，故也有教材依今形歸形聲（象形加聲）。"
+  },
+  {
+    "id": "TEMP",
+    "char": "子",
+    "zhuyin": "ㄗˇ",
+    "category": "象形",
+    "sub": null,
+    "level": "基礎",
+    "explain": "古文字描畫幼兒的頭、身軀與伸展的兩臂，腿部則像仍在襁褓中併合；以嬰兒整體輪廓表示子女、幼兒，是人體類常見象形字。《說文》直接標明「象形」。",
+    "shuowen": "十一月，陽气動，萬物滋，人以為偁。象形。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "女",
+    "zhuyin": "ㄋㄩˇ",
+    "category": "象形",
+    "sub": null,
+    "level": "基礎",
+    "explain": "甲骨文描畫一人跪坐、雙手交疊於身前的側面姿態，用整體人物輪廓表示女子。楷書筆畫雖已大幅簡化，仍源自人體圖像，屬《說文》明言的象形字。",
+    "shuowen": "婦人也。象形。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "犬",
+    "zhuyin": "ㄑㄩㄢˇ",
+    "category": "象形",
+    "sub": null,
+    "level": "基礎",
+    "explain": "甲骨文描畫犬的側身，頭、身、四足與向上捲曲的尾巴皆可辨認；後來字形豎立並簡化成今形。以動物外貌入字，是《說文》明言「象形」的典型。",
+    "shuowen": "狗之有縣蹏者也。象形。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "豕",
+    "zhuyin": "ㄕˇ",
+    "category": "象形",
+    "sub": null,
+    "level": "進階",
+    "explain": "古文字描畫豬的側面輪廓，可見長吻、身軀、足、背毛與尾巴；楷化後各部位已不易直接辨認。它是豬類字的基礎部件，《說文》以毛、足、尾說明其象形。",
+    "shuowen": "彘也。竭其尾，故謂之豕。象毛足而後有尾。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "兔",
+    "zhuyin": "ㄊㄨˋ",
+    "category": "象形",
+    "sub": null,
+    "level": "基礎",
+    "explain": "古文字畫一隻蹲踞的兔子，特別凸顯頭部、身軀和向後伸出的尾巴；經隸變後成為今日筆畫。以兔的姿態與尾部特徵造字，《說文》明言為象形。",
+    "shuowen": "獸名。象踞，後其尾形。兔頭與㲋頭同。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "衣",
+    "zhuyin": "ㄧ",
+    "category": "象形",
+    "sub": null,
+    "level": "基礎",
+    "explain": "甲骨文與金文描畫上衣展開的輪廓，中間是交疊的衣襟，兩側像袖子，下方像衣身。整體直接摹畫衣物外形，是服飾類象形字，也常作形符使用。",
+    "shuowen": "依也。上曰衣，下曰裳。象覆二人之形。",
+    "disputed": false,
+    "dispute_note": ""
   }
 ]

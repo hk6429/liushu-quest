@@ -3,8 +3,12 @@
  "private": true,
  "type": "module",
  "scripts": {
-  "validate": "node scripts/merge.mjs && node scripts/validate.mjs",
-  "smoke": "node scripts/smoke.mjs"
+  "build:data": "node scripts/merge.mjs --update-id-map",
+  "validate": "node scripts/validate.mjs",
+  "content": "node scripts/content.test.mjs",
+  "logic": "node scripts/logic.mjs",
+  "smoke": "node scripts/smoke.mjs",
+  "test": "npm run validate && npm run content && npm run logic && npm run smoke"
  },
  "devDependencies": {
   "playwright-core": "^1.62.1"

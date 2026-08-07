@@ -8,13 +8,13 @@ const LSConcept = (() => {
 <div class="card">
   <h2>文字誕生之前：三種不完整的表達</h2>
   <figure class="story-fig"><img src="img/concept/00-origin.webp" alt="結繩記事、壁畫、語言到文字的演進圖" loading="lazy"></figure>
-  <p>古人一開始沒有文字，只能用別的方式記錄與溝通。但這些方式都各缺一角：</p>
+  <p>在成熟文字系統形成以前，人們也會用繩結、圖畫與口語記事、溝通；若從「能否穩定記錄語詞」來看，這些方式各有限制：</p>
   <div class="origin-grid">
-    <div class="origin-cell"><b>結繩記事</b>形 ${N}　音 ${N}　義 ${Y}<p class="muted">打個結代表一件事——有「意思」，但沒有形體可辨、也念不出聲音。</p></div>
+    <div class="origin-cell"><b>結繩記事</b>穩定字形 ${N}　固定讀音 ${N}　記事功能 ${Y}<p class="muted">繩結當然有物理形狀；限制在於它通常沒有固定字形逐一對應語詞，也不能直接提示讀音。</p></div>
     <div class="origin-cell"><b>壁畫</b>形 ${Y}　音 ${N}　義 ${Y}<p class="muted">畫出來的東西有「形」也有「意思」，但仍然沒有「音」。</p></div>
     <div class="origin-cell"><b>語言</b>形 ${N}　音 ${Y}　義 ${Y}<p class="muted">說出口的話有「聲音」有「意思」，可是一說完就消失，留不下「形」。</p></div>
   </div>
-  <p><b>文字的偉大，就在於同時結合了「形、音、義」三要素</b>——看得見、念得出、有意義。而漢字的造字與用字法則，歸納起來就是「六書」。</p>
+  <p><b>成熟漢字以約定字形記錄語詞，讓形、音、義建立穩定聯繫</b>——看得見、讀得出、能理解。傳統文字學用「六書」分析漢字的構形與用字關係。</p>
   <p class="muted">💡 想用聽故事的方式學？去「<a href="#" onclick="LSApp.go('story');return false">造字故事</a>」分頁，跟著倉頡爺爺走一趟造字之旅。</p>
 </div>
 
@@ -25,7 +25,7 @@ const LSConcept = (() => {
     <span class="pill cat-象形">象形</span><span class="pill cat-指事">指事</span><span class="pill cat-會意">會意</span><span class="pill cat-形聲">形聲</span>＝造字之法（真正造出新字）；
     <span class="pill cat-轉注">轉注</span><span class="pill cat-假借">假借</span>＝用字之法（運用既有的字）。
   </p>
-  <p class="muted">「六書」一詞最早見於《周禮》，東漢許慎在《說文解字．敘》為六書一一下了定義並舉出例字——以下每一書都附上他的原文當佐證。</p>
+  <p class="muted">「六書」一詞最早見於《周禮》，東漢許慎在《說文解字．敘》為六書一一下了定義並舉出例字。把前四書稱為造字法、後兩書稱為用字法，是後世常見的「四體二用」教學整理，並非許慎原文，學者也有不同解釋。</p>
 </div>
 
 <div class="card">
@@ -71,14 +71,14 @@ const LSConcept = (() => {
   <h3>細部分類（小學生版）</h3>
   <p class="muted"><b>① 有借有還</b>：本義、借義和平共存，於是一個字身兼多義——字典裡一個字一大串解釋，常常就是這樣來的。<br>
   <b>② 有借不還</b>：借義鳩佔鵲巢，原義反而消失！為了區別，只好在原字加上形符或聲符<b>另造新字</b>——例：「其」本義是畚箕，被借去當虛詞不還，只好加竹字頭另造「箕」；「莫」本義是太陽落進草叢（傍晚），被借去當「不要」，只好再加個日造「暮」。</p>
-  <p class="muted">💡 注意順序：正因為「有借不還」逼得古人加形符造新字，才大量催生了下一類——形聲字。</p>
+  <p class="muted">💡 有些借義佔用本字後，原義會加形符另造新字，例如其→箕、莫→暮；這是理解部分形聲字形成的好例子，但不是所有形聲字的單一起源或固定時間順序。</p>
 </div>
 
 <div class="card">
   <h2><span class="pill cat-形聲">五</span> 形聲：半邊表義＋半邊表音，量產開始</h2>
   <figure class="story-fig"><img src="img/concept/06-phonetic.webp" alt="意義類別與聲音線索以六種位置組合成完整字形" width="1200" height="676" loading="lazy"></figure>
   ${sw('形聲者，以事為名，取譬相成，江河是也。')}
-  <p>一半<b>形符</b>表達意義類別，一半<b>聲符</b>提示讀音。這是漢字最能量產的造字法，<b>中文裡九成左右的字都是形聲字</b>。許慎舉的例字「江、河」：氵表示跟水有關，「工」「可」提示讀音。</p>
+  <p>一部分以<b>形符</b>表達意義類別，另一部分以<b>聲符</b>提示造字時或較早時期的讀音。形聲字在大型字書中占多數；許慎舉的「江、河」以氵表示水類，「工」「可」提供聲音線索。古今語音會變，<b>聲符是線索，不是現代國語讀音的保證</b>。</p>
   <p class="example-chars">江 河 晴 想 園 聞</p>
   <h3>細部分類（小學生版）：形符可以站六個位置</h3>
   <p class="muted">左形右聲（江）、右形左聲（鴿）、上形下聲（草）、下形上聲（想）、外形內聲（園）、內形外聲（聞）——找找看，每個字「表示意思的那一半」躲在哪裡？</p>
@@ -88,9 +88,14 @@ const LSConcept = (() => {
   <h2><span class="pill cat-轉注">六</span> 轉注：時空改變，同義字互相解釋</h2>
   <figure class="story-fig"><img src="img/concept/07-transfer.webp" alt="不同時空與地域的同義字跨越橋梁彼此解釋" width="1200" height="676" loading="lazy"></figure>
   ${sw('轉注者，建類一首，同意相受，考老是也。')}
-  <p>隨著<b>時間與地域</b>的改變，語音起了變化，同一個意思造出了不同的字；這些字<b>意思相同、可以互相注釋</b>。最經典的一對：</p>
+  <p>依常見教學解釋，時間、地域與語音差異可能使同源近義字彼此互訓。許慎只給出簡短定義與考、老二例，後世對「建類一首」的條件仍有不同說法。最經典的一對：</p>
   <p class="example-chars">考 ⇄ 老</p>
   <p class="muted">「考」「老」本義相同（年長），因時地差異分成兩個字，彼此可互相解釋——《說文》：「老，考也」「考，老也」。</p>
+</div>
+
+<div class="card">
+  <h2>資料來源說明</h2>
+  <p class="muted">六書定義引自許慎《說文解字．敘》；單字釋形與《說文》節錄可由<a href="https://dict.variants.moe.edu.tw/" target="_blank" rel="noopener">教育部《異體字字典》</a>逐字核對，古文字形可交叉查閱<a href="https://xiaoxue.iis.sinica.edu.tw/" target="_blank" rel="noopener">小學堂文字學資料庫</a>。故事與口訣服務記憶，不取代原典或古文字證據。</p>
 </div>
 
 <div class="card">

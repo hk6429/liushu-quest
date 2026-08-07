@@ -598,5 +598,101 @@
     "shuowen": "東南越，蛇穜。从虫門聲。",
     "disputed": false,
     "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "橋",
+    "zhuyin": "ㄑㄧㄠˊ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝木（表義，與木材相關），聲符＝喬（表音）。左形右聲；古代橋梁多以木材架設，木旁標示事物類屬，喬旁提示讀音，是形符、聲符分工清楚的常用字。",
+    "shuowen": "水梁也。从木，喬聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "語",
+    "zhuyin": "ㄩˇ",
+    "category": "形聲",
+    "sub": null,
+    "level": "進階",
+    "explain": "形符＝言（表義，與說話、語言相關），聲符＝吾（表古音）。左形右聲；言旁標示意義類別，吾旁保存較早的讀音線索，現代國語音已有變化，正可說明聲符不是讀音保證。",
+    "shuowen": "論也。从言，吾聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "請",
+    "zhuyin": "ㄑㄧㄥˇ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝言（表義，與言語請求相關），聲符＝青（表音）。左形右聲；言旁指出這是言語行為，青旁提示讀音，兩部分分別負責意義與聲音，是常見形聲結構。",
+    "shuowen": "謁也。从言，青聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "飯",
+    "zhuyin": "ㄈㄢˋ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝食（表義，與飲食相關），聲符＝反（表音）。左形右聲；食旁標示食物、進食的意義範圍，反旁提示讀音，組成日常使用頻率很高的形聲字。",
+    "shuowen": "食也。从食，反聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "洋",
+    "zhuyin": "ㄧㄤˊ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝水（表義，與水域相關），聲符＝羊（表音）。左形右聲；《說文》本記一條水名，後來才發展出海洋、廣大等常用義，水旁與羊旁的形音分工仍很清楚。",
+    "shuowen": "水。出齊臨朐高山，東北入鉅定。从水，羊聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "洗",
+    "zhuyin": "ㄒㄧˇ",
+    "category": "形聲",
+    "sub": null,
+    "level": "進階",
+    "explain": "形符＝水（表義，與用水清潔相關），聲符＝先（表古音）。左形右聲；《說文》本義是洗腳，後泛指洗滌。今讀ㄒㄧˇ，和聲符「先」不同，反映古今語音變化。",
+    "shuowen": "洒足也。从水，先聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "姑",
+    "zhuyin": "ㄍㄨ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝女（表義，與女性親屬稱謂相關），聲符＝古（表音）。左形右聲；女旁指出人物類別，古旁準確提示讀音，《說文》本義指丈夫的母親。",
+    "shuowen": "夫母也。从女，古聲。",
+    "disputed": false,
+    "dispute_note": ""
+  },
+  {
+    "id": "TEMP",
+    "char": "枝",
+    "zhuyin": "ㄓ",
+    "category": "形聲",
+    "sub": null,
+    "level": "基礎",
+    "explain": "形符＝木（表義，與樹木相關），聲符＝支（表音）。左形右聲；木旁指出它是樹木的一部分，支旁提示讀音，本義即樹幹旁另生出的枝條。",
+    "shuowen": "木別生條也。从木，支聲。",
+    "disputed": false,
+    "dispute_note": ""
   }
 ]

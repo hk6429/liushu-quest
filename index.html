@@ -11,25 +11,28 @@
 <body>
 <header class="topbar">
   <div class="brand"><span class="seal">字</span><h1>六書造字堂</h1><span class="subtitle">漢字造字法練功站</span></div>
-  <nav class="tabs" id="navTabs">
-    <button data-view="concept" class="active">概念導讀</button>
-    <button data-view="story">造字故事</button>
-    <button data-view="browse">字例總覽</button>
-    <button data-view="flash">閃卡複習</button>
-    <button data-view="quiz">自測闖關</button>
-    <button data-view="battle">大師對戰</button>
-    <button data-view="stats">戰績</button>
+  <nav class="tabs" id="navTabs" aria-label="主要練功頁面">
+    <button type="button" data-view="concept" class="active" aria-controls="view-concept" aria-current="page">概念導讀</button>
+    <button type="button" data-view="story" aria-controls="view-story">造字故事</button>
+    <button type="button" data-view="browse" aria-controls="view-browse">字例總覽</button>
+    <button type="button" data-view="flash" aria-controls="view-flash">閃卡複習</button>
+    <button type="button" data-view="quiz" aria-controls="view-quiz">自測闖關</button>
+    <button type="button" data-view="battle" aria-controls="view-battle">大師對戰</button>
+    <button type="button" data-view="stats" aria-controls="view-stats">戰績</button>
   </nav>
+  <p class="tab-scroll-hint" aria-hidden="true">← 左右滑動切換練功頁 →</p>
 </header>
 
 <main id="main">
-  <section id="view-concept" class="view active"></section>
-  <section id="view-story" class="view"></section>
-  <section id="view-browse" class="view"></section>
-  <section id="view-flash" class="view"></section>
-  <section id="view-quiz" class="view"></section>
-  <section id="view-battle" class="view"></section>
-  <section id="view-stats" class="view"></section>
+  <p class="tools-discovery-note"><b>學習工具：</b>可從右下角開啟家庭／課堂、學習紀錄、自學星圖與匿名到訪統計。</p>
+  <p id="storageWarning" class="storage-warning" role="alert" hidden></p>
+  <section id="view-concept" class="view active" aria-hidden="false"></section>
+  <section id="view-story" class="view" aria-hidden="true"></section>
+  <section id="view-browse" class="view" aria-hidden="true"></section>
+  <section id="view-flash" class="view" aria-hidden="true"></section>
+  <section id="view-quiz" class="view" aria-hidden="true"></section>
+  <section id="view-battle" class="view" aria-hidden="true"></section>
+  <section id="view-stats" class="view" aria-hidden="true"></section>
 </main>
 
 <footer class="foot">
@@ -39,8 +42,9 @@
 
 <script>window.goatcounter = {path: p => location.host + p}</script>
 <script data-goatcounter="https://hk6429.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="https://self-learning-orbit.pages.dev/platform-counter.js?v=20260807-liushu" data-site="liushu-quest" defer></script>
+<script src="https://self-learning-orbit.pages.dev/platform-counter.js?v=20260807-liushu-2" data-site="liushu-quest" data-default-open="true" defer></script>
 <script src="js/store.js"></script>
+<script src="js/progression.js"></script>
 <script src="js/data.js"></script>
 <script src="js/concept.js"></script>
 <script src="js/story.js"></script>
