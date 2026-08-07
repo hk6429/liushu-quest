@@ -48,4 +48,4 @@ Cloudflare Pages（liushu-quest.pages.dev）＋ Netlify（liushu-quest.netlify.a
 
 ## 權利與來源
 
-原創教學文字、程式與人為編排的權利範圍，以及《說文解字》公版原典、教育部校核連結、AI 生成配圖和第三方元件的界線，見 [`rights.html`](rights.html)、[`docs/asset-provenance.md`](docs/asset-provenance.md) 與 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。台灣著作權風險審查紀錄見 [`docs/copyright-audit-2026-08-07.md`](docs/copyright-audit-2026-08-07.md)。
+原創教學文字、程式與人為編排的權利範圍，以及古籍核對資料、AI 生成配圖和第三方元件的界線，見 [`rights.html`](rights.html)、[`docs/text-provenance.md`](docs/text-provenance.md)、[`docs/asset-provenance.md`](docs/asset-provenance.md) 與 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。學生前台不展示外部原文或外部資料連結；台灣著作權風險審查紀錄見 [`docs/copyright-audit-2026-08-07.md`](docs/copyright-audit-2026-08-07.md)。

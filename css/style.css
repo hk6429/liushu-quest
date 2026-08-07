@@ -142,9 +142,6 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .evidence-block p { margin: 0 0 .35rem; line-height: 1.65; }
 .evidence-block p:last-child { margin-bottom: 0; }
 .evidence-scope { display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
-.evidence-quote.is-pending { color: #7b3d1e; border: 1px dashed #b76a3d; border-radius: .35rem; padding: .45rem; }
-.evidence-source { display: flex; flex-wrap: wrap; gap: .15rem .55rem; font-size: .78rem; color: var(--ink-soft); }
-.evidence-source a { color: #315d77; font-weight: 700; }
 .evidence-note { font-size: .8rem; color: var(--ink-soft); }
 .evidence-block.is-compact { font-size: .82rem; }
 .pill {
@@ -193,12 +190,7 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .concept-jump a { margin: 0; text-decoration: none; }
 [id^="concept-"] { scroll-margin-top: 10rem; }
 
-/* ── 說文引文與故事 ── */
-.shuowen-quote {
-  border-left: 4px solid var(--cinnabar); background: var(--paper-deep);
-  padding: .5rem .8rem; border-radius: 0 .4rem .4rem 0;
-  font-size: .95rem; margin: .3rem 0 .7rem;
-}
+/* ── 造字故事 ── */
 .story-card h3 { color: var(--cinnabar-dark); margin-top: 1.3rem; letter-spacing: .06em; }
 .story-card p { text-indent: 0; }
 .story-characters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0 1.2rem; }

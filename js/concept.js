@@ -1,8 +1,7 @@
-// 概念導讀：文字起源 → 形音義 → 六書總覽（內容依大乃老師講述整理，佐以《說文解字》原文）
+// 概念導讀：文字起源 → 形音義 → 六書總覽（教學解說均為本站重新撰寫）
 const LSConcept = (() => {
   const Y = '<span class="fyimark has">✔</span>';
   const N = '<span class="fyimark hasnot">✘</span>';
-  const sw = t => `<p class="shuowen-quote">📜 《說文解字》：「${t}」</p>`;
 
   const html = `
 <div class="card">
@@ -44,7 +43,6 @@ const LSConcept = (() => {
 <div class="card">
   <h2><span class="pill cat-象形">一</span> 象形：依物體輪廓構成字形</h2>
   <figure class="story-fig"><img src="img/concept/02-pictograph.webp" alt="日月山水的甲骨文字形演變" loading="lazy"></figure>
-  ${sw('象形者，畫成其物，隨體詰詘，日月是也。')}
   <p>依物體的樣子描畫，線條隨形體彎曲，是漢字早期常見的獨體構形方式。</p>
   <p class="example-chars">日 月 山 水 木 火</p>
   <h3>國中判讀：看古文字形，不猜現代字形</h3>
@@ -56,7 +54,6 @@ const LSConcept = (() => {
 <div class="card">
   <h2><span class="pill cat-指事">二</span> 指事：用符號指出抽象概念或部位</h2>
   <figure class="story-fig"><img src="img/concept/03-indicative.webp" alt="上下本末刃旦的指事記號示意" loading="lazy"></figure>
-  ${sw('指事者，視而可識，察而見意，上下是也。')}
   <p>用<b>抽象符號</b>表示概念，或在既有字形上<b>加指示記號</b>標出重點。</p>
   <p class="example-chars">上 下 本 末 刃 旦</p>
   <h3>國中判讀：分清楚「部件」與「記號」</h3>
@@ -68,7 +65,6 @@ const LSConcept = (() => {
 <div class="card">
   <h2><span class="pill cat-會意">三</span> 會意：有意義的部件會合出新義</h2>
   <figure class="story-fig"><img src="img/concept/04-compound.webp" alt="人與樹、日與月，以及重複的樹木、水波與金錠組合出新意義" width="1200" height="676" loading="lazy"></figure>
-  ${sw('會意者，比類合誼，以見指撝，武信是也。')}
   <p>兩個以上具有意義的部件組合，從部件關係會合出新意思。許慎舉「武、信」為例。</p>
   <p class="example-chars">休 步 明 林 森 淼 鑫</p>
   <h3>國中判讀：必須說出部件關係</h3>
@@ -81,7 +77,6 @@ const LSConcept = (() => {
 <div class="card">
   <h2><span class="pill cat-形聲">四</span> 形聲：一部分表義，一部分提示讀音</h2>
   <figure class="story-fig"><img src="img/concept/06-phonetic.webp" alt="形符與聲符以六種常見位置組合成完整字形" width="1200" height="676" loading="lazy"></figure>
-  ${sw('形聲者，以事為名，取譬相成，江河是也。')}
   <p>一部分以<b>形符</b>提示意義類別，另一部分以<b>聲符</b>提示造字時或較早時期的讀音。兩部分不一定各占字形的一半，也不能只按左右位置猜。</p>
   <p class="example-chars">江 河 晴 想 園 聞</p>
   <h3>國中判讀：義、音、證據三步查</h3>
@@ -95,18 +90,16 @@ const LSConcept = (() => {
 <div class="card">
   <h2><span class="pill cat-轉注">五</span> 轉注：同類近義字彼此訓釋</h2>
   <figure class="story-fig"><img src="img/concept/07-transfer.webp" alt="考與老兩個近義字彼此解釋的示意" width="1200" height="676" loading="lazy"></figure>
-  ${sw('轉注者，建類一首，同意相受，考老是也。')}
-  <p>依常見教學解釋，同類、近義的字可以彼此訓釋。許慎只給出簡短定義與「考、老」二例，後世對「建類一首」的精確條件仍有不同說法。</p>
+  <p>依常見教學解釋，同類、近義的字可以彼此訓釋。早期材料只留下簡短說明與「考、老」二例，後世對轉注的精確條件仍有不同解釋。</p>
   <p class="example-chars">考 ⇄ 老</p>
   <h3>國中判讀：轉注回答的是字際關係</h3>
-  <p class="muted">《說文》以「老，考也」「考，老也」互相訓釋。這不表示兩個字的字形都由「轉注法」造出；就本站採用的雙軸分析，「老」的構形為象形、「考」的構形為形聲，二字另有轉注關係。</p>
+  <p class="muted">早期字書以「考、老」示範近義字彼此訓釋。這不表示兩個字的字形都由「轉注法」造出；就本站採用的雙軸分析，「老」的構形為象形、「考」的構形為形聲，二字另有轉注關係。</p>
   <details><summary>立即檢核：「考」只能回答轉注嗎？</summary><p>不能脫離題幹。問「考、老如何互相解釋」可答轉注；問「考字本身如何構成」則要回答形聲。</p></details>
 </div>
 
 <div class="card">
   <h2><span class="pill cat-假借">六</span> 假借：借現成字記錄同音或近音語詞</h2>
   <figure class="story-fig"><img src="img/concept/05-loan.webp" alt="同音借用與為原義另造新字的情境流程" width="1200" height="676" loading="lazy"></figure>
-  ${sw('假借者，本無其字，依聲託事，令長是也。')}
   <p>想記錄的語詞原本沒有專用字，就借用一個讀音相同或相近的現成字。假借說的是<b>字與語詞意義的使用關係</b>，不是借來的字形如何構成。</p>
   <h3>國中判讀：先找本義，再看借義</h3>
   <p class="muted"><b>① 本義、借義並存</b>：同一個字保留多種用法。<br>
@@ -123,8 +116,8 @@ const LSConcept = (() => {
 </div>
 
 <div class="card">
-  <h2>資料來源說明</h2>
-  <p class="muted">六書定義引自許慎《說文解字．敘》；單字釋形與《說文》節錄可由<a href="https://dict.variants.moe.edu.tw/" target="_blank" rel="noopener">教育部《異體字字典》</a>逐字核對，古文字形可交叉查閱<a href="https://xiaoxue.iis.sinica.edu.tw/" target="_blank" rel="noopener">小學堂文字學資料庫</a>。故事、圖像與口訣服務記憶，不取代原典或古文字證據。</p>
+  <h2>內容說明</h2>
+  <p class="muted">本頁的教學解說、判讀步驟與例句均為本站重新撰寫。分類事實由編輯端查核，學生前台不展示外部原文或外部資料連結；故事、圖像與口訣只服務記憶，不取代古文字證據。</p>
 </div>
 
 <div class="card">

@@ -58,7 +58,9 @@ assert.equal(shardChars.length, new Set(shardChars).size, 'shard 不得有重複
 for (const [file, text] of [['concept', concept], ['story', story]]) {
   assert.doesNotMatch(text, /九成左右的字|十之八九能矇對/, `${file} 不得承諾形聲字現代讀音命中率`);
   assert.doesNotMatch(text, /繩結有「意思」，卻沒有形狀|結繩記事<\/b>形 \$\{N\}/, `${file} 不得把繩結說成沒有物理形狀`);
-  assert.match(text, /資料來源說明/, `${file} 必須有資料來源說明`);
+  assert.match(text, /內容說明/, `${file} 必須有本站重新撰寫的內容說明`);
+  assert.match(text, /重新撰寫/, `${file} 必須明示教學文字為本站重新撰寫`);
+  assert.doesNotMatch(text, /https?:\/\//, `${file} 學生前台不得提供外部資料連結`);
   assert.match(text, /聲符.*線索.*保證|線索，不是保證/, `${file} 必須說明聲符只是線索`);
 }
 assert.doesNotMatch(story, /為了『還債』，發明了一種新造法|才大量催生了下一類/, '故事不得把假借分化寫成形聲的單一線性起源');

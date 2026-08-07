@@ -95,7 +95,7 @@ ${st.lastGrowth ? `<div class="feedback" role="status" aria-live="polite">${st.l
 <p><span class="pill cat-${c.category}">${c.category}${c.sub ? '・' + c.sub : ''}</span><span class="pill lv-${c.level}">${c.level}</span>${c.disputed ? '<span class="disputed-mark">⚡爭議</span>' : ''}</p>
 <p style="text-align:left">${c.explain}</p>
 ${c.disputed && c.dispute_note ? `<p class="muted" style="text-align:left">⚡ ${c.dispute_note}</p>` : ''}
-${typeof LSEvidence !== 'undefined' ? LSEvidence.render(c, { compact: true }) : (c.shuowen ? `<p class="muted">《說文》：${c.shuowen}</p>` : '')}`;
+${typeof LSEvidence !== 'undefined' ? LSEvidence.render(c, { compact: true }) : ''}`;
       area.querySelector('#gradeRow').innerHTML = `
 <div class="grade-row">
   <button class="btn again">忘了</button>

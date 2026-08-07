@@ -105,16 +105,14 @@ await step('字例總覽＋開字卡', async () => {
   if (parseFloat(outline) < 3) throw new Error(`鍵盤焦點環不足：${outline}`);
   await page.keyboard.press('Enter');
   await page.waitForSelector('.char-detail[role="dialog"][aria-modal="true"]');
-  if (!await page.locator('.char-detail .evidence-block').count()) throw new Error('字卡沒有分類與來源證據');
-  const sourceHref = await page.locator('.char-detail .evidence-source a').getAttribute('href');
-  if (!sourceHref?.startsWith('https://dict.variants.moe.edu.tw/dictView.jsp?ID=')) throw new Error(`來源不是教育部單字條目：${sourceHref}`);
+  if (!await page.locator('.char-detail .evidence-block').count()) throw new Error('字卡沒有分類證據');
+  if (await page.locator('.char-detail .evidence-source, .char-detail .evidence-quote').count()) throw new Error('學生字卡仍顯示外部原文或來源');
   if (!await page.locator('[data-close-dialog]').evaluate(e => e === document.activeElement)) throw new Error('dialog 開啟後未移入焦點');
   await page.keyboard.press('Escape');
   if (await page.locator('.char-detail').count()) throw new Error('Escape 未關閉 dialog');
   if (!await firstTile.evaluate(e => e === document.activeElement)) throw new Error('dialog 關閉後未恢復焦點');
   await page.evaluate(() => LSApp.showChar('c0198'));
-  await page.waitForSelector('.char-detail .evidence-quote.is-pending');
-  if (!(await page.textContent('.char-detail .evidence-quote')).includes('目前不當作已確認')) throw new Error('待核《說文》未顯示保守警語');
+  if (await page.locator('.char-detail').innerText().then(text => text.includes('校核入口') || text.includes('條文節錄'))) throw new Error('待核字卡洩出內部校核資料');
   await page.keyboard.press('Escape');
 });
 await step('閃卡：翻面＋評分', async () => {
