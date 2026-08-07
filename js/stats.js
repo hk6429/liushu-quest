@@ -7,7 +7,7 @@ const LSStats = (() => {
     const mastered = LSStore.masteredCount();
     const weak = LSStore.weakIds(LSData.all.map(c => c.id)).slice(0, 30);
     const beatenTotal = Object.values(s.battle.beaten).reduce((a, b) => a + b, 0);
-    const days = Object.keys(s.days).length;
+    const days = Object.values(s.days).filter(day => p ? p.normalizeDay(day).total > 0 : Number(day) > 0).length;
     const streak = p ? p.activityStreak(s) : { current: 0, longest: 0, today: { total: 0 }, goal: 5 };
     const mastery = p ? p.categoryMastery(s, LSData.all) : null;
     const stages = p ? LSData.all.reduce((out, c) => {
@@ -23,6 +23,12 @@ const LSStats = (() => {
       if (!bc || !(bc.r + bc.w)) return `<span class="pill cat-${cat}">${cat} —</span>`;
       return `<span class="pill cat-${cat}">${cat} ${Math.round(bc.r / (bc.r + bc.w) * 100)}%（${bc.r + bc.w}題）</span>`;
     }).join('');
+    const modeNames = { quiz: '均衡自測', daily: '每日字陣', battle: '大師對戰' };
+    const modes = Object.entries(modeNames).map(([mode, name]) => {
+      const score = s.quiz.byMode?.[mode] || { r: 0, w: 0 };
+      const total = score.r + score.w;
+      return `<span class="pill">${name} ${total ? `${Math.round(score.r / total * 100)}%（${total}題）` : '—'}</span>`;
+    }).join(' ');
 
     el.innerHTML = `
 <div id="progressDashboard"></div>
@@ -37,6 +43,8 @@ const LSStats = (() => {
     <div class="stat-cell"><div class="num">${streak.current}</div><div class="lbl">目前連續／最長 ${streak.longest} 天</div></div>
   </div>
   <p class="muted">今日有效學習 ${streak.today.total}/${streak.goal}；達標才計入連續天數。</p>
+  <h3>各模式正確率</h3>
+  <p>${modes}</p>
   <h3>六書分類正確率</h3>
   <p>${cats}</p>
   ${mastery ? `<h3>成長階段</h3><p>${Object.entries(stages).map(([label, count]) => `<span class="pill">${label} ${count}</span>`).join(' ')}</p>

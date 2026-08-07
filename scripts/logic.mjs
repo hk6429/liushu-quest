@@ -37,6 +37,7 @@ function test(name, fn) {
 test('台灣本地日跨午夜正確切日', () => {
   assert.equal(P.localDateKey(new Date('2026-08-07T15:59:59Z')), '2026-08-07');
   assert.equal(P.localDateKey(new Date('2026-08-07T16:00:00Z')), '2026-08-08');
+  assert.equal(P.learningDayNumber(new Date('2026-08-07T15:59:59Z')) + 1, P.learningDayNumber(new Date('2026-08-07T16:00:00Z')));
 });
 
 test('v1 數字 days 可遷移且保留既有欄位', () => {
@@ -53,6 +54,36 @@ test('概念題不建立假字卡但會記答題統計', () => {
   assert.equal(Store.raw.quiz.answered, 4);
   assert.equal(Store.raw.quiz.byCat['概念'].r, 4);
   assert.equal(Store.masteredCount(chars.map(c => c.id)), 0);
+});
+
+test('同一作答事件只記一次，不污染卡片、統計與活動', () => {
+  Store.resetAll();
+  const id = chars[0].id;
+  assert.equal(Store.recordAnswer(id, chars[0].category, true, 'quiz', 'answer:same'), true);
+  assert.equal(Store.recordAnswer(id, chars[0].category, true, 'quiz', 'answer:same'), false);
+  assert.equal(Store.raw.cards[id].seen, 1);
+  assert.equal(Store.raw.quiz.answered, 1);
+  assert.equal(Store.raw.quiz.byMode.quiz.r, 1);
+  assert.equal(Object.values(Store.raw.days).reduce((sum, day) => sum + day.total, 0), 1);
+});
+
+test('每日字陣同日同題重玩可計分但不重複灌成長', () => {
+  Store.resetAll();
+  const id = chars[1].id;
+  const eventId = 'daily:2026-08-07:cat:象形:001';
+  Store.recordAnswer(id, chars[1].category, false, 'daily', eventId);
+  Store.recordAnswer(id, chars[1].category, true, 'daily', eventId);
+  assert.deepEqual([Store.raw.quiz.answered, Store.raw.cards[id].seen, Store.raw.cards[id].wrong, Store.raw.cards[id].right], [1, 1, 1, 0]);
+  assert.deepEqual([Store.raw.quiz.byMode.daily.r, Store.raw.quiz.byMode.daily.w], [0, 1]);
+});
+
+test('閃卡模糊留在原盒且不算答對或連勝', () => {
+  Store.resetAll();
+  const id = chars[2].id;
+  Object.assign(Store.card(id), { box: 3, seen: 4, right: 2, wrong: 0, streak: 1, due: 0 });
+  Store.gradeCard(id, 1, 'flash:hard-once');
+  const card = Store.raw.cards[id];
+  assert.deepEqual([card.box, card.seen, card.right, card.wrong, card.streak], [3, 5, 2, 1, 0]);
 });
 
 test('舊存檔的 _concept 不會污染精通數', () => {
@@ -116,6 +147,22 @@ test('自適應難度依最近正確率升降', () => {
   assert.equal(P.adaptiveLevel(high), '挑戰');
 });
 
+test('對戰與每日字陣表現不會污染一般自測難度', () => {
+  const save = P.migrateSave({ quiz: { recent: [
+    ...Array.from({ length: 5 }, () => ({ ok: false, mode: 'quiz' })),
+    ...Array.from({ length: 15 }, () => ({ ok: true, mode: 'battle' }))
+  ] } });
+  assert.equal(P.adaptiveLevel(save), '基礎');
+  assert.equal(P.recentAccuracy(save), 0);
+});
+
+test('弱項排序先補真實錯題，再探索未作答類別', () => {
+  const save = P.migrateSave({ quiz: { byCat: {
+    象形: { r: 9, w: 1 }, 指事: { r: 2, w: 3 }, 會意: { r: 5, w: 0 }
+  } } });
+  assert.deepEqual([...P.weakestCats(save, 3)], ['指事', '象形', '形聲']);
+});
+
 test('均衡題組覆蓋六書並保留兩題概念題', () => {
   const save = P.migrateSave({});
   const slots = P.balancedBlueprint(save, 10, P.seededRandom('balanced'));
@@ -154,16 +201,31 @@ test('大師藍圖固定十回合且至少五題主題題', () => {
   assert.ok(slots.filter(slot => slot.focus).every(slot => ['轉注', '假借'].includes(slot.cat)));
 });
 
-test('今日任務依弱點、到期、自測、對戰順序推進', () => {
+test('今日任務鎖定真實弱點，且不把未解鎖大師當可挑戰', () => {
   const save = P.migrateSave({});
-  let mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ name: '李斯', unlock: 8 }] });
+  let mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, weakIds: ['a', 'b', 'c'], mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
   assert.equal(mission.id, 'weak');
+  assert.deepEqual([...mission.focusIds], ['a', 'b', 'c']);
   P.recordActivity(save, 'flash', 5, new Date());
-  mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ name: '李斯', unlock: 8 }] });
+  mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
   assert.equal(mission.id, 'quiz');
   P.recordActivity(save, 'quiz', 5, new Date());
-  mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ name: '李斯', unlock: 8 }] });
+  mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
+  assert.equal(mission.id, 'unlock');
+  mission = P.todayMission({ save, mastered: 0, masters: [{ id: 'wang', name: '王懿榮', unlock: 0 }] });
   assert.equal(mission.id, 'battle');
+});
+
+test('失敗恢復先排本輪錯字、去重且限制五字', () => {
+  assert.deepEqual([...P.recoveryIds(['a', 'b', 'a'], ['c', 'd', 'e', 'f'], 5)], ['a', 'b', 'c', 'd', 'e']);
+});
+
+test('完成事件具冪等性，不會重複增加回合數', () => {
+  Store.resetAll();
+  Store.completeSession('quiz', { score: 7, total: 10, eventId: 'quiz:one:complete' });
+  Store.completeSession('quiz', { score: 9, total: 10, eventId: 'quiz:one:complete' });
+  assert.equal(Store.raw.sessions.quiz, 1);
+  assert.equal(Store.raw.sessions.lastQuiz.score, 7);
 });
 
 test('印記判定具冪等性', () => {
@@ -206,6 +268,30 @@ test('指定弱點即使位於資料尾端仍排在牌組最前', () => {
   assert.equal(result.deck[0], result.target);
   assert.equal(new Set(result.deck).size, result.deck.length);
   assert.ok(result.deck.length <= 20);
+});
+
+test('一般閃卡回合在大量到期卡中仍保留四個新字', () => {
+  const result = vm.runInContext(`(() => {
+    LSStore.resetAll();
+    const ids = LSData.all.map(c => c.id);
+    for (const id of ids.slice(0, 30)) Object.assign(LSStore.card(id), { seen: 2, right: 1, wrong: 0, due: 0 });
+    const fresh = new Set(LSStore.newCards(ids));
+    const deck = LSFlash.buildDeck(null, []);
+    return { length: deck.length, fresh: deck.filter(id => fresh.has(id)).length };
+  })()`, context);
+  assert.deepEqual([result.length, result.fresh], [20, 4]);
+});
+
+test('對戰結算原子化且重入不重複勝場，並保存最佳', () => {
+  const result = vm.runInContext(`(() => {
+    LSStore.resetAll();
+    const first = LSStore.recordBattleResult('wangyirong', { win: true, score: 7, total: 10, eventId: 'battle:one:complete' });
+    const duplicate = LSStore.recordBattleResult('wangyirong', { win: true, score: 10, total: 10, eventId: 'battle:one:complete' });
+    return { first, duplicate, wins: LSStore.raw.battle.beaten.wangyirong, sessions: LSStore.raw.sessions.battle, best: LSStore.raw.battle.best.wangyirong };
+  })()`, context);
+  assert.equal(result.first.recorded, true);
+  assert.equal(result.duplicate.recorded, false);
+  assert.deepEqual([result.wins, result.sessions, result.best], [1, 1, 7]);
 });
 
 test('真實 10 題均衡題組無重複 charId 且涵蓋六書', () => {

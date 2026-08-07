@@ -20,6 +20,10 @@ const LSQuiz = (() => {
   const ROUND = 10;
   let st = null;
 
+  function sessionToken(prefix = 'quiz') {
+    return `${prefix}:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 10)}`;
+  }
+
   const P = () => typeof LSProgress !== 'undefined' ? LSProgress : null;
   const randPick = (arr, rng = Math.random) => arr[Math.floor(rng() * arr.length)];
   const isUsage = cat => cat === '轉注' || cat === '假借';
@@ -174,19 +178,26 @@ const LSQuiz = (() => {
 
   function start(area, options) {
     const session = buildSession(options);
-    st = { ...session, n: 0, right: 0, usedIds: new Set(), usedKeys: new Set(), completed: false, mode: options.daily ? 'daily' : 'quiz' };
+    st = { ...session, n: 0, right: 0, usedIds: new Set(), usedKeys: new Set(), missedIds: new Set(), completed: false,
+      mode: options.daily ? 'daily' : 'quiz', sessionId: sessionToken(options.daily ? 'daily' : 'quiz') };
     next(area);
   }
 
   function next(area) {
     if (st.n >= st.round) {
-      const earned = st.completed ? [] : LSStore.completeSession('quiz', { score: st.right, total: st.round });
+      const completionId = st.dailyDate ? `daily:${st.dailyDate}:complete` : `${st.sessionId}:complete`;
+      const earned = st.completed ? [] : LSStore.completeSession('quiz', { score: st.right, total: st.round, eventId: completionId });
       let daily = null;
       if (!st.completed && st.dailyDate) daily = LSStore.recordDailyChallenge(st.dailyDate, st.right, st.round);
       st.completed = true;
+      const recovery = P()?.recoveryIds([...st.missedIds], LSStore.weakIds(LSData.all.map(c => c.id)), 5) || [...st.missedIds].slice(0, 5);
       const verdict = st.right >= Math.ceil(st.round * .8) ? '大師風範！去「大師對戰」踢館吧。' : st.right >= Math.ceil(st.round * .5) ? '不錯，弱點字已排進閃卡，複習一輪再來。' : '基礎需要打底——先回「概念導讀」與「閃卡複習」蹲馬步。';
-      area.innerHTML = `<div class="feedback" role="status" aria-live="polite"><b>${st.dailyDate ? '今日字陣' : '回合'}結束！</b>答對 ${st.right}／${st.round}。${verdict}${daily ? `<br>首次 ${daily.first} 分／最佳 ${daily.best} 分` : ''}${earned.length ? `<br>🏮 新印記 ×${earned.length}` : ''}</div>
-      <div class="btnrow"><button class="btn" onclick="LSQuiz._again()">再來一回合</button>${daily ? '<button class="btn ghost" id="qShare">複製戰果</button>' : ''}<button class="btn ghost" onclick="LSApp.go('battle')">去對戰</button></div><p id="qShareStatus" role="status" aria-live="polite"></p>`;
+      area.innerHTML = `<div class="feedback" role="status" aria-live="polite"><b>${st.dailyDate ? '今日字陣' : '回合'}結束！</b>答對 ${st.right}／${st.round}。${verdict}${daily ? `<br>首次 ${daily.first} 分／最佳 ${daily.best} 分；重玩仍可刷新最佳，但同日同題不重複累計成長。` : ''}${earned.length ? `<br>🏮 新印記 ×${earned.length}` : ''}</div>
+      <div class="btnrow"><button class="btn" onclick="LSQuiz._again()">再來一回合</button>${recovery.length ? '<button class="btn ghost" id="qReview">先補強最多 5 個錯字</button>' : ''}${daily ? '<button class="btn ghost" id="qShare">複製戰果</button>' : ''}<button class="btn ghost" onclick="LSApp.go('battle')">去對戰</button></div><p id="qShareStatus" role="status" aria-live="polite"></p>`;
+      area.querySelector('#qReview')?.addEventListener('click', () => {
+        LSFlash.focus(recovery);
+        LSApp.go('flash');
+      });
       area.querySelector('#qShare')?.addEventListener('click', async () => {
         const streak = P().activityStreak(LSStore.raw).current;
         const text = P().challengeShareText({ date: st.dailyDate, score: st.right, total: st.round, streak });
@@ -218,8 +229,10 @@ const LSQuiz = (() => {
         area.querySelector(`[data-i="${q.answer}"]`).classList.add('correct');
         if (!ok) btn.classList.add('wrong');
         if (ok) st.right++;
+        else if (q.charId) st.missedIds.add(q.charId);
         const before = q.charId && P() ? P().masteryStage(LSStore.raw.cards[q.charId]) : null;
-        LSStore.recordAnswer(q.charId, q.cat, ok, 'quiz');
+        const answerEventId = st.dailyDate ? `daily:${st.dailyDate}:${q.key}` : `${st.sessionId}:${q.key}`;
+        LSStore.recordAnswer(q.charId, q.cat, ok, st.mode, answerEventId);
         const after = q.charId && P() ? P().masteryStage(LSStore.raw.cards[q.charId]) : null;
         const growth = before && after ? `<br>${before.id === after.id ? after.label : `${before.label} → ${after.label}`}：${after.next}` : '';
         area.querySelector('#qFb').innerHTML = `<div class="feedback">${ok ? '⭕ 答對！' : '❌ 答錯。'}${q.explain}${growth}</div>

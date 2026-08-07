@@ -19,6 +19,12 @@ const LSProgress = (() => {
     return `${parts.year}-${parts.month}-${parts.day}`;
   }
 
+  // 閃卡排程也以台灣日界線計算，避免本機 UTC 日期與練功日不同步。
+  function learningDayNumber(now = new Date()) {
+    const [year, month, day] = localDateKey(now).split('-').map(Number);
+    return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  }
+
   function shiftDateKey(key, delta) {
     const [y, m, d] = key.split('-').map(Number);
     const date = new Date(Date.UTC(y, m - 1, d + delta));
@@ -42,6 +48,14 @@ const LSProgress = (() => {
     return { flash, quiz, battle, sessions, flashSessions, quizSessions, battleSessions, total, complete: !!day.complete || total >= DAY_GOAL };
   }
 
+  function boundedEventIds(values, now = new Date()) {
+    const unique = [...new Set((Array.isArray(values) ? values : []).filter(id => typeof id === 'string'))];
+    const dailyPrefix = `daily:${localDateKey(now)}:`;
+    const todayDaily = unique.filter(id => id.startsWith(dailyPrefix)).slice(-20);
+    const recentOther = unique.filter(id => !id.startsWith(dailyPrefix)).slice(-500);
+    return [...recentOther, ...todayDaily];
+  }
+
   function migrateSave(input) {
     const save = input && typeof input === 'object' ? input : {};
     save.cards = save.cards && typeof save.cards === 'object' ? save.cards : {};
@@ -49,6 +63,7 @@ const LSProgress = (() => {
     save.quiz.answered = int(save.quiz.answered);
     save.quiz.right = int(save.quiz.right);
     save.quiz.byCat = save.quiz.byCat && typeof save.quiz.byCat === 'object' ? save.quiz.byCat : {};
+    save.quiz.byMode = save.quiz.byMode && typeof save.quiz.byMode === 'object' ? save.quiz.byMode : {};
     save.quiz.recent = Array.isArray(save.quiz.recent) ? save.quiz.recent.slice(-20) : [];
     save.battle = save.battle && typeof save.battle === 'object' ? save.battle : {};
     save.battle.beaten = save.battle.beaten && typeof save.battle.beaten === 'object' ? save.battle.beaten : {};
@@ -74,6 +89,7 @@ const LSProgress = (() => {
     save.sessions.battle = int(save.sessions.battle);
     save.sessions.lastQuiz = save.sessions.lastQuiz && typeof save.sessions.lastQuiz === 'object' ? save.sessions.lastQuiz : null;
     save.dailyChallenges = save.dailyChallenges && typeof save.dailyChallenges === 'object' ? save.dailyChallenges : {};
+    save.eventIds = boundedEventIds(save.eventIds);
     save.created = Number.isFinite(Number(save.created)) ? Number(save.created) : Date.now();
     save.schemaVersion = Math.max(2, int(save.schemaVersion));
     return save;
@@ -94,7 +110,13 @@ const LSProgress = (() => {
 
   function recordSession(save, kind, summary = {}, now = new Date()) {
     migrateSave(save);
-    if (!['quiz', 'flash', 'battle'].includes(kind)) return;
+    if (!['quiz', 'flash', 'battle'].includes(kind)) return false;
+    if (summary.eventId) {
+      const eventId = String(summary.eventId).slice(0, 160);
+      if (save.eventIds.includes(eventId)) return false;
+      save.eventIds.push(eventId);
+      save.eventIds = boundedEventIds(save.eventIds, now);
+    }
     save.sessions[kind]++;
     const key = localDateKey(now);
     const day = normalizeDay(save.days[key]);
@@ -107,6 +129,7 @@ const LSProgress = (() => {
       save.sessions.lastQuiz = { score, total, at: now instanceof Date ? now.toISOString() : new Date(now).toISOString() };
       save.sessions.bestQuiz = Math.max(int(save.sessions.bestQuiz), score);
     }
+    return true;
   }
 
   function activityStreak(save, now = new Date()) {
@@ -181,14 +204,15 @@ const LSProgress = (() => {
 
   function recentAccuracy(save) {
     migrateSave(save);
-    const recent = save.quiz.recent.slice(-20);
+    const recent = save.quiz.recent.filter(x => !x.mode || x.mode === 'quiz').slice(-20);
     if (!recent.length) return null;
     return recent.filter(x => !!x.ok).length / recent.length;
   }
 
   function adaptiveLevel(save) {
     migrateSave(save);
-    const recent = save.quiz.recent.slice(-20);
+    // 對戰有大師難度／主題偏壓，每日字陣則可重玩；都不應改寫一般自測難度。
+    const recent = save.quiz.recent.filter(x => !x.mode || x.mode === 'quiz').slice(-20);
     if (recent.length < 5) return '基礎';
     const accuracy = recent.filter(x => !!x.ok).length / recent.length;
     if (recent.length >= 10 && accuracy >= 0.85) return '挑戰';
@@ -201,8 +225,14 @@ const LSProgress = (() => {
     return CATS.map(cat => {
       const s = save.quiz.byCat[cat] || { r: 0, w: 0 };
       const total = int(s.r) + int(s.w);
-      return { cat, total, rate: total ? int(s.r) / total : -1 };
-    }).sort((a, b) => a.rate - b.rate || a.total - b.total || CATS.indexOf(a.cat) - CATS.indexOf(b.cat))
+      const rate = total ? int(s.r) / total : null;
+      // 真實錯題優先，其次才探索未作答類別；全對類別排最後。
+      const band = total && rate < 1 ? 0 : total === 0 ? 1 : 2;
+      return { cat, total, rate, band };
+    }).sort((a, b) => a.band - b.band
+      || (a.rate ?? 1) - (b.rate ?? 1)
+      || b.total - a.total
+      || CATS.indexOf(a.cat) - CATS.indexOf(b.cat))
       .slice(0, count).map(x => x.cat);
   }
 
@@ -274,15 +304,28 @@ const LSProgress = (() => {
     return (masters || []).find(m => mastered < m.unlock) || null;
   }
 
-  function todayMission({ save, dueCount = 0, weakCount = 0, newCount = 0, mastered = 0, masters = [] }) {
+  function recoveryIds(missedIds = [], weakIds = [], limit = 5) {
+    return [...new Set([...(missedIds || []), ...(weakIds || [])])]
+      .filter(id => typeof id === 'string' && id && id !== '_concept')
+      .slice(0, Math.max(1, int(limit, 5)));
+  }
+
+  function todayMission({ save, dueCount = 0, weakCount = 0, newCount = 0, weakIds = [], mastered = 0, masters = [] }) {
     const streak = activityStreak(save);
     if ((dueCount || weakCount || newCount) && streak.today.flash < DAY_GOAL) {
       const target = Math.min(DAY_GOAL, Math.max(1, dueCount || weakCount || newCount));
-      return { id: weakCount ? 'weak' : dueCount ? 'due' : 'new', label: weakCount ? `補強 ${target} 個弱點字` : dueCount ? `複習 ${target} 張到期卡` : `認識 ${target} 個新字`, mode: 'flash', progress: Math.min(streak.today.flash, target), target };
+      return {
+        id: weakCount ? 'weak' : dueCount ? 'due' : 'new',
+        label: weakCount ? `優先補強 ${target} 個弱點字` : dueCount ? `複習 ${target} 張到期卡` : `認識 ${target} 個新字`,
+        mode: 'flash', progress: Math.min(streak.today.flash, target), target,
+        focusIds: weakCount ? weakIds.slice(0, target) : []
+      };
     }
     if (streak.today.quiz < DAY_GOAL) return { id: 'quiz', label: '完成 5 題均衡自測', mode: 'quiz', progress: Math.min(streak.today.quiz, DAY_GOAL), target: DAY_GOAL };
+    const unbeaten = masters.find(m => mastered >= m.unlock && !int(save.battle?.beaten?.[m.id]));
+    if (unbeaten && streak.today.battleSessions < 1) return { id: 'battle', label: `挑戰已解鎖的 ${unbeaten.name}`, mode: 'battle', progress: 0, target: 1 };
     const next = nextMaster(mastered, masters);
-    if (next && streak.today.battleSessions < 1) return { id: 'battle', label: `朝 ${next.name} 的門檻前進`, mode: 'battle', progress: 0, target: 1 };
+    if (next) return { id: 'unlock', label: `精通 ${next.unlock} 字解鎖${next.name}`, mode: 'flash', progress: mastered, target: next.unlock, focusIds: weakIds.slice(0, DAY_GOAL) };
     return { id: 'daily', label: '挑戰今日字陣', mode: 'quiz', progress: save.dailyChallenges?.[localDateKey()]?.attempts ? 1 : 0, target: 1 };
   }
 
@@ -324,10 +367,11 @@ const LSProgress = (() => {
     const ids = LSData.all.map(c => c.id);
     const mastered = masteredIds(save, ids).length;
     const due = LSStore.dueCards(ids).length;
-    const weak = LSStore.weakIds(ids).length;
+    const weakIds = LSStore.weakIds(ids);
+    const weak = weakIds.length;
     const fresh = LSStore.newCards(ids).length;
     const masters = typeof LSBattle === 'undefined' ? [] : LSBattle.MASTERS;
-    const mission = todayMission({ save, dueCount: due, weakCount: weak, newCount: fresh, mastered, masters });
+    const mission = todayMission({ save, dueCount: due, weakCount: weak, newCount: fresh, weakIds, mastered, masters });
     const onboarding = onboardingState(save);
     const streak = activityStreak(save);
     const stepCopy = ['先看懂修行路線', '完成一張真實閃卡', '答一題自測完成入門'];
@@ -339,15 +383,18 @@ const LSProgress = (() => {
       else if (typeof LSApp !== 'undefined') LSApp.go(state.step === 1 ? 'flash' : 'quiz');
     });
     el.querySelector('[data-onboarding-skip]')?.addEventListener('click', () => { advanceOnboarding(save, 'skip'); LSStore.persist(); renderDashboard(el); });
-    el.querySelector('[data-mission-mode]')?.addEventListener('click', e => { if (typeof LSApp !== 'undefined') LSApp.go(e.currentTarget.dataset.missionMode); });
+    el.querySelector('[data-mission-mode]')?.addEventListener('click', e => {
+      if (mission.focusIds?.length && typeof LSFlash !== 'undefined') LSFlash.focus(mission.focusIds);
+      if (typeof LSApp !== 'undefined') LSApp.go(e.currentTarget.dataset.missionMode);
+    });
   }
 
   return {
-    CATS, DAY_GOAL, localDateKey, shiftDateKey, migrateSave, normalizeDay,
+    CATS, DAY_GOAL, localDateKey, learningDayNumber, shiftDateKey, migrateSave, normalizeDay, boundedEventIds,
     recordActivity, recordSession, activityStreak, onboardingState, advanceOnboarding,
     masteryStage, masteredIds, categoryMastery, recentAccuracy, adaptiveLevel,
     weakestCats, balancedBlueprint, hashSeed, seededRandom, dailyChallengeBlueprint,
-    battleBlueprint, recordDailyChallenge, todayMission, badgeCatalog, evaluateBadges,
+    battleBlueprint, recordDailyChallenge, recoveryIds, todayMission, badgeCatalog, evaluateBadges,
     challengeShareText, renderDashboard
   };
 })();

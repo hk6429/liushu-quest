@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 端到端煙霧測試：手機寬度走完 概念→總覽→閃卡→自測→對戰→戰績匯出，零 console error、不橫向跑版
+// 端到端煙霧測試：手機寬度走完陪學、概念、總覽、閃卡、自測、對戰、戰績與證據卡，零前端錯誤、不橫向跑版
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { join, dirname, extname } from 'node:path';
@@ -57,6 +57,21 @@ await step('概念導讀載入', async () => {
   }
   await page.emulateMedia({ reducedMotion: 'no-preference' });
 });
+await step('家長陪學：摘要、字級與計時', async () => {
+  await page.click('#parentGuideToggle');
+  await page.waitForSelector('#parentGuidePanel:not([hidden])');
+  const guideText = await page.locator('#parentGuidePanel').textContent();
+  if (!guideText.includes('10 分鐘三步驟') || !guideText.includes('220')) throw new Error('陪學指南缺少短流程或進度邊界');
+  await page.click('[data-reading-size="large"]');
+  const reading = await page.evaluate(() => ({ size: document.documentElement.dataset.readingSize, px: parseFloat(getComputedStyle(document.documentElement).fontSize) }));
+  if (reading.size !== 'large' || reading.px < 18) throw new Error(`放大閱讀未生效：${JSON.stringify(reading)}`);
+  await page.click('[data-parent-timer]');
+  if (!(await page.textContent('[data-parent-timer-status]')).includes('剩下')) throw new Error('10 分鐘計時沒有啟動');
+  await page.click('[data-reading-size="normal"]');
+  await page.click('[data-parent-next]');
+  if (!await page.locator('#view-story').evaluate(e => e.classList.contains('active'))) throw new Error('家長建議未帶到下一步');
+  await page.click('#parentGuideToggle');
+});
 await step('造字故事載入', async () => {
   await page.click('[data-view="story"]');
   await page.waitForSelector('#view-story .story-card h3');
@@ -90,10 +105,17 @@ await step('字例總覽＋開字卡', async () => {
   if (parseFloat(outline) < 3) throw new Error(`鍵盤焦點環不足：${outline}`);
   await page.keyboard.press('Enter');
   await page.waitForSelector('.char-detail[role="dialog"][aria-modal="true"]');
+  if (!await page.locator('.char-detail .evidence-block').count()) throw new Error('字卡沒有分類與來源證據');
+  const sourceHref = await page.locator('.char-detail .evidence-source a').getAttribute('href');
+  if (!sourceHref?.startsWith('https://dict.variants.moe.edu.tw/dictView.jsp?ID=')) throw new Error(`來源不是教育部單字條目：${sourceHref}`);
   if (!await page.locator('[data-close-dialog]').evaluate(e => e === document.activeElement)) throw new Error('dialog 開啟後未移入焦點');
   await page.keyboard.press('Escape');
   if (await page.locator('.char-detail').count()) throw new Error('Escape 未關閉 dialog');
   if (!await firstTile.evaluate(e => e === document.activeElement)) throw new Error('dialog 關閉後未恢復焦點');
+  await page.evaluate(() => LSApp.showChar('c0198'));
+  await page.waitForSelector('.char-detail .evidence-quote.is-pending');
+  if (!(await page.textContent('.char-detail .evidence-quote')).includes('目前不當作已確認')) throw new Error('待核《說文》未顯示保守警語');
+  await page.keyboard.press('Escape');
 });
 await step('閃卡：翻面＋評分', async () => {
   await page.click('[data-view="flash"]');

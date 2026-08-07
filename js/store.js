@@ -35,7 +35,7 @@ const LSStore = (() => {
   function blank() {
     return {
       cards: {},
-      quiz: { answered: 0, right: 0, byCat: {}, recent: [] },
+      quiz: { answered: 0, right: 0, byCat: {}, byMode: {}, recent: [] },
       battle: { beaten: {}, losses: {}, best: {} },
       days: {},
       activity: { days: {} },
@@ -43,6 +43,7 @@ const LSStore = (() => {
       badges: {},
       sessions: { quiz: 0, flash: 0, battle: 0, lastQuiz: null },
       dailyChallenges: {},
+      eventIds: [],
       schemaVersion: 2,
       created: Date.now()
     };
@@ -56,6 +57,7 @@ const LSStore = (() => {
     s.quiz.answered = Number.isFinite(+s.quiz.answered) ? +s.quiz.answered : 0;
     s.quiz.right = Number.isFinite(+s.quiz.right) ? +s.quiz.right : 0;
     s.quiz.byCat = s.quiz.byCat && typeof s.quiz.byCat === 'object' ? s.quiz.byCat : {};
+    s.quiz.byMode = s.quiz.byMode && typeof s.quiz.byMode === 'object' ? s.quiz.byMode : {};
     s.quiz.recent = Array.isArray(s.quiz.recent) ? s.quiz.recent.slice(-20) : [];
     s.battle = s.battle && typeof s.battle === 'object' ? s.battle : {};
     s.battle.beaten = s.battle.beaten && typeof s.battle.beaten === 'object' ? s.battle.beaten : {};
@@ -66,6 +68,7 @@ const LSStore = (() => {
     s.badges = s.badges && typeof s.badges === 'object' ? s.badges : {};
     s.sessions = s.sessions && typeof s.sessions === 'object' ? s.sessions : { quiz: 0, flash: 0, battle: 0 };
     s.dailyChallenges = s.dailyChallenges && typeof s.dailyChallenges === 'object' ? s.dailyChallenges : {};
+    s.eventIds = Array.isArray(s.eventIds) ? s.eventIds.filter(id => typeof id === 'string').slice(-500) : [];
     return s;
   }
 
@@ -93,7 +96,20 @@ const LSStore = (() => {
       return false;
     }
   }
-  function today() { return Math.floor(Date.now() / 86400000); }
+  function today() {
+    const p = progress();
+    return p?.learningDayNumber ? p.learningDayNumber(new Date()) : Math.floor(Date.now() / 86400000);
+  }
+
+  function claimEvent(eventId) {
+    if (!eventId) return true;
+    const id = String(eventId).slice(0, 160);
+    if (save.eventIds.includes(id)) return false;
+    save.eventIds.push(id);
+    const p = progress();
+    save.eventIds = p?.boundedEventIds ? p.boundedEventIds(save.eventIds) : save.eventIds.slice(-500);
+    return true;
+  }
 
   function card(id) {
     save = normalize(save);
@@ -108,22 +124,27 @@ const LSStore = (() => {
   }
 
   // 閃卡評分：again(0) / hard(1) / good(2)
-  function gradeCard(id, grade) {
+  function gradeCard(id, grade, eventId = null) {
+    save = normalize(save);
+    if (!claimEvent(eventId)) return false;
     const c = card(id);
-    if (!c) return;
+    if (!c) return false;
     c.seen++;
     if (grade === 0) { c.box = 1; c.streak = 0; c.wrong++; }
-    else if (grade === 1) { c.box = Math.max(1, c.box); c.right++; c.streak++; }
+    // 「模糊」代表尚未穩定回憶：留在原盒、隔天再見，不灌入答對／連勝證據。
+    else if (grade === 1) { c.box = Math.max(1, c.box); c.wrong++; c.streak = 0; }
     else { c.box = Math.min(MAX_BOX, c.box + 1); c.right++; c.streak++; }
-    c.due = today() + BOX_INTERVALS[c.box];
+    c.due = grade === 1 ? today() + 1 : today() + BOX_INTERVALS[c.box];
     noteActivity('flash');
     if (progress()) progress().advanceOnboarding(save, 'flash');
     persist();
+    return true;
   }
 
   // 自測／對戰皆記總統計；概念題傳入 null，不建立假字卡。
-  function recordAnswer(id, cat, ok, mode = 'quiz') {
+  function recordAnswer(id, cat, ok, mode = 'quiz', eventId = null) {
     save = normalize(save);
+    if (!claimEvent(eventId)) return false;
     const c = id && id !== '_concept' ? card(id) : null;
     if (c) {
       c.seen++;
@@ -136,11 +157,15 @@ const LSStore = (() => {
     if (ok) save.quiz.right++;
     if (!save.quiz.byCat[cat]) save.quiz.byCat[cat] = { r: 0, w: 0 };
     save.quiz.byCat[cat][ok ? 'r' : 'w']++;
-    save.quiz.recent.push({ ok: !!ok, cat, mode });
+    const safeMode = ['quiz', 'daily', 'battle'].includes(mode) ? mode : 'quiz';
+    if (!save.quiz.byMode[safeMode]) save.quiz.byMode[safeMode] = { r: 0, w: 0 };
+    save.quiz.byMode[safeMode][ok ? 'r' : 'w']++;
+    save.quiz.recent.push({ ok: !!ok, cat, mode: safeMode });
     save.quiz.recent = save.quiz.recent.slice(-20);
-    noteActivity(mode === 'battle' ? 'battle' : 'quiz');
-    if (progress() && mode !== 'battle') progress().advanceOnboarding(save, 'quiz');
+    noteActivity(safeMode === 'battle' ? 'battle' : 'quiz');
+    if (progress() && safeMode !== 'battle') progress().advanceOnboarding(save, 'quiz');
     persist();
+    return true;
   }
 
   function validIds() {
@@ -187,10 +212,28 @@ const LSStore = (() => {
     persist();
   }
 
+  function recordBattleResult(masterId, { win = false, score = 0, total = 0, eventId = null } = {}) {
+    save = normalize(save);
+    const p = progress();
+    const recorded = p ? p.recordSession(save, 'battle', { score, total, eventId }) : claimEvent(eventId);
+    if (!recorded) return { recorded: false, earned: [], best: boundedInt(save.battle.best[masterId], 1000) };
+    const bucket = win ? save.battle.beaten : save.battle.losses;
+    bucket[masterId] = (boundedInt(bucket[masterId]) || 0) + 1;
+    save.battle.best[masterId] = Math.max(boundedInt(save.battle.best[masterId], 1000), boundedInt(score, 1000));
+    let earned = [];
+    if (p && typeof LSData !== 'undefined') {
+      const masters = typeof LSBattle !== 'undefined' ? LSBattle.MASTERS : [];
+      earned = p.evaluateBadges(save, { chars: LSData.all, masters });
+    }
+    persist();
+    return { recorded: true, earned, best: save.battle.best[masterId] };
+  }
+
   function completeSession(kind, summary = {}) {
     save = normalize(save);
     const p = progress();
-    if (p) p.recordSession(save, kind, summary);
+    const recorded = p ? p.recordSession(save, kind, summary) : claimEvent(summary.eventId);
+    if (!recorded) return [];
     let earned = [];
     if (p && typeof LSData !== 'undefined') {
       const masters = typeof LSBattle !== 'undefined' ? LSBattle.MASTERS : [];
@@ -237,9 +280,16 @@ const LSStore = (() => {
         out.quiz.byCat[cat] = { r: boundedInt(score.r), w: boundedInt(score.w) };
       }
     }
+    const allowedModes = new Set(['quiz', 'daily', 'battle']);
+    if (isRecord(value.quiz.byMode)) {
+      for (const [mode, score] of Object.entries(value.quiz.byMode)) {
+        if (!allowedModes.has(mode) || !isRecord(score)) continue;
+        out.quiz.byMode[mode] = { r: boundedInt(score.r), w: boundedInt(score.w) };
+      }
+    }
     out.quiz.recent = Array.isArray(value.quiz.recent) ? value.quiz.recent.slice(-20).flatMap(item => {
       if (!isRecord(item) || !allowedCats.has(item.cat)) return [];
-      return [{ ok: !!item.ok, cat: item.cat, mode: ['quiz', 'battle'].includes(item.mode) ? item.mode : 'quiz' }];
+      return [{ ok: !!item.ok, cat: item.cat, mode: allowedModes.has(item.mode) ? item.mode : 'quiz' }];
     }) : [];
 
     const copyCounts = source => {
@@ -298,6 +348,11 @@ const LSStore = (() => {
         };
       }
     }
+    if (Array.isArray(value.eventIds)) {
+      const eventIds = [...new Set(value.eventIds.filter(id => typeof id === 'string' && id.length <= 160))];
+      const p = progress();
+      out.eventIds = p?.boundedEventIds ? p.boundedEventIds(eventIds) : eventIds.slice(-500);
+    }
     out.schemaVersion = 2;
     return normalize(out);
   }
@@ -313,7 +368,7 @@ const LSStore = (() => {
 
   return {
     card, gradeCard, recordAnswer, isMastered, masteredCount, dueCards, newCards, weakIds,
-    recordBattleWin, recordBattleLoss, completeSession, recordDailyChallenge,
+    recordBattleWin, recordBattleLoss, recordBattleResult, completeSession, recordDailyChallenge,
     exportSave, importSave, resetAll, persist,
     get lastError() { return lastStorageError; },
     get raw() { save = normalize(save); return save; }

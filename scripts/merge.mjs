@@ -14,51 +14,6 @@ const bootstrap = args.has('--bootstrap-id-map');
 const updateIds = bootstrap || args.has('--update-id-map');
 const CAT_ORDER = ['象形', '指事', '會意', '形聲', '轉注', '假借'];
 
-const FORMATION_OVERRIDES = {
-  老: '象形', 考: '形聲', 空: '形聲', 頂: '形聲', 竅: '形聲', 顛: '形聲',
-  之: '象形', 而: '象形', 西: '象形', 我: '象形', 來: '象形', 其: '象形',
-  舍: '象形', 要: '象形', 烏: '象形', 然: '形聲', 自: '象形', 萬: '象形'
-};
-
-const RELATED = {
-  北: ['背'], 莫: ['暮'], 之: [], 而: ['髵'], 西: ['棲'], 我: [], 來: ['麥'],
-  其: ['箕'], 舍: ['捨'], 要: ['腰'], 烏: ['嗚'], 然: ['燃'], 自: ['鼻'], 萬: [],
-  老: ['考'], 考: ['老'], 空: ['竅'], 竅: ['空'], 頂: ['顛'], 顛: ['頂']
-};
-
-function usageRelations(e) {
-  const out = [];
-  if (e.category === '假借' || e.char === '北' || e.char === '莫') {
-    out.push({
-      type: '假借',
-      sub: e.category === '假借' ? e.sub : '有借不還',
-      related_chars: RELATED[e.char] || [],
-      note: '本義與借義的關係見 explain。'
-    });
-  }
-  if (e.category === '轉注') {
-    out.push({
-      type: '轉注',
-      sub: null,
-      related_chars: RELATED[e.char] || [],
-      note: '互訓關係與採用理據見 explain。'
-    });
-  }
-  return out;
-}
-
-function sourcesFor(e) {
-  if (Array.isArray(e.sources) && e.sources.length) return e.sources;
-  const hasOriginal = typeof e.shuowen === 'string' && e.shuowen.length > 0;
-  return [{
-    provider: '教育部《異體字字典》',
-    basis: hasOriginal ? '《說文解字》釋形原文' : '教育部字形條目；未附《說文》原文',
-    url: `https://dict.variants.moe.edu.tw/search.jsp?QTP=0&WORD=${encodeURIComponent(e.char)}`,
-    quote: hasOriginal ? e.shuowen : '未附《說文》原文',
-    verified_at: '2026-08-07'
-  }];
-}
-
 let idMap = {};
 if (existsSync(idMapFile)) {
   idMap = JSON.parse(readFileSync(idMapFile, 'utf8'));
@@ -110,10 +65,7 @@ for (const e of missing) {
 
 const output = all.map(e => ({
   ...e,
-  id: idMap[e.char],
-  formation_category: e.formation_category || FORMATION_OVERRIDES[e.char] || e.category,
-  usage_relations: e.usage_relations || usageRelations(e),
-  sources: sourcesFor(e)
+  id: idMap[e.char]
 }));
 
 if (updateIds) {

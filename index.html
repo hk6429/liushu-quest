@@ -26,6 +26,14 @@
 <main id="main">
   <p class="tools-discovery-note"><b>學習工具：</b>可從右下角開啟家庭／課堂、學習紀錄、自學星圖與匿名到訪統計。</p>
   <p id="storageWarning" class="storage-warning" role="alert" hidden></p>
+  <section class="parent-support" aria-labelledby="parentSupportTitle">
+    <div>
+      <strong id="parentSupportTitle">家長陪學：一次 10 分鐘就好</strong>
+      <span>先聽孩子說，再一起查證；不必追求一次全會。</span>
+    </div>
+    <button type="button" class="btn small ghost" id="parentGuideToggle" aria-expanded="false" aria-controls="parentGuidePanel">打開陪學指南</button>
+    <div id="parentGuidePanel" class="parent-guide-panel" hidden></div>
+  </section>
   <section id="view-concept" class="view active" aria-hidden="false"></section>
   <section id="view-story" class="view" aria-hidden="true"></section>
   <section id="view-browse" class="view" aria-hidden="true"></section>
@@ -46,6 +54,7 @@
 <script src="js/store.js"></script>
 <script src="js/progression.js"></script>
 <script src="js/data.js"></script>
+<script src="js/evidence.js"></script>
 <script src="js/concept.js"></script>
 <script src="js/story.js"></script>
 <script src="js/quiz.js"></script>
@@ -53,5 +62,6 @@
 <script src="js/battle.js"></script>
 <script src="js/stats.js"></script>
 <script src="js/app.js"></script>
+<script src="js/parent.js"></script>
 </body>
 </html>

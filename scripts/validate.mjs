@@ -12,7 +12,9 @@ const CATS = ['象形', '指事', '會意', '形聲', '轉注', '假借'];
 const FORMATION_CATS = ['象形', '指事', '會意', '形聲'];
 const LEVELS = ['基礎', '進階', '挑戰'];
 const SUBS = { 會意: ['同體會意', '異體會意'], 假借: ['有借有還', '有借不還'] };
-const REQUIRED = ['id', 'char', 'zhuyin', 'category', 'sub', 'level', 'explain', 'shuowen', 'disputed', 'dispute_note', 'formation_category', 'usage_relations', 'sources'];
+const SUB_SCOPES = { 會意: '會意部件教學分組', 假借: '假借後續用字結果教學分組' };
+const SHUOWEN_STATUSES = ['已核對', '待核', '未附'];
+const REQUIRED = ['id', 'char', 'zhuyin', 'category', 'classification_scope', 'sub', 'sub_scope', 'level', 'explain', 'shuowen', 'shuowen_status', 'disputed', 'dispute_note', 'formation_category', 'usage_relations', 'sources'];
 const ZHUYIN_RE = /^[ㄅ-ㄩ]{1,3}[ˊˇˋ˙]?$|^˙[ㄅ-ㄩ]{1,3}$/;
 const ID_RE = /^c\d{4}$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -36,11 +38,15 @@ data.forEach((e, i) => {
   if (typeof e.char !== 'string' || [...e.char].length !== 1) errors.push(`${tag} char 不是單一字`);
   if (typeof e.zhuyin !== 'string' || !ZHUYIN_RE.test(e.zhuyin)) errors.push(`${tag} 注音格式異常: ${String(e.zhuyin)}`);
   if (typeof e.category !== 'string' || !CATS.includes(e.category)) errors.push(`${tag} 非法 category: ${String(e.category)}`);
+  const expectedScope = ['轉注', '假借'].includes(e.category) ? '用字關係' : '構形';
+  if (e.classification_scope !== expectedScope)
+    errors.push(`${tag} classification_scope 應為 ${expectedScope}，實為 ${String(e.classification_scope)}`);
   if (typeof e.formation_category !== 'string' || !FORMATION_CATS.includes(e.formation_category))
     errors.push(`${tag} 非法 formation_category: ${String(e.formation_category)}`);
   if (typeof e.level !== 'string' || !LEVELS.includes(e.level)) errors.push(`${tag} 非法 level: ${String(e.level)}`);
   if (typeof e.explain !== 'string') errors.push(`${tag} explain 必須是 string`);
   if (typeof e.shuowen !== 'string') errors.push(`${tag} shuowen 必須是 string（未附原文用空字串）`);
+  if (!SHUOWEN_STATUSES.includes(e.shuowen_status)) errors.push(`${tag} 非法 shuowen_status: ${String(e.shuowen_status)}`);
   if (typeof e.disputed !== 'boolean') errors.push(`${tag} disputed 必須是 boolean`);
   if (typeof e.dispute_note !== 'string') errors.push(`${tag} dispute_note 必須是 string`);
 
@@ -53,8 +59,11 @@ data.forEach((e, i) => {
   if (e.sub !== null) {
     const ok = typeof e.sub === 'string' && SUBS[e.category]?.includes(e.sub);
     if (!ok) errors.push(`${tag} sub「${String(e.sub)}」不合法（category=${e.category}）`);
+    if (e.sub_scope !== SUB_SCOPES[e.category]) errors.push(`${tag} sub_scope 與 ${e.category} sub 不一致`);
   } else if (e.category === '會意' || e.category === '假借') {
     errors.push(`${tag} ${e.category} 必須填 sub`);
+  } else if (e.sub_scope !== null) {
+    errors.push(`${tag} 無 sub 時 sub_scope 必須為 null`);
   }
 
   if (typeof e.explain === 'string' && ([...e.explain].length < 40 || [...e.explain].length > 220))
@@ -72,6 +81,9 @@ data.forEach((e, i) => {
       if (!['假借', '轉注'].includes(rel.type)) errors.push(`${rtag} 非法 type: ${String(rel.type)}`);
       if (rel.type === '假借' && !SUBS.假借.includes(rel.sub)) errors.push(`${rtag} 假借 sub 不合法`);
       if (rel.type === '轉注' && rel.sub !== null) errors.push(`${rtag} 轉注 sub 必須為 null`);
+      const expectedBasis = rel.type === '假借' ? '依聲託事' : rel.type === '轉注' ? '互訓說' : null;
+      if (rel.relation_basis !== expectedBasis) errors.push(`${rtag} relation_basis 應為 ${String(expectedBasis)}`);
+      if (rel.relation_status !== '教學採說') errors.push(`${rtag} relation_status 必須為「教學採說」`);
       if (!Array.isArray(rel.related_chars) || rel.related_chars.some(c => typeof c !== 'string' || [...c].length !== 1))
         errors.push(`${rtag} related_chars 必須是單字 string array`);
       if (typeof rel.note !== 'string' || !rel.note) errors.push(`${rtag} note 必須是非空 string`);
@@ -86,14 +98,24 @@ data.forEach((e, i) => {
     e.sources.forEach((s, j) => {
       const stag = `${tag}.sources[${j}]`;
       if (!isPlainObject(s)) return errors.push(`${stag} 必須是 object`);
-      for (const k of ['provider', 'basis', 'url', 'quote', 'verified_at']) {
+      for (const k of ['provider', 'edition', 'basis', 'url', 'quote', 'citation_level', 'verification_status', 'accessed_at']) {
         if (typeof s[k] !== 'string' || !s[k]) errors.push(`${stag}.${k} 必須是非空 string`);
       }
-      if (typeof s.url === 'string' && !/^https:\/\//.test(s.url)) errors.push(`${stag}.url 必須使用 https`);
-      if (typeof s.verified_at === 'string' && !DATE_RE.test(s.verified_at)) errors.push(`${stag}.verified_at 必須是 YYYY-MM-DD`);
+      if (typeof s.url === 'string' && !/^https:\/\/dict\.variants\.moe\.edu\.tw\/dictView\.jsp\?ID=\d+$/.test(s.url))
+        errors.push(`${stag}.url 必須是教育部單筆正字條目`);
+      if (typeof s.accessed_at === 'string' && !DATE_RE.test(s.accessed_at)) errors.push(`${stag}.accessed_at 必須是 YYYY-MM-DD`);
+      if ('verified_at' in s) errors.push(`${stag} 不得使用語意混淆的 verified_at`);
+      if (!['直接引文', '檢索入口'].includes(s.citation_level)) errors.push(`${stag}.citation_level 不合法`);
+      if (!SHUOWEN_STATUSES.includes(s.verification_status)) errors.push(`${stag}.verification_status 不合法`);
+      if (s.citation_level === '直接引文' && (s.verification_status !== '已核對' || s.quote !== e.shuowen))
+        errors.push(`${stag} 直接引文必須已核對且與 shuowen 逐字相同`);
     });
-    if (e.shuowen && !e.sources.some(s => s.quote === e.shuowen)) errors.push(`${tag} sources 未保存 shuowen 原文`);
-    if (!e.shuowen && !e.sources.some(s => s.quote === '未附《說文》原文')) errors.push(`${tag} 空 shuowen 未明示「未附《說文》原文」`);
+    if (e.shuowen_status === '已核對' && (!e.shuowen || !e.sources.some(s => s.citation_level === '直接引文' && s.verification_status === '已核對' && s.quote === e.shuowen)))
+      errors.push(`${tag} 已核對 shuowen 缺直接引文`);
+    if (e.shuowen_status === '待核' && (!e.shuowen || !e.sources.some(s => s.citation_level === '檢索入口' && s.verification_status === '待核' && s.quote === '待逐字核對《說文》條文')))
+      errors.push(`${tag} 待核 shuowen 的引用層次不一致`);
+    if (e.shuowen_status === '未附' && (e.shuowen !== '' || !e.sources.some(s => s.citation_level === '檢索入口' && s.verification_status === '未附' && s.quote === '未附《說文》原文')))
+      errors.push(`${tag} 未附 shuowen 的引用層次不一致`);
   }
 
   const textAll = `${e.explain || ''}${e.dispute_note || ''}${e.shuowen || ''}`;
@@ -117,4 +139,5 @@ if (errors.length) {
   errors.forEach(e => console.error('  - ' + e));
   process.exit(1);
 }
-console.log(`✅ validate 通過：${data.length} 字`, byCat, byLevel, `sources=${data.reduce((n, e) => n + e.sources.length, 0)}`);
+const byShuowenStatus = Object.fromEntries(SHUOWEN_STATUSES.map(s => [s, data.filter(e => e.shuowen_status === s).length]));
+console.log(`✅ validate 通過：${data.length} 字`, byCat, byLevel, byShuowenStatus, `sources=${data.reduce((n, e) => n + e.sources.length, 0)}`);

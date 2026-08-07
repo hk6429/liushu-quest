@@ -130,7 +130,7 @@ const LSApp = (() => {
       <p><span class="muted">${c.zhuyin}</span>　<span class="pill cat-${c.category}">${c.category}${c.sub ? '・' + c.sub : ''}</span><span class="pill lv-${c.level}">${c.level}</span>${c.disputed ? '<span class="disputed-mark">⚡歸類有爭議</span>' : ''}</p>
       <p>${c.explain}</p>
       ${c.disputed && c.dispute_note ? `<p class="muted">⚡ ${c.dispute_note}</p>` : ''}
-      ${c.shuowen ? `<p class="muted">《說文》：${c.shuowen}</p>` : ''}
+      ${typeof LSEvidence !== 'undefined' ? LSEvidence.render(c) : (c.shuowen ? `<p class="muted">《說文》：${c.shuowen}</p>` : '')}
       <div class="btnrow"><button type="button" class="btn small ghost" data-close-dialog>關閉</button></div>
     </div>`;
     const returnFocus = trigger instanceof HTMLElement ? trigger : null;

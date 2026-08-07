@@ -36,12 +36,22 @@ relation('老', '象形', '轉注', '考');
 
 for (const e of data) {
   assert.ok(e.sources.length > 0, `${e.char} 缺來源`);
-  assert.ok(e.sources.every(s => s.provider && s.basis && s.url && s.quote && s.verified_at), `${e.char} 來源欄位不完整`);
+  assert.ok(e.sources.every(s => s.provider && s.edition && s.basis && s.url && s.quote && s.citation_level && s.verification_status && s.accessed_at), `${e.char} 來源欄位不完整`);
+  assert.ok(e.sources.every(s => /^https:\/\/dict\.variants\.moe\.edu\.tw\/dictView\.jsp\?ID=\d+$/.test(s.url)), `${e.char} 來源必須直指單筆正字條目`);
+  assert.ok(!e.sources.some(s => 'verified_at' in s), `${e.char} 不得以 verified_at 混同存取與核對`);
 }
 
 const shardChars = [];
 for (const f of readdirSync(join(root, 'data', 'shards')).filter(f => f.endsWith('.json'))) {
-  shardChars.push(...JSON.parse(read(`data/shards/${f}`)).map(e => e.char));
+  const entries = JSON.parse(read(`data/shards/${f}`));
+  shardChars.push(...entries.map(e => e.char));
+  for (const e of entries) {
+    assert.ok(Object.hasOwn(e, 'formation_category'), `${f}:${e.char} shard 缺 formation_category`);
+    assert.ok(Object.hasOwn(e, 'usage_relations'), `${f}:${e.char} shard 缺 usage_relations`);
+    assert.ok(Object.hasOwn(e, 'sources'), `${f}:${e.char} shard 缺 sources`);
+    assert.ok(Object.hasOwn(e, 'classification_scope'), `${f}:${e.char} shard 缺 classification_scope`);
+    assert.ok(Object.hasOwn(e, 'shuowen_status'), `${f}:${e.char} shard 缺 shuowen_status`);
+  }
 }
 assert.equal(shardChars.length, new Set(shardChars).size, 'shard 不得有重複字');
 
@@ -58,4 +68,4 @@ assert.ok(pkg.scripts.test, '缺少 npm test');
 assert.doesNotMatch(pkg.scripts.test, /merge|build:data/, 'npm test 不得執行會寫檔的 merge');
 assert.doesNotMatch(pkg.scripts.validate, /merge|build:data/, 'validate 必須純讀');
 
-console.log(`✅ content tests 通過：24 個新字、6 個雙軸契約、${data.length} 筆來源與文案護欄`);
+console.log(`✅ content tests 通過：24 個新字、6 個雙軸契約、${data.length} 筆 shard 學術欄位與直接條目來源`);

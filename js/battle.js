@@ -16,9 +16,14 @@ const LSBattle = (() => {
 
   let st = null;
 
+  function sessionToken() {
+    return `battle:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 10)}`;
+  }
+
   function render(el) {
     const mastered = LSStore.masteredCount();
     const beaten = LSStore.raw.battle.beaten;
+    const best = LSStore.raw.battle.best;
     el.innerHTML = `
 <div class="card battle-shell">
   <div class="battle-lobby">
@@ -32,6 +37,7 @@ const LSBattle = (() => {
         <div class="muted">${m.title}</div>
         <div class="muted">攻擊 ${m.atk}${m.level ? '・出題限' + m.level : ''}・主題 ${m.focusCats.join('／')}</div>
         ${beaten[m.id] ? `<div class="beaten">已擊敗 ×${beaten[m.id]}</div>` : ''}
+        ${best[m.id] != null ? `<div class="muted">個人最佳 ${best[m.id]}／${m.roundLimit}</div>` : ''}
         ${locked ? `<div class="muted">🔒 精通 ${m.unlock} 字解鎖</div>` : `<button class="btn small" data-m="${m.id}">挑戰</button>`}
       </div>`;
     }).join('')}</div>
@@ -47,7 +53,7 @@ const LSBattle = (() => {
     const p = typeof LSProgress !== 'undefined' ? LSProgress : null;
     st = { m, myHp: MAX_HP, foeHp: MAX_HP, combo: 0, n: 0, right: 0, focusRight: 0,
       blueprint: p ? p.battleBlueprint(m) : Array.from({ length: m.roundLimit }, () => ({})),
-      usedIds: new Set(), usedKeys: new Set(), completed: false };
+      usedIds: new Set(), usedKeys: new Set(), missedIds: new Set(), completed: false, sessionId: sessionToken() };
     area.closest('.battle-shell').classList.add('is-fighting');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     area.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
@@ -139,7 +145,7 @@ const LSBattle = (() => {
         if (!ok) btn.classList.add('wrong');
         const p = typeof LSProgress !== 'undefined' ? LSProgress : null;
         const before = q.charId && p ? p.masteryStage(LSStore.raw.cards[q.charId]) : null;
-        LSStore.recordAnswer(q.charId, q.cat, ok, 'battle');
+        LSStore.recordAnswer(q.charId, q.cat, ok, 'battle', `${st.sessionId}:${q.key}`);
         const after = q.charId && p ? p.masteryStage(LSStore.raw.cards[q.charId]) : null;
         let msg;
         if (ok) {
@@ -150,6 +156,7 @@ const LSBattle = (() => {
           st.foeHp = Math.max(0, st.foeHp - d);
           msg = `⚔️ 答對！對 ${st.m.name} 造成 <b>${d}</b> 點傷害${st.combo > 1 ? `（連擊 ×${st.combo}）` : ''}。`;
         } else {
+          if (q.charId) st.missedIds.add(q.charId);
           st.combo = 0;
           st.myHp = Math.max(0, st.myHp - st.m.atk);
           msg = `💥 答錯！${st.m.name} 反擊，你受到 <b>${st.m.atk}</b> 點傷害。`;
@@ -167,24 +174,32 @@ const LSBattle = (() => {
 
   function finish(area) {
     const win = st.myHp > 0 && (st.foeHp <= 0 || (st.n >= st.m.roundLimit && st.right >= 7 && st.focusRight >= 3));
-    if (!st.completed) {
-      if (win) LSStore.recordBattleWin(st.m.id);
-      else LSStore.recordBattleLoss(st.m.id);
-    }
-    const earned = st.completed ? [] : LSStore.completeSession('battle', { masterId: st.m.id, win, score: st.right, total: st.n });
+    const previousBest = Number(LSStore.raw.battle.best[st.m.id] || 0);
+    const result = st.completed ? { earned: [], best: previousBest } : LSStore.recordBattleResult(st.m.id, {
+      win, score: st.right, total: st.n, eventId: `${st.sessionId}:complete`
+    });
+    const earned = result.earned;
+    const improved = result.recorded && st.right > previousBest;
+    const p = typeof LSProgress !== 'undefined' ? LSProgress : null;
+    const recovery = p?.recoveryIds([...st.missedIds], LSStore.weakIds(LSData.all.map(c => c.id)), 5) || [...st.missedIds].slice(0, 5);
     st.completed = true;
     area.innerHTML = `<div class="battle-result ${win ? 'is-win' : 'is-loss'}" role="status" aria-live="polite">
       <div style="font-size:3rem">${win ? '🏆' : '💀'}</div>
       <p><b>${win ? `你擊敗了 ${st.m.name}！` : `不敵 ${st.m.name}……`}</b></p>
-      <p>本戰 ${st.right}／${st.n}，主題題答對 ${st.focusRight} 題。</p>
+      <p>本戰 ${st.right}／${st.n}，主題題答對 ${st.focusRight} 題；個人最佳 ${result.best}／${st.m.roundLimit}${improved ? '（刷新）' : ''}。</p>
       <p class="muted">${win ? '大師頷首：「後生可畏。」' : `${st.m.avatar}「${st.m.name === '倉頡' ? '再修煉五百年吧。' : '回去把弱點字練熟，再來討教。'}」`}${earned.length ? `<br>🏮 新印記 ×${earned.length}` : ''}</p>
       <div class="btnrow" style="justify-content:center">
         <button class="btn" id="bAgain">再戰一場</button>
+        ${recovery.length ? '<button class="btn ghost" id="bReview">補強最多 5 個錯字</button>' : ''}
         <button class="btn ghost" id="bChooseAgain">重選大師</button>
         <button class="btn ghost" onclick="LSApp.go('stats')">看弱點</button>
       </div></div>`;
     const m = st.m;
     area.querySelector('#bAgain').onclick = () => start(area, m);
+    area.querySelector('#bReview')?.addEventListener('click', () => {
+      LSFlash.focus(recovery);
+      LSApp.go('flash');
+    });
     area.querySelector('#bChooseAgain').onclick = () => render(area.closest('.view'));
     // 重新渲染名單以更新解鎖/勝場（重繪整個 view）
     setTimeout(() => { }, 0);

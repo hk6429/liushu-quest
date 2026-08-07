@@ -6,9 +6,11 @@
   "build:data": "node scripts/merge.mjs --update-id-map",
   "validate": "node scripts/validate.mjs",
   "content": "node scripts/content.test.mjs",
+  "philology": "node scripts/philology.test.mjs",
+  "teacher": "node scripts/teacher.test.mjs",
   "logic": "node scripts/logic.mjs",
   "smoke": "node scripts/smoke.mjs",
-  "test": "npm run validate && npm run content && npm run logic && npm run smoke"
+  "test": "npm run validate && npm run content && npm run philology && npm run teacher && npm run logic && npm run smoke"
  },
  "devDependencies": {
   "playwright-core": "^1.62.1"
