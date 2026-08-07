@@ -46,9 +46,9 @@ for (const char of chars) {
   if (!item || item.char !== char.char || item.path !== `img/chars/${char.id}.webp` || item.sha256 !== digest) {
     throw new Error(`${char.id} 的來源清冊不符`);
   }
-  if (item.generator !== 'OpenAI image generation via Codex built-in tool' || item.style !== 'picture3 單字情境圖') {
+  if (item.generator !== 'OpenAI image generation via Codex built-in tool' || item.style !== '六書造字堂 v2 潑墨酒精風 Q版情境圖') {
     throw new Error(`${char.id} 缺生成服務或風格紀錄`);
   }
 }
 
-console.log(`✅ char-images 通過：${files.length} 張 picture3 單字情境圖均為 16:9、低於 250KB，且來源 SHA-256 完整`);
+console.log(`✅ char-images 通過：${files.length} 張六書造字堂 v2 單字情境圖均為 16:9、低於 250KB，且來源 SHA-256 完整`);

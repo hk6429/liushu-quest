@@ -3,2420 +3,2420 @@
     "id": "c0001",
     "char": "人",
     "path": "img/chars/c0001.webp",
-    "sha256": "ff08f1264748559c296940aa5cd750df8cd44e3e3db96890f43e59de1a86b61a",
+    "sha256": "f6434d9c0bb2b4b225a2c61da6038f599cd0b3b6e8347d7277fab719d9cea1c7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0001.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0001.png"
   },
   {
     "id": "c0002",
     "char": "刀",
     "path": "img/chars/c0002.webp",
-    "sha256": "1f3209f5cc7b9531c42fd2e34043bdd45c7350a4f36c2d43a9f8df82ac4a317c",
+    "sha256": "67ddf867672b42f694ebcbaa9ee6c76163feaa1fe2fc959d47431197f91d4042",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0002.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0002.png"
   },
   {
     "id": "c0003",
     "char": "口",
     "path": "img/chars/c0003.webp",
-    "sha256": "7a0f84173260d7774c86d9325675b81491b105a6aeba6e5ab02e4acd8858ce8e",
+    "sha256": "101a683258c499993799a05965d2e029efcabe25527c9dea408b8b86d498c786",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0003.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0003.png"
   },
   {
     "id": "c0197",
     "char": "女",
     "path": "img/chars/c0197.webp",
-    "sha256": "42ed4928470b7015fe071789bb42dccafd7c41595a8a42634d3ca4a542cd5204",
+    "sha256": "3c30c9f48aec35283152c1d3416d10de41a4d41a79aac674be6915ea146a64b1",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0197.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0197.png"
   },
   {
     "id": "c0198",
     "char": "子",
     "path": "img/chars/c0198.webp",
-    "sha256": "d1d027cbf67d6055501137dc7e3a384a40b7a306b32456a0b332cf41a7203d74",
+    "sha256": "7e46f62a707d1bede0871e2544aaef1935abf09a7460cc8b38ed62e0d482946d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0198.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0198.png"
   },
   {
     "id": "c0004",
     "char": "山",
     "path": "img/chars/c0004.webp",
-    "sha256": "2a8c2c0129a68c20b1cc2fe25a4c5f8bb7acfe43866d60e33f530fb953eb6fec",
+    "sha256": "302695aaa2fe79443a91b669b3fc53d0e838c5be1ce894b91367487d98dafcd7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0004.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0004.png"
   },
   {
     "id": "c0005",
     "char": "川",
     "path": "img/chars/c0005.webp",
-    "sha256": "7577ef5915c62da3e3320b8f8ab1fcdd62195e608ea5a637c37e02b8a70380c9",
+    "sha256": "2ff4581fcc2abb40beb723c87a1d364348aa11e55d0840615452556253642405",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0005.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0005.png"
   },
   {
     "id": "c0006",
     "char": "弓",
     "path": "img/chars/c0006.webp",
-    "sha256": "3aac9abb8a828336e7424a988b57b656c12b8b2077d8eca9cb080b261784886f",
+    "sha256": "9ff41e31bd21845f149742b97ed8fd5b15915af628c0abf44e30e58045955ff5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0006.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0006.png"
   },
   {
     "id": "c0007",
     "char": "井",
     "path": "img/chars/c0007.webp",
-    "sha256": "0530590e3deaba63dffecd3550d31c27c3ac7b3fadfd7ec303196ea6c98f8c59",
+    "sha256": "6fcdd906678cb224263d88ed2bea786186c8b3a0bcab182aae9b8f4183c91e15",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0007.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0007.png"
   },
   {
     "id": "c0008",
     "char": "手",
     "path": "img/chars/c0008.webp",
-    "sha256": "545c457546128e9a9fcfd8cb1b4243698615e0609171a114112118204f07605c",
+    "sha256": "1c854f4c5544ad9837d9f6d5086048cff2feaf0dd3eabc7b036a6c2df5653d08",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0008.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0008.png"
   },
   {
     "id": "c0009",
     "char": "斗",
     "path": "img/chars/c0009.webp",
-    "sha256": "6aac1dc5a81779443a603fa4ace121d70a608b0cda93fe55dac9c4cc21abc643",
+    "sha256": "c9faba6d19812ced979c0ee41663d4526f24820e549429e4d40cb204f8c5d388",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0009.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0009.png"
   },
   {
     "id": "c0010",
     "char": "日",
     "path": "img/chars/c0010.webp",
-    "sha256": "04d427bf58581651cc460d9a3e90f0c9ae6c17cbdabc6983222235682e711bf8",
+    "sha256": "86227108142b148b8a6691bd8446ef7e76723570c7d4abb7ee0f7c418f3ef526",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0010.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0010.png"
   },
   {
     "id": "c0011",
     "char": "月",
     "path": "img/chars/c0011.webp",
-    "sha256": "102556ab6d43685e126dc4dbabbe92db2374dc01922898ecdccbd0eed3ef332e",
+    "sha256": "af6a0f94637f334bde435bc9e36d07550ed9d1a82ff51c285d8b2f5ed0677f57",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0011.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0011.png"
   },
   {
     "id": "c0012",
     "char": "木",
     "path": "img/chars/c0012.webp",
-    "sha256": "95bbf1fd3bfce2629a825c7c6e79c1a844a82397a819dacce912588eec2d19b2",
+    "sha256": "5103f378d0948b98ea349501a3ad49f0d70481f2b35de78220efda0c97b60ae0",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0012.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0012.png"
   },
   {
     "id": "c0013",
     "char": "水",
     "path": "img/chars/c0013.webp",
-    "sha256": "006329559d8737e11ad29713304a31aa8f98ec8e9944de0a557d792252fac9ab",
+    "sha256": "6d476215c98db62f95b260a4d1a0bc3b8fbd714d22129d1ca320f2821c63f1d4",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0013.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0013.png"
   },
   {
     "id": "c0014",
     "char": "火",
     "path": "img/chars/c0014.webp",
-    "sha256": "5c8970b7341a863468908f7717c899176f76431ac0e5ee272b7265a3f92e8877",
+    "sha256": "725a200702dfa31428e5722c51db3f82bddcae62c916a90e49b9c2de75dc887f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0014.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0014.png"
   },
   {
     "id": "c0015",
     "char": "牛",
     "path": "img/chars/c0015.webp",
-    "sha256": "d42f3a0f6b710bd7bab435ff1f7d1711e8673c6847ace7cf9e5c2376c5f64a60",
+    "sha256": "622dbb637f5a84e0d2217e5fab42ba36e1c2e9fc6e98e7f100903c9f2dfeacfa",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0015.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0015.png"
   },
   {
     "id": "c0199",
     "char": "犬",
     "path": "img/chars/c0199.webp",
-    "sha256": "b023023ad093733670e4bf52fe305adc4fbb9f67c118959397b16800deca61bf",
+    "sha256": "7af77780332dfff36054fccab5d3ad751a54111acb6e3c7bfbfd1cdca8fae188",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0199.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0199.png"
   },
   {
     "id": "c0016",
     "char": "瓜",
     "path": "img/chars/c0016.webp",
-    "sha256": "7ad4f60011da0afb0c9fd737b528c62607cffe69a893f5c9a96a0f1f3d8feb80",
+    "sha256": "6b29b8693a88df9f6d03226e04a6f0902b23c79dae13910dc71ec2a88c631355",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0016.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0016.png"
   },
   {
     "id": "c0017",
     "char": "田",
     "path": "img/chars/c0017.webp",
-    "sha256": "940f0860dfe69e43d9f31eccfcdb7df3eff667e86b56dfe218b19623ae8dcbd8",
+    "sha256": "450382ecec72b0e0ad4394bc9c0f83811e38a2de5e083913aaf8b41a39f0a17f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0017.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0017.png"
   },
   {
     "id": "c0018",
     "char": "皿",
     "path": "img/chars/c0018.webp",
-    "sha256": "dac42e8642b232f4fb43ffd51605da8bc19eb4375fb3cb1eaa57ca4929e184c6",
+    "sha256": "7be19ed0addefdd4104d68a49f0251ea44bf65291696992343b0035a2b4cb824",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0018.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0018.png"
   },
   {
     "id": "c0019",
     "char": "目",
     "path": "img/chars/c0019.webp",
-    "sha256": "b726822c52336603d17f37aa8245ce3a98a2f0a08da4e87a94759a31b953277a",
+    "sha256": "03d77f90b61141467ecb777b41c5a6f67c692973b3191e01b521ef2332d38f9e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0019.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0019.png"
   },
   {
     "id": "c0020",
     "char": "矢",
     "path": "img/chars/c0020.webp",
-    "sha256": "24ad768509e4addee39219a47e4c6a4488f9cd3e13fdb8627a7f813508615fa4",
+    "sha256": "66983925deeabe53717c105f346f906f66d0973e0d955f6df2fc86b961e8fc64",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0020.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0020.png"
   },
   {
     "id": "c0021",
     "char": "禾",
     "path": "img/chars/c0021.webp",
-    "sha256": "102d42d7a9d914ea00a5a8bcda20c153b22e6a8d8b818028df40039917ac3e28",
+    "sha256": "9508a7430f8675fa053dacfae5b4151b9be14c969f59c9871d4e74fcca498f24",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0021.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0021.png"
   },
   {
     "id": "c0022",
     "char": "州",
     "path": "img/chars/c0022.webp",
-    "sha256": "0613fd989fd7c609c35971e1fae1ed680894a3863382a5c108819f74b7e31c00",
+    "sha256": "d2fe3d2b2d4aa141cc7238baf47789fc5d7102e0017025bb2770086874b59c01",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0022.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0022.png"
   },
   {
     "id": "c0023",
     "char": "米",
     "path": "img/chars/c0023.webp",
-    "sha256": "eb57178e7a9d5280c0f85aee3d3f2519a92fd754d280102d5d9d86482120db8d",
+    "sha256": "ea14719c9e2255facb977c4c4913cf575ba39f47e815131a143247760c0c5d6b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0023.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0023.png"
   },
   {
     "id": "c0024",
     "char": "羊",
     "path": "img/chars/c0024.webp",
-    "sha256": "0d3ebb37bd35c5fed73c42f7e555f978d786974199aabd09ba9f866dab2bfc5f",
+    "sha256": "4f261f39ff8de65f1501dcc7b00df4dc923d10a709082e2edd89233500df2fa0",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0024.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0024.png"
   },
   {
     "id": "c0025",
     "char": "耳",
     "path": "img/chars/c0025.webp",
-    "sha256": "983f39070957178fa329133c04fdeaed91be7b46ee281cde8b655bd0cf770c1a",
+    "sha256": "16705fe48ac982a51fd3b0dbb77bb0cb62df61c554b500d8cff489f4c8268ed5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0025.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0025.png"
   },
   {
     "id": "c0026",
     "char": "舟",
     "path": "img/chars/c0026.webp",
-    "sha256": "ca060500cfdb1555789184fb8ea9d5e162549d668fd6efd381715ac5acaa6b06",
+    "sha256": "cd62c7403f4552be8fb98f42c6862a6f11bb73ee83a74d54271ab98e13e6bd19",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0026.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0026.png"
   },
   {
     "id": "c0027",
     "char": "虫",
     "path": "img/chars/c0027.webp",
-    "sha256": "089c8a15d1dbabbc66be5af69ed8f628a20f36812ad347dc4aa8a6b23b43e49a",
+    "sha256": "aeea85158b1bd1267fcf74f80f8bec2af1dd304add7f048af4395a2d69cbe4fc",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0027.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0027.png"
   },
   {
     "id": "c0200",
     "char": "衣",
     "path": "img/chars/c0200.webp",
-    "sha256": "a07549ea9e2c310fbbadc13472485f20ab18c9f6ff8605f1b3b10449db9ebcde",
+    "sha256": "0b5b8ddd426aaf12b713fbf22fe1ef7497fbe3d16685f71a641bac206d942f9e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0200.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0200.png"
   },
   {
     "id": "c0028",
     "char": "豆",
     "path": "img/chars/c0028.webp",
-    "sha256": "870221168bcaa2c7273682070c3adb7c9d68b999c5cffd0f698c9512c718c014",
+    "sha256": "a457452b38068b3dbfea74a9293ef593ee1fefc2a51ec31086ef802ace0f9724",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0028.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0028.png"
   },
   {
     "id": "c0201",
     "char": "豕",
     "path": "img/chars/c0201.webp",
-    "sha256": "9c848a8dcb3029ed53693c75c02117dfbed4b59e3e3729696c9cf2be329978a6",
+    "sha256": "07da4e9cf05008f4363b6c743d2e4da468a462d797fabcff16f5854dbff08128",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0201.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0201.png"
   },
   {
     "id": "c0029",
     "char": "貝",
     "path": "img/chars/c0029.webp",
-    "sha256": "28fcb3b7ed08db96ec49c7d091cf143d128acb68066f3c984ac2df49a3b01164",
+    "sha256": "ccdaf8866bdcf2f837eb184f708fb31764458a8bed185e9074e6125dbc1e0788",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0029.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0029.png"
   },
   {
     "id": "c0030",
     "char": "車",
     "path": "img/chars/c0030.webp",
-    "sha256": "3e4f3ef7180eab531223ab44f6f08d82b384d769422e51688d9361410ecb02ad",
+    "sha256": "81353fc88d772cd984c1aa5ba078487a02f6e878ed0981b2f36237802259717b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0030.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0030.png"
   },
   {
     "id": "c0031",
     "char": "酉",
     "path": "img/chars/c0031.webp",
-    "sha256": "8386a9ab3ed2f7299d7dd85e679adf5cac7d124e415adcc92b630b0112af2524",
+    "sha256": "24a5810f59203202e487f45ebf6f4c4353df8f6a7618a1bb2ee365060c06815d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0031.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0031.png"
   },
   {
     "id": "c0202",
     "char": "兔",
     "path": "img/chars/c0202.webp",
-    "sha256": "e429bf255222877743a65bdcb9530831883165971eae3c66fa23bbbc1f3211fa",
+    "sha256": "c275a714c2d5b676d952c0bacca6ce1b904e934572abe4518bbf4ff4cbbcaae3",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0202.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0202.png"
   },
   {
     "id": "c0032",
     "char": "果",
     "path": "img/chars/c0032.webp",
-    "sha256": "4559dc152047529c592357a977e2bf32dda65339b7f1dafff36a7574c01a52fc",
+    "sha256": "bea24df3d7fe060c1cef578e8403e475be09470b7193079f7bd78425e84752af",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0032.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0032.png"
   },
   {
     "id": "c0033",
     "char": "虎",
     "path": "img/chars/c0033.webp",
-    "sha256": "922f6dd208a89f560ec9ecc117ad3eac821e49471e2fc2f4e305f4b8039c06e0",
+    "sha256": "bddde19650bf31ee22ac3ca4c26a12565cb9dbe66b03255e2f657aef467bb9d9",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0033.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0033.png"
   },
   {
     "id": "c0034",
     "char": "門",
     "path": "img/chars/c0034.webp",
-    "sha256": "2b9eccef77c7a878769b46b0bdb55d193fd365f1decfddaa31cd1972e824adb6",
+    "sha256": "07e405c64b072c11c181594de7c2a56db853038891deaf0d2c1171880ad8426f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0034.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0034.png"
   },
   {
     "id": "c0035",
     "char": "雨",
     "path": "img/chars/c0035.webp",
-    "sha256": "707c20499ee96b38d93e766f947d3e62d9b850b1ad5be316a2609f279520a64b",
+    "sha256": "199ec9d95268870d248198f202e71d7fb0ccf9161a8e56d40dc45b4b1c83f96b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0035.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0035.png"
   },
   {
     "id": "c0036",
     "char": "泉",
     "path": "img/chars/c0036.webp",
-    "sha256": "124ec95b28820033b514170c76bee363b0bcf6f3ba2c01753c93a239dbfcbd16",
+    "sha256": "2bf1b9a5042f2dade20305e048e6a338ce7846156abec0ba7ad013940bbcf966",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0036.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0036.png"
   },
   {
     "id": "c0037",
     "char": "眉",
     "path": "img/chars/c0037.webp",
-    "sha256": "e6be97bbc6607a8f02fd65732cd78f8df63b005701c310adb2644b460c870f40",
+    "sha256": "e41682b6fd93230c2e4e9fcdaf3ad2c89ca02e650a480d46de4063a1def9274c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0037.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0037.png"
   },
   {
     "id": "c0038",
     "char": "馬",
     "path": "img/chars/c0038.webp",
-    "sha256": "96aabf9bf7a277addd3f72d0976469af61421072bf06233cd49d88752621b538",
+    "sha256": "1fcfcff107c0b63350afdafc65c88b97b9ec21064d0a6d43dcf8a3c74b8eda72",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0038.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0038.png"
   },
   {
     "id": "c0039",
     "char": "高",
     "path": "img/chars/c0039.webp",
-    "sha256": "862592741355081a231c7b8c5cbe03b10f8fd2fb9bfc942004a0b8da1def51fa",
+    "sha256": "66b65404a8a28c8d31b16fc2e2d49425320412e99235351048cbed80cb1034ee",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0039.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0039.png"
   },
   {
     "id": "c0040",
     "char": "鬲",
     "path": "img/chars/c0040.webp",
-    "sha256": "411780d99017d1778d7f3932eb75ad792e99662317708008c38049fcb2d67783",
+    "sha256": "a225b616ed33a09b14e9fed764c332e89612dd75022df323d25793e5940a7f8f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0040.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0040.png"
   },
   {
     "id": "c0041",
     "char": "魚",
     "path": "img/chars/c0041.webp",
-    "sha256": "7067f3092881b9da43d07a1524c9ffc2dd35a89b571029ec8b627f93b8888f80",
+    "sha256": "7beb658a1da4aded45343ef846e91ad11bad10294a6d15bbd5445d4d9e69fa71",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0041.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0041.png"
   },
   {
     "id": "c0042",
     "char": "鳥",
     "path": "img/chars/c0042.webp",
-    "sha256": "9d8cf33f6dc1c37388d2272521717756e73910cb10cddf886a3b36a15f8d8f7a",
+    "sha256": "70b4bc2e5bac9d3e82f4e272d7653f3d6d9139ce40353a4c061faf76dc7d159a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0042.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0042.png"
   },
   {
     "id": "c0043",
     "char": "鹿",
     "path": "img/chars/c0043.webp",
-    "sha256": "5d3dc1eb2f4027c19f2e6fc2a9915fc0fe79497795d164aeb12d25bd51e6ca9c",
+    "sha256": "ba4f335566d604145ee4b2bca2b94b240302d5c0a2607379b7358631b4e77372",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0043.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0043.png"
   },
   {
     "id": "c0044",
     "char": "壺",
     "path": "img/chars/c0044.webp",
-    "sha256": "2007d33b2be83da840006aa483722086f613cc3dcbbb52c235c6b674aef23250",
+    "sha256": "910b859eab7d5b65f5d2062e864588f16dee395982a8a2bcf55152046285da36",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0044.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0044.png"
   },
   {
     "id": "c0045",
     "char": "象",
     "path": "img/chars/c0045.webp",
-    "sha256": "3daf4301735fd8e9ee7c336fe61e4cad149ed112ee0d9117af5c38ae339a6126",
+    "sha256": "275ca4f0a85a12960a5032090b2d7288c4549fae02a7a033df8801a912a07889",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0045.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0045.png"
   },
   {
     "id": "c0046",
     "char": "雲",
     "path": "img/chars/c0046.webp",
-    "sha256": "5a5ca9effbefe32b4a943097e2c16e45cfa370feb245eabefaafcf1ca5930d59",
+    "sha256": "4bfdcc27ad2fd9d6073284b2cf1598d890fb4755869a2a38028d24ea102af878",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0046.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0046.png"
   },
   {
     "id": "c0047",
     "char": "鼎",
     "path": "img/chars/c0047.webp",
-    "sha256": "6b18dabbd0196a29fdf3c412a44aeee887849b3f026406c7ff8b186eebc738bd",
+    "sha256": "aeb7aabfce18fb5267c4a8d14da8cc51546a495b03d8975693833cb231d8a395",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0047.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0047.png"
   },
   {
     "id": "c0048",
     "char": "齒",
     "path": "img/chars/c0048.webp",
-    "sha256": "7b28f5ce7381a90658471203fa41394cb0627816aaac126a7f5160bf9e640c99",
+    "sha256": "38ccfd6838a24aab950b3cdb87bd21ee713c11c2882854debddbab0bcad1d1c7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0048.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0048.png"
   },
   {
     "id": "c0049",
     "char": "燕",
     "path": "img/chars/c0049.webp",
-    "sha256": "a43891218635b455eb44cdf185595afc9fef170ee72a9a8f91353b4b16346422",
+    "sha256": "2e0e6ed9856e16055ff5d8fbb25a5177476eacbbc4ae1dc489114dff7735c030",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 1,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-1/c0049.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-1/c0049.png"
   },
   {
     "id": "c0050",
     "char": "龜",
     "path": "img/chars/c0050.webp",
-    "sha256": "45c7ec84415b028334d3ebe139ac02da35cad92a0acbdd1f81777df3e0750ff5",
+    "sha256": "59a045522b6783e77009487acf3c5b959a3b7107cd263e614fe64b932234e0f5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0050.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0050.png"
   },
   {
     "id": "c0051",
     "char": "一",
     "path": "img/chars/c0051.webp",
-    "sha256": "fdf54dec2e74ed7a9288dd49638c13d2ac20f6a5aec2bdf8f9f4f36f95a34c8e",
+    "sha256": "da41fff5aacac04ab12bef7a1802571e88eefb01cfc9409170dbf54b5a9363ba",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0051.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0051.png"
   },
   {
     "id": "c0052",
     "char": "二",
     "path": "img/chars/c0052.webp",
-    "sha256": "d29c347e0422668c7eaad36282d9a7f94ee93af135e3907906b0b69228649b16",
+    "sha256": "5db4bce1a8e92b4462a1f7e6e602575a38a016479e232d298595cc1c65e6e7d7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0052.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0052.png"
   },
   {
     "id": "c0053",
     "char": "八",
     "path": "img/chars/c0053.webp",
-    "sha256": "bdfebbeabf910075daaeb155730e1c486c31470431ab8cf6ef1126328a63b39e",
+    "sha256": "8bfbc6ee5fcea1b87947708b77c7d5051634ead21843d9137c28e7f208a13d0a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0053.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0053.png"
   },
   {
     "id": "c0054",
     "char": "三",
     "path": "img/chars/c0054.webp",
-    "sha256": "04b1c7e68deced9842a94c1ad3aceaafb19faebab726418b25a7d02ac2c8995e",
+    "sha256": "a992825e6e82542280179d496072678df35ca89b4668a628f49fad2e2ee110ac",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0054.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0054.png"
   },
   {
     "id": "c0055",
     "char": "上",
     "path": "img/chars/c0055.webp",
-    "sha256": "f9e97b39bc139539f0e9afec592c3ff47a49747e57c35b8813c96508ddd5d7f7",
+    "sha256": "82dcde0e39e59648e98b9c3a33236e85cbe698f5140ae5af9a778b4b871d9821",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0055.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0055.png"
   },
   {
     "id": "c0056",
     "char": "下",
     "path": "img/chars/c0056.webp",
-    "sha256": "784c3d4c50d88c071d0c048e93b2312c3f0f76889e328fb4e67046ed072baa4c",
+    "sha256": "3dc522a78e2b31a8d2faf6773019d9a432838ca1bc859f767327f07db5228331",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0056.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0056.png"
   },
   {
     "id": "c0057",
     "char": "刃",
     "path": "img/chars/c0057.webp",
-    "sha256": "eeff3d88eb635e5d4b93996442e60d48a11bd222908aa295d9c8859370045d49",
+    "sha256": "645e0336b90745e104003159926288c14c6ce53ef6bc9d96505fc74f81fa1f31",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0057.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0057.png"
   },
   {
     "id": "c0058",
     "char": "叉",
     "path": "img/chars/c0058.webp",
-    "sha256": "3670930afe33539d4a1211dbab797589253b7e756e3c681fd71de6924ba5f662",
+    "sha256": "ee770cfaa0392ab16d3cd64cc9401530831e4b4db7cde7ca51289bf9873bdbfc",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0058.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0058.png"
   },
   {
     "id": "c0059",
     "char": "寸",
     "path": "img/chars/c0059.webp",
-    "sha256": "b26b39993e4e42347766b16f2c3e593c5607cddc3cf443c46c637b9d3f86d341",
+    "sha256": "9362dd4ecbc81d5880cefbd9511d08bdd86ecaf653e30f215eba3e7445470261",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0059.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0059.png"
   },
   {
     "id": "c0060",
     "char": "丹",
     "path": "img/chars/c0060.webp",
-    "sha256": "afec091bcd92e46e51a0fdafee16753c70c3f0b10b44c7d4d01f19e519c6e930",
+    "sha256": "01a36faa8552e32753288e75b17b27372542ec41d675feefd1199de0c5f1e9c9",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0060.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0060.png"
   },
   {
     "id": "c0061",
     "char": "凶",
     "path": "img/chars/c0061.webp",
-    "sha256": "ce3b2f1e808c71012714de0746f5f61dd734086d8fcfb03ecc42a6e8969e5d10",
+    "sha256": "98bc92ad5d13c5412f6dfa7ffa51831976fcf3004aa3d5f2311b3d9574cf74e5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0061.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0061.png"
   },
   {
     "id": "c0062",
     "char": "天",
     "path": "img/chars/c0062.webp",
-    "sha256": "0176ce52494f95ab9544eb3739dcbf90fb7b9a85a215d764db63bcca26217896",
+    "sha256": "d29dae6299f86c42c2b16e4464158cc30a449554df01f8aae2e639b4120cf87f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0062.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0062.png"
   },
   {
     "id": "c0063",
     "char": "太",
     "path": "img/chars/c0063.webp",
-    "sha256": "4f12a6707d6d4ab0d3cef81f5056348299d5465742e83ebb32c1a2f7d83e8d7d",
+    "sha256": "b4b5ad4eb36343130f4d48a374d431a8514e880bcf1daead23507ccc6f3f6c26",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0063.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0063.png"
   },
   {
     "id": "c0064",
     "char": "尺",
     "path": "img/chars/c0064.webp",
-    "sha256": "2ae4bae24c1b753efe521044ce4da4de87248bea2cc5b31b2d26bad08573d547",
+    "sha256": "5e9e16725bf8fb8a31c9ec0f419d1d4953349f82307c533feaeeaabd59a61e0d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0064.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0064.png"
   },
   {
     "id": "c0065",
     "char": "曰",
     "path": "img/chars/c0065.webp",
-    "sha256": "506449c1f1c8173e8047f9143730fe243a23d17022bbe57c05164ae6d040abcc",
+    "sha256": "3fd8facf0007b1f27cbae2edf2c09df754ed7160a0ef9ee2cb131a5924008cde",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0065.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0065.png"
   },
   {
     "id": "c0066",
     "char": "旦",
     "path": "img/chars/c0066.webp",
-    "sha256": "9ea5f6e2b7797766f7a743b45dadefa4a6f0442fd8a1284a514d63dfa2484d60",
+    "sha256": "489ba9462706c84aaa7f46b2718ee0e4d70341a627280b722b50c56d62650e0b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0066.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0066.png"
   },
   {
     "id": "c0067",
     "char": "末",
     "path": "img/chars/c0067.webp",
-    "sha256": "b110fe18cc8e39cb927881d51bda71c1b2472b0be49c5b61ac31d82e17ad88d9",
+    "sha256": "33c1015e747d2cdb947a29ec2d9399b3e43973aed530b55c4ce697a6ccde2123",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0067.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0067.png"
   },
   {
     "id": "c0068",
     "char": "本",
     "path": "img/chars/c0068.webp",
-    "sha256": "cc25448a5200d4196bbb9396fd20591e97c354869b36b9bda942b3021905c93a",
+    "sha256": "fd85f85b0808f5de22363418946df5f1b14af86b5c733b8ccfc66358ae5a5b05",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0068.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0068.png"
   },
   {
     "id": "c0069",
     "char": "甘",
     "path": "img/chars/c0069.webp",
-    "sha256": "2e398867b358dc4374aa2d8f4440f93ef47055eec217debfcd8efbf10c21a129",
+    "sha256": "b5e63c53a8ac17c5e948282f01580ccf3fd2078f7dc96a24144989261a5f9c2d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0069.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0069.png"
   },
   {
     "id": "c0070",
     "char": "立",
     "path": "img/chars/c0070.webp",
-    "sha256": "6848447c84f5c8ab687eff632ae3c2e6460ff778057603d6d0aa76cc273250af",
+    "sha256": "b8bd16bd47af1cf5202b4ffced2178a70525386d937403df570ddb687cd79d5b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0070.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0070.png"
   },
   {
     "id": "c0071",
     "char": "亦",
     "path": "img/chars/c0071.webp",
-    "sha256": "e58a2c477a78725b519dfc4153e8263f96536b4871bb89d2618311489d9ab7c0",
+    "sha256": "cb789adb020f1ea515f2823c091a1ea4cd94ba6c23d01dfdd7015c3716dc46fc",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0071.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0071.png"
   },
   {
     "id": "c0072",
     "char": "朱",
     "path": "img/chars/c0072.webp",
-    "sha256": "d84841f555d60769c092ce074f53ab3cb64a00af319211d252dd18c4db8cb857",
+    "sha256": "b12cc873be0bf9c01d2b75c5b1bec7d87cc0b8ea0c18d8067088794be9068dd8",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0072.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0072.png"
   },
   {
     "id": "c0073",
     "char": "牟",
     "path": "img/chars/c0073.webp",
-    "sha256": "500569e9b63647ac291046c710062aa8ec3a5eb8327ce07649b06b5d0f1a9d89",
+    "sha256": "056b269184a4f3a5912410e8842e1efd0c7d2ea24b90deb81741514c066bdedd",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0073.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0073.png"
   },
   {
     "id": "c0074",
     "char": "至",
     "path": "img/chars/c0074.webp",
-    "sha256": "6db14a5b37d661dee572dddd9bff35339bdf797be57d7b1690d6094319ce5eea",
+    "sha256": "c33a0ec2fbc7e5bee1104025552ecfb6c834d664e6782d58350f7bd1a9af1c3a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0074.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0074.png"
   },
   {
     "id": "c0075",
     "char": "血",
     "path": "img/chars/c0075.webp",
-    "sha256": "b81d9450d52752067d72eb3b0948a987f63af8d388e2ceb186fbcfb8c95a5d13",
+    "sha256": "0ed0c177edc12baf6858b4f8325519e7b00a2f9ae4a4d97d4618e1d61a10855c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0075.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0075.png"
   },
   {
     "id": "c0076",
     "char": "及",
     "path": "img/chars/c0076.webp",
-    "sha256": "e30ffd87328e2799703feb7c7f4351f9ad00df7c7e51bf71ecd70325d193efa1",
+    "sha256": "bd12d77c6f9eaac3fcc4351f6c7509131a6921705fce4682fb56c03e659fdb8b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0076.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0076.png"
   },
   {
     "id": "c0203",
     "char": "友",
     "path": "img/chars/c0203.webp",
-    "sha256": "5f942a61c61e9c48ece786dc70b6894540f52d62ff12bdc001d7c525d8a911fd",
+    "sha256": "b99d61d8ce7aeef40d0f02fb0f893ce9ede90b990b12b1aca80fcb78754fd4b5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0203.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0203.png"
   },
   {
     "id": "c0077",
     "char": "比",
     "path": "img/chars/c0077.webp",
-    "sha256": "40f1878e4edee8e83479f0c23f0d9d21eeda40f96b85a818fcbaa4aaba923611",
+    "sha256": "2298b07105326e06955fc4900c29b9cdf28693a74decd70b8d88bc8a4b6d1164",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0077.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0077.png"
   },
   {
     "id": "c0078",
     "char": "北",
     "path": "img/chars/c0078.webp",
-    "sha256": "de5e16ca485ec07554bc2a14913cfbbd5cba790067b79152a96b5bb4dfcfc0c6",
+    "sha256": "4012be0fe9bbedd45b75c8611c22ca27f6ecad3b422227c2015fe6053d60d42f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0078.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0078.png"
   },
   {
     "id": "c0079",
     "char": "卉",
     "path": "img/chars/c0079.webp",
-    "sha256": "3d1b094c447401bb720093a239136f963db3212e22e3f9988c505b71b1cc7633",
+    "sha256": "e48aead235313a7321866aebb227a371776ac96be0457872755ef1eafcb9c872",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0079.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0079.png"
   },
   {
     "id": "c0080",
     "char": "囚",
     "path": "img/chars/c0080.webp",
-    "sha256": "e09fb9af429d7ef99b2610a4d967bef3590d551f85e56f7573e7cac67ec7bd4c",
+    "sha256": "7933f789296ca0b6b138b1f58a69ecbc10222e99c7af846fcf0b3f7838f45401",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0080.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0080.png"
   },
   {
     "id": "c0081",
     "char": "伏",
     "path": "img/chars/c0081.webp",
-    "sha256": "444373d167e779f0264c9a672f8808de76360635d76423b0bc8821e9b99d562b",
+    "sha256": "1edc1b8ae72748c63a4008ad2783e374d5311ff46baa0a4aa84ff4755a645920",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0081.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0081.png"
   },
   {
     "id": "c0082",
     "char": "伐",
     "path": "img/chars/c0082.webp",
-    "sha256": "5958e0532667da972f941e7e7627cbfc54fbf2316f480d7519701ace1eb739ae",
+    "sha256": "9909868186e1a7cac043b8599540960eb9666854a312c0e9c8b709bd463548ff",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0082.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0082.png"
   },
   {
     "id": "c0083",
     "char": "休",
     "path": "img/chars/c0083.webp",
-    "sha256": "2b9e6fbb604702c67220fbc25048d17028c938f1a92fe184228e0e51d3ee02ce",
+    "sha256": "e4f8e193cbeaf099f7965d39298e1c494a3e179741b8062516cbd8e073c9dc2f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0083.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0083.png"
   },
   {
     "id": "c0084",
     "char": "多",
     "path": "img/chars/c0084.webp",
-    "sha256": "b057247e18126546f9dc4344091a9a11ba4498de75317a13dae04269aade96d1",
+    "sha256": "1256fc612b62eb5b4743dbc0dcd5a5cb30b308be7e0a09c780b6b6608c64628a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0084.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0084.png"
   },
   {
     "id": "c0085",
     "char": "好",
     "path": "img/chars/c0085.webp",
-    "sha256": "aea8ef4aa0db0efb89d5b618eeccbbd43ddf0c6e5af0e0ad752e4c94608a0f79",
+    "sha256": "a99334ba716806fa8798c5ad1696106871fbf701570f31fc1cd2eee5b42e0389",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0085.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0085.png"
   },
   {
     "id": "c0086",
     "char": "字",
     "path": "img/chars/c0086.webp",
-    "sha256": "64fcd2b807f780c8a769fd3e28aa229eb7084f628c52cfba5bbbdf2cd8119b15",
+    "sha256": "110dfc5f17be5912ddda90239c31c74fbdf8ee8918d175ef78d1cde0d2ea44a4",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0086.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0086.png"
   },
   {
     "id": "c0087",
     "char": "安",
     "path": "img/chars/c0087.webp",
-    "sha256": "369165d34bb3cab634fb83fde8c1056a22065d7f9efe9dec8755d1c27199c641",
+    "sha256": "a722dd50db1e2ed84be8b87402d8b6c6f3c1513d420bd4c090201ad95470a4f3",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0087.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0087.png"
   },
   {
     "id": "c0088",
     "char": "尖",
     "path": "img/chars/c0088.webp",
-    "sha256": "68708b06353542b9c90377c435a145d66ff0f5baaca18ed4969e817dd559bd2f",
+    "sha256": "9603ea6d1a4953c5739e3d28850de33daa202559a9df00e9cb8494c206ee5c9e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0088.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0088.png"
   },
   {
     "id": "c0089",
     "char": "戍",
     "path": "img/chars/c0089.webp",
-    "sha256": "eb4ba80b546cc7b21849a8e4cf516446f22952ef1808dcb5129e5df493cdefac",
+    "sha256": "df8c5b7a80123aad3fb671bce2f8c7fed6e446920ca28cd20b198a8464580dbf",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0089.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0089.png"
   },
   {
     "id": "c0204",
     "char": "初",
     "path": "img/chars/c0204.webp",
-    "sha256": "da2a3899e6e4498a55aadb2393c31176f7bd1b1f6b3ca1bff6e0dc23ff89e458",
+    "sha256": "aab85e6dc627e7d3e50a368f3fd38d1eb6b59c3c4d2b3640c88300e701d2815f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0204.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0204.png"
   },
   {
     "id": "c0090",
     "char": "吠",
     "path": "img/chars/c0090.webp",
-    "sha256": "8a58f66c2f556fcba5fae3edc76df79aab6f604630fcdc3f5002ddf7fd95355a",
+    "sha256": "65ceafb9aa76060332173ad281d2f185c82355e19cbf746451b76dc3df631938",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0090.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0090.png"
   },
   {
     "id": "c0205",
     "char": "困",
     "path": "img/chars/c0205.webp",
-    "sha256": "a213ca110aa32d7f15dae2ca93a48fe4e0e3466eee2d9bd074c9691876926cbf",
+    "sha256": "cf10d063d2fb1d1c91195ea129444c2a6eb1dba7a2b3bc1e6355ff91684b8d5b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0205.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0205.png"
   },
   {
     "id": "c0206",
     "char": "孝",
     "path": "img/chars/c0206.webp",
-    "sha256": "8a1d90bf12c00866eb7b78cf9ada6b1c38f82afd8f3e47b2c6edd5d4a82167c7",
+    "sha256": "7c885c2b96de4d097665737c61108977fc657be04c1a39b13084018b4fae39e7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0206.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0206.png"
   },
   {
     "id": "c0091",
     "char": "折",
     "path": "img/chars/c0091.webp",
-    "sha256": "a24d3c27e2e2d3b18a56432f20af94a35bfd7b36cf9be748e7ebe3e85709405a",
+    "sha256": "f2ecabb25beebf0f72bc3dc8679f9e5485ac0ea6304aebaceb94e38b0b17d8fd",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0091.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0091.png"
   },
   {
     "id": "c0092",
     "char": "步",
     "path": "img/chars/c0092.webp",
-    "sha256": "9da36e06771e037f84a42ec5fa8e92065e00aadcb507c22eebd766d78652bae0",
+    "sha256": "c6974204f51a8d781915f6737075b99f1e1ac087c0d31248d94af32c824ca00e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0092.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0092.png"
   },
   {
     "id": "c0093",
     "char": "男",
     "path": "img/chars/c0093.webp",
-    "sha256": "45e39069c132ff338044538381732b45789636939f9d0f09ce78b131d03751fd",
+    "sha256": "b008d317134d745ad970a25b7772ef5fc4ff1eb40ba799139ec25abc65b288c2",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0093.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0093.png"
   },
   {
     "id": "c0094",
     "char": "取",
     "path": "img/chars/c0094.webp",
-    "sha256": "d8f312310e4b34201895dfba8a889dd773fe94948d3ec1126c7df5ec2b6b4936",
+    "sha256": "b3f533e59e4d082855b7fd7a24eeeefa196c059c62f95d622995a5240cef87ac",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0094.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0094.png"
   },
   {
     "id": "c0095",
     "char": "明",
     "path": "img/chars/c0095.webp",
-    "sha256": "0ddff78b7cb8f46e687096f7c6e17d0861cc12516aebd6526083b23be4db6e36",
+    "sha256": "72b9e013cc71c7a199d076dbcf53b81fb0635c3b8fd2449bd5fcefbdf0312e61",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0095.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0095.png"
   },
   {
     "id": "c0096",
     "char": "析",
     "path": "img/chars/c0096.webp",
-    "sha256": "67b1864fc3e3059ab0608b703eb1d6c88835e66cefac7aa4ecfbf53e3ca474a8",
+    "sha256": "5226903c3e7f4c3f8cbf175105f146c52cfbb98f69434745e29049f329c32913",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0096.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0096.png"
   },
   {
     "id": "c0097",
     "char": "林",
     "path": "img/chars/c0097.webp",
-    "sha256": "68e78d264da74dda43ae69acce505d9e25c022d22c4e1dcf64385b686ff30b79",
+    "sha256": "37fcba1ce2af9b629dc58b0dfab262a40545d13f48627bbde314542243fb7a98",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0097.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0097.png"
   },
   {
     "id": "c0098",
     "char": "武",
     "path": "img/chars/c0098.webp",
-    "sha256": "6a27267c220951d2037748c0f4a283e5277412c7121b84a009e2887093351a11",
+    "sha256": "9ae3d551fdfa33cb6f6f8254ffe97dc60f93c59edaa4ac5f5e126e38783f2cd1",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0098.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0098.png"
   },
   {
     "id": "c0099",
     "char": "炎",
     "path": "img/chars/c0099.webp",
-    "sha256": "03ff7ff36e8681874cf9e60b294a98bf14abeefb0ceeb35ef317492de5ccf9ea",
+    "sha256": "9454384d439086dc739b4ce5f687fbfc1aa31d3983e251386edfab7961201706",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0099.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0099.png"
   },
   {
     "id": "c0100",
     "char": "牧",
     "path": "img/chars/c0100.webp",
-    "sha256": "f7738f92cb3ebbd08ba955b79067a025a211abdb6280440930c66abd8ad9563f",
+    "sha256": "43dc4cf867d9bceff421f54715dd8e02fb8ba3bee6ba23868ef80b5ece0234c7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 2,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-2/c0100.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-2/c0100.png"
   },
   {
     "id": "c0101",
     "char": "采",
     "path": "img/chars/c0101.webp",
-    "sha256": "9a15a641b7204472dafdf30eba3c2a8046a9efe2c87c3d4cd05340e8d92a1694",
+    "sha256": "84c46fca4b7a901eb999aaa61ac570a1a5b4a80985766f1166e67ddf21731ab9",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0101.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0101.png"
   },
   {
     "id": "c0102",
     "char": "信",
     "path": "img/chars/c0102.webp",
-    "sha256": "bba90186955a81ea7b42d38c636719ba9b304cc8db7ed453cb3fb0f41a36fc43",
+    "sha256": "9cb8b9628ba5f6624655f5ae790eb3502fa73d6770556e1ab7659960c8e2fe2e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0102.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0102.png"
   },
   {
     "id": "c0103",
     "char": "品",
     "path": "img/chars/c0103.webp",
-    "sha256": "5323e84c9b3d5142a9f3098d30745d92fd0f69f973ff0135734209f8d643f849",
+    "sha256": "96ed1643fb85faa7931cd47eac226836686e4ae3c9d09dc372220e8b598dfbac",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0103.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0103.png"
   },
   {
     "id": "c0104",
     "char": "姦",
     "path": "img/chars/c0104.webp",
-    "sha256": "d7b517cd6d18fd33d6a37cf47b7d40a26289cb06c7c92745bc3eedd29011df75",
+    "sha256": "9a670139be6e1f47258b7dc44e2eef5eb5cb6e2d511251fa6ce886f8f64cf077",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0104.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0104.png"
   },
   {
     "id": "c0105",
     "char": "歪",
     "path": "img/chars/c0105.webp",
-    "sha256": "1939c26b43c0e143e0e03bff74d2e031100b02ff3046de6bb961be6a47c6162b",
+    "sha256": "eba93c524df9a9ef56d049e396ad53af322b4bf3894ba838af402fee034c5024",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0105.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0105.png"
   },
   {
     "id": "c0207",
     "char": "相",
     "path": "img/chars/c0207.webp",
-    "sha256": "cae5122b3b3eff0e14f1566d23f20ecbaa704d29495f791b250a7a4a11f5162b",
+    "sha256": "d19fac952c0e70dc047e8469a10f13c7a850f53d2a7c593c4d958a10c89fc1ee",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0207.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0207.png"
   },
   {
     "id": "c0106",
     "char": "看",
     "path": "img/chars/c0106.webp",
-    "sha256": "49d7159b9743498a8dfbacd619b7dc52a90e8204093b4e60d8f4bb902931c527",
+    "sha256": "7209375b61d4a75e8eb107f77a17c6b69c68e4d3511e912dbf6d15ca59f7b0f3",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0106.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0106.png"
   },
   {
     "id": "c0107",
     "char": "突",
     "path": "img/chars/c0107.webp",
-    "sha256": "bf1990fc80585f3b29e9662683c259eb21dfcb38b37e416d101365d0bcbc3c66",
+    "sha256": "8255727ae9b369dae29f8bfd0aeaa1b01a9d52bef6179788c787426264d8a49c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0107.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0107.png"
   },
   {
     "id": "c0208",
     "char": "苗",
     "path": "img/chars/c0208.webp",
-    "sha256": "71ed04df4b822631a80dfc71b45d57f5b36325c3787e962d3dc36dbbaf074428",
+    "sha256": "f10d1c228370c1bd7374cc6121e7bba9ead8b1092fdaf1e1024528d05e7c776c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0208.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0208.png"
   },
   {
     "id": "c0108",
     "char": "家",
     "path": "img/chars/c0108.webp",
-    "sha256": "2dd27eb9c5b4320258c535c19583ce66d12c427ba6b1202f304ddd86e5bb4793",
+    "sha256": "996c0bee1808378988ecad613e79a7461184a8b91fd5727f2ebcb2b46e7335c3",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0108.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0108.png"
   },
   {
     "id": "c0109",
     "char": "涉",
     "path": "img/chars/c0109.webp",
-    "sha256": "74390b242f1cb47e753fb4caadbe3e3c85d15e8ba1354dfe29a7c4117fdf638a",
+    "sha256": "0173f397cc097c951c712ef8edecb417a90bc2e84c38b24a69f87139aaffe2b7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0109.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0109.png"
   },
   {
     "id": "c0110",
     "char": "益",
     "path": "img/chars/c0110.webp",
-    "sha256": "d711bc218091acbf816fec89882fe337bff2a8152ef6bd2230f84bb70a62a227",
+    "sha256": "37120dd1bb92355ff355dab2b3847d40281366f5a83f39ca19541ea8d8682231",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0110.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0110.png"
   },
   {
     "id": "c0111",
     "char": "臭",
     "path": "img/chars/c0111.webp",
-    "sha256": "bc6497a418c4829870b84e9aa6c41e0e2c33b645793fa38489924ddc497eac59",
+    "sha256": "8d370c035aadd2c439e137268305f5b724fe0b9749bb1d6fbc324fc42f9cde26",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0111.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0111.png"
   },
   {
     "id": "c0112",
     "char": "隻",
     "path": "img/chars/c0112.webp",
-    "sha256": "dba24f37de85c4071bf69c214be9f42f584977f9cba39834f2d7f74df9a97f10",
+    "sha256": "e1d6d02bb3efc813709949c94e011136f788756c92baa62edc7678f439260f13",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0112.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0112.png"
   },
   {
     "id": "c0113",
     "char": "宿",
     "path": "img/chars/c0113.webp",
-    "sha256": "3e515cc75c7532a47578b63240077dfceb60a813dabd0e15b80767216fdd594a",
+    "sha256": "ebb8365ec81d211432083028f4660bbc367cc0e338389e51432c271ab2f3cd19",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0113.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0113.png"
   },
   {
     "id": "c0114",
     "char": "從",
     "path": "img/chars/c0114.webp",
-    "sha256": "cad951aef17735ec5c60af6d6bca87ec22ec34f5f18723d16a91a298bae26f74",
+    "sha256": "ee014f24e86ded2c690e184410f802a73e5402814c647c50522503f6b2b2fc6b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0114.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0114.png"
   },
   {
     "id": "c0115",
     "char": "眾",
     "path": "img/chars/c0115.webp",
-    "sha256": "c260daa5fca3fe7d5f200e56da6f37e99c319e6c947744fd24face2b37b1f8ee",
+    "sha256": "3b340b83900988ee12194ab225eed0ee844a448bcd29237d2c821555f88dd47a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0115.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0115.png"
   },
   {
     "id": "c0209",
     "char": "祭",
     "path": "img/chars/c0209.webp",
-    "sha256": "847e3999ddbbe385d03afd959ae45bdce5f018d3f9bee1ddab22dd423d682202",
+    "sha256": "14e26af27e84266c7058777dd5dbea1c51f44ff1cbeb49f1e40e13ff06c7280a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0209.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0209.png"
   },
   {
     "id": "c0116",
     "char": "莫",
     "path": "img/chars/c0116.webp",
-    "sha256": "f28cc3d3cefc38ac7905baab3db9249430dfd72aa90ca9ee2d266916e485754d",
+    "sha256": "c2f862c623f093968040a2939ae919d466e62c8fa8454429d2fafd19d79c3784",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0116.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0116.png"
   },
   {
     "id": "c0117",
     "char": "寒",
     "path": "img/chars/c0117.webp",
-    "sha256": "f97bdfd42a81017511e611a4a4af0a446f9004544a1386f6a4e3ea0bf82f59cc",
+    "sha256": "46b5c255332b5522c5c35fc593b4d44b9336400406d65cccd2d25b1c2ea74ab8",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0117.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0117.png"
   },
   {
     "id": "c0118",
     "char": "晶",
     "path": "img/chars/c0118.webp",
-    "sha256": "022701c640a5e8fa99535cf0aea8358a65aaab2cdcf5060b330c5dbe3ccc81ee",
+    "sha256": "1d1634f578f02f61527760e88c0a7e3fd10c5bd4999d755a90334639041dca22",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0118.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0118.png"
   },
   {
     "id": "c0119",
     "char": "棗",
     "path": "img/chars/c0119.webp",
-    "sha256": "87bd03659b7a15b808a1e54a88d71e4db3e32ecd4f58df4b6ce505f20e26218a",
+    "sha256": "0fb7f318b813e3a05ee6e4bcb5c8cda515e2575afbd7c05bc09cca2cf1a8c5fa",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0119.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0119.png"
   },
   {
     "id": "c0120",
     "char": "棘",
     "path": "img/chars/c0120.webp",
-    "sha256": "dfd6f7e637727a7f20a467baee430b5f7a5541f524d545a53947cea334f3f8fc",
+    "sha256": "260663442bd13632d18cb5b5de3b0548968ae189fe8b2438411f85cc07485424",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0120.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0120.png"
   },
   {
     "id": "c0121",
     "char": "森",
     "path": "img/chars/c0121.webp",
-    "sha256": "a0935cc00c55a3ae1ce72c89892b93764b006f947334603eeef9a671990e90d1",
+    "sha256": "baf509235674650b40ad87f4138be2047794dc926a51879fea930022dc995dab",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0121.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0121.png"
   },
   {
     "id": "c0122",
     "char": "淼",
     "path": "img/chars/c0122.webp",
-    "sha256": "0e64d8ce49283ff35d25d9cf5738d945bfd81d0b5c00277e54cc68015a0133e0",
+    "sha256": "d8ca391cd462a2df7a648d0932c96b25404321ed2721f35469e09ff926621063",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0122.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0122.png"
   },
   {
     "id": "c0123",
     "char": "焱",
     "path": "img/chars/c0123.webp",
-    "sha256": "bf6d83fa092837c30dbbd7adfc5ae8fdd5ee9ea78aa765bd76bfbc5df1637ac2",
+    "sha256": "482fe293110baae9c8370f6027302a746a015f9b6b69ce39a9eb0354b08e497e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0123.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0123.png"
   },
   {
     "id": "c0124",
     "char": "集",
     "path": "img/chars/c0124.webp",
-    "sha256": "38ceecf980b80d8c7353aff13cab30125f9c87ccf954511a28f0ccba30528a98",
+    "sha256": "025119a5b53067fbbc7b07ff62981bf62271f6084c7c0432d2f5047cd112ef3e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0124.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0124.png"
   },
   {
     "id": "c0210",
     "char": "解",
     "path": "img/chars/c0210.webp",
-    "sha256": "ee2ff8e4d863421ca66ac479ec409edf8f72da883e57062c2b0b4024c2a1e8d1",
+    "sha256": "8e464433da1e5d658b847a16382cd865b121211961edc4c4a3924524987834b0",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0210.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0210.png"
   },
   {
     "id": "c0125",
     "char": "鳴",
     "path": "img/chars/c0125.webp",
-    "sha256": "adf804b9e7e2b3d3bc60f81d5faea7adf20243c184fdfe796e36d5fcf9dededb",
+    "sha256": "6b38fa939dfdf44a3ad9ee7a239ab5d93064d5ab3f51c7b14a959d035c62770a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0125.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0125.png"
   },
   {
     "id": "c0126",
     "char": "暴",
     "path": "img/chars/c0126.webp",
-    "sha256": "f681196017a216906af9f9250727ca7e86d2021f7516fd125b9441e55681c009",
+    "sha256": "d04a9e5f3fe8e066feddb4c986746f58a98a52a501bb0c76e687ccf4b16916e0",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0126.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0126.png"
   },
   {
     "id": "c0127",
     "char": "磊",
     "path": "img/chars/c0127.webp",
-    "sha256": "0a13f919efd545241fa2cb884ad7e56fe8c00d730dbcdc79a22c74d671cf84ce",
+    "sha256": "8cea4852905a2111e8219e94d942e3ae14460b045b7e3470869e7fc6c31fbee5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0127.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0127.png"
   },
   {
     "id": "c0128",
     "char": "盥",
     "path": "img/chars/c0128.webp",
-    "sha256": "294b8d4e060d81cfad8d490f286d29bda9b09d7440d38c169232c30d9cad62b5",
+    "sha256": "a8d09c7a99f2f9f99f0eba629ae140e40c059cc25ccc5e88075e00308d72af6f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0128.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0128.png"
   },
   {
     "id": "c0129",
     "char": "雙",
     "path": "img/chars/c0129.webp",
-    "sha256": "94701b15292997d5e00fe134392fa557260588dd288c050c388a062d9affeb93",
+    "sha256": "6bfa8cfceec8259fa4d65a7a1ab626d3bc7734b6a7cb956de99e3f86b4c79744",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0129.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0129.png"
   },
   {
     "id": "c0130",
     "char": "鑫",
     "path": "img/chars/c0130.webp",
-    "sha256": "289771a0eae0ba5618dc0ad323ca987440d8205577daa975a48b9ff53e9cb269",
+    "sha256": "66474d85e942d319a4f3cac62b520783dbd9659a68af362acb875ee16ababe7d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0130.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0130.png"
   },
   {
     "id": "c0131",
     "char": "江",
     "path": "img/chars/c0131.webp",
-    "sha256": "015755ff3a7c23f77797e96d349448ae58136a6400f61f0c5c14c9e849acfd7a",
+    "sha256": "3db64a248d876df5a5e371d569e1feb07bba93e04597dc05d5af947241fdefed",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0131.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0131.png"
   },
   {
     "id": "c0132",
     "char": "攻",
     "path": "img/chars/c0132.webp",
-    "sha256": "fe55b18095f9318042d675556e184acb0d84a767bfdaa404388fb2b0d1016e09",
+    "sha256": "9bca5e7ca13f980eb22db098b9766b39e5893276e6f890b1560cc587dcf71561",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0132.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0132.png"
   },
   {
     "id": "c0211",
     "char": "姑",
     "path": "img/chars/c0211.webp",
-    "sha256": "011a11f98baca81837a9d09da404e99c089a82e99eb0cdf8b44029354a8b8383",
+    "sha256": "431fa7e5868cd96c2c42b6d173777959206fb0486aeadeae279ce9ce5c03c416",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0211.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0211.png"
   },
   {
     "id": "c0133",
     "char": "松",
     "path": "img/chars/c0133.webp",
-    "sha256": "98d3d3e8c518c92c2aa695fe9c32b075e3f822079d21aac8d4fba86b94b92a55",
+    "sha256": "5b0ec8fadbab699ff00b68b06d2948cd7886d4861123ec1da24897b6acafbaf1",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0133.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0133.png"
   },
   {
     "id": "c0212",
     "char": "枝",
     "path": "img/chars/c0212.webp",
-    "sha256": "01ac4fb5963eae8d2071f6312b46bb6ec695441739aa5966d6168df66170a8ae",
+    "sha256": "f9f25b549915ea082adda6e7ffb3b9657372e79f5543b571106c52dec8c249cc",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0212.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0212.png"
   },
   {
     "id": "c0134",
     "char": "河",
     "path": "img/chars/c0134.webp",
-    "sha256": "bd144f1878867db0c8c48fd78e3ff6274a85d3dd48f5810600c02a71e439ae8a",
+    "sha256": "5840175490d468222e3fd2077b955e9ffcd2fbb1c8d6b0e1258b9675156ba143",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0134.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0134.png"
   },
   {
     "id": "c0135",
     "char": "盲",
     "path": "img/chars/c0135.webp",
-    "sha256": "a0bf8a06aef46063aa82a9f300b21a824e81d339661c7f288493e3aeb23676d3",
+    "sha256": "9a3b46053967d0f0821c5c182a7526f82fa59933d31693a3e559717fede0836c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0135.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0135.png"
   },
   {
     "id": "c0136",
     "char": "花",
     "path": "img/chars/c0136.webp",
-    "sha256": "1a109ccfdf1f32ca2310e17f7f1273c8b18098027893705983744dd6c11d36e0",
+    "sha256": "82d4d66aa767ead3df881728405079b3a074c78b779fa11ad0504eb948f74cb6",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0136.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0136.png"
   },
   {
     "id": "c0137",
     "char": "政",
     "path": "img/chars/c0137.webp",
-    "sha256": "149b72eb1c7f7cad3f45c2a5e0d790285b0ae9311147e7c27c17750cdc485689",
+    "sha256": "a2150e3553351d548396c4dcf218d8d7336b51dcd6f7c9278d891895a06e19b7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0137.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0137.png"
   },
   {
     "id": "c0213",
     "char": "洋",
     "path": "img/chars/c0213.webp",
-    "sha256": "5d6595072c18e37119592213f73807840fb380a20f861763c5b39698359cabab",
+    "sha256": "d94d2005d4389ba0458fabccf479a2e9825cc5a874ac8aa135a7e483cc265e8a",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0213.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0213.png"
   },
   {
     "id": "c0214",
     "char": "洗",
     "path": "img/chars/c0214.webp",
-    "sha256": "ada5b9cf823307448d173f3b3f93f5999ecd02e6e92321ad82d530b2e8881aef",
+    "sha256": "cfad2a14890022547877d562647cdc6eb21d215b08c3f3f4ecbcdde90d06dc2b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0214.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0214.png"
   },
   {
     "id": "c0138",
     "char": "竿",
     "path": "img/chars/c0138.webp",
-    "sha256": "36a5a8fcbb9d09b830c2cd94d6df6fe6f5aa5b34f6b3cf877f284fbf600bcafe",
+    "sha256": "d9e2a4f4493f591d1edccd55e863edf661ccd8de3feaaf6e36107040a17a7452",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0138.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0138.png"
   },
   {
     "id": "c0139",
     "char": "圃",
     "path": "img/chars/c0139.webp",
-    "sha256": "816d5da73b16fcd8e3f95f5798a23aa9a6e03fb1e208f1249bf6e30f8f556926",
+    "sha256": "41da090391e0cd5dc4497736296d46213cebe9d6bc919048c2314cf4c2289769",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0139.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0139.png"
   },
   {
     "id": "c0140",
     "char": "娑",
     "path": "img/chars/c0140.webp",
-    "sha256": "682e143d2a7cb0e11fcef74f9fedbad241294f384d0f2fc23c3760d1d91ff079",
+    "sha256": "41df8f0fa2952bab022cb765a19115ca4ff11790f77d70daa8b1e1f78195f9df",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0140.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0140.png"
   },
   {
     "id": "c0141",
     "char": "病",
     "path": "img/chars/c0141.webp",
-    "sha256": "291a228213bec2db4ce6659b427f6df909e7d4c843a24210a2fce422fc161fe4",
+    "sha256": "134e26281f8ecb85d943670a1a9caf722397215444cd090d06a54305c8c3f4c5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0141.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0141.png"
   },
   {
     "id": "c0142",
     "char": "草",
     "path": "img/chars/c0142.webp",
-    "sha256": "d80a264a82f55dc9aa720946219022cd0d86654d905324a0f31b2ebdd56752e6",
+    "sha256": "4a0f86c50bdffa56883cc189694d666fe837fb44df1def1916f939d23986c058",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0142.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0142.png"
   },
   {
     "id": "c0143",
     "char": "衷",
     "path": "img/chars/c0143.webp",
-    "sha256": "d72870ebd2da72a3412abf9ca6a8035bc2472c557d89190e0404d81e56eae100",
+    "sha256": "aa3ad13457cb4ba76ed8efc2d13a2b57128e2c6925af88e7a73649ad85c74571",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0143.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0143.png"
   },
   {
     "id": "c0144",
     "char": "問",
     "path": "img/chars/c0144.webp",
-    "sha256": "b26548a604d15831eefbe55605e6874e6b2746a5282c35e1c731fdbc6ae10680",
+    "sha256": "b91ecdda29effc627404cd60a23af84055d94eb6e09ce7148871537672c31206",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0144.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0144.png"
   },
   {
     "id": "c0145",
     "char": "娶",
     "path": "img/chars/c0145.webp",
-    "sha256": "d90e67b31f9fe3e73f4bc6b094277758315659945d5d4e61cfb7c0e4a5d200ca",
+    "sha256": "710d72a1b707fe94da32bb437458e5f3224c886d931a2e81bff8a20eb2d172af",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0145.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0145.png"
   },
   {
     "id": "c0146",
     "char": "婆",
     "path": "img/chars/c0146.webp",
-    "sha256": "3dde2cf383c2b91907cc50faf701006d1914885a0e7e083cc5b27d3d580771e9",
+    "sha256": "1ac309fd2675402836a94712ce82c5dd518ffa4c0fbae66970f2213161a265b6",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0146.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0146.png"
   },
   {
     "id": "c0147",
     "char": "婚",
     "path": "img/chars/c0147.webp",
-    "sha256": "b8cd98a2bad6d53840676460de18f80499fe25120ce59062b4bf524ee1ee02f5",
+    "sha256": "898f5136424cd4dad98237839378559abbee148104463172bae8626d8ea89acf",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 3,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-3/c0147.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-3/c0147.png"
   },
   {
     "id": "c0148",
     "char": "梅",
     "path": "img/chars/c0148.webp",
-    "sha256": "c63db9f3fb5884f55680340ef894573536a6509f33e23bf5deee828c52a33ce6",
+    "sha256": "8fc29d385d860ab724206a620f6c516ecb0d0d29f359f110eaa69d8897034713",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0148.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0148.png"
   },
   {
     "id": "c0149",
     "char": "淺",
     "path": "img/chars/c0149.webp",
-    "sha256": "478a6c7389b0ffef93e8ef093f9dd30c3a35074c7d849061efdc7481fa96362e",
+    "sha256": "4b7d0dc1467e20f7aa9f507a17954d4bad6356321c3216ddcee1d1d60ac15fce",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0149.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0149.png"
   },
   {
     "id": "c0150",
     "char": "清",
     "path": "img/chars/c0150.webp",
-    "sha256": "f1de0177480d4df80d7831504ad3c18e9755142cec2aa6804eb452e05321110f",
+    "sha256": "0b1ab615709f20b5b847c779ed31d5f1ba8fb9de432775edaaa6d7f40a6bb74c",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0150.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0150.png"
   },
   {
     "id": "c0151",
     "char": "悶",
     "path": "img/chars/c0151.webp",
-    "sha256": "18e605ab84ad5b251b05c5a2c9984883868ab933064e9ae512641158f8d7ee35",
+    "sha256": "0559348013704b7eeccf80112daec01c000d2b3f9dda88e044e854e467ae2bed",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0151.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0151.png"
   },
   {
     "id": "c0152",
     "char": "晴",
     "path": "img/chars/c0152.webp",
-    "sha256": "c5d791171b47f578dacc7744eff600746d4fa294ec2a4478f22d8afd10186594",
+    "sha256": "34c5a4b62b403fdc23303c8a42d18388a6252cc4925cad31fee896f659719570",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0152.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0152.png"
   },
   {
     "id": "c0153",
     "char": "期",
     "path": "img/chars/c0153.webp",
-    "sha256": "81f4f13fb515811e16c48944abba36d19d0d5c746cd9612bc5703f9d66afe91b",
+    "sha256": "d30d7d082bd4b61275ba3bab87eb459a634c7df56220b4731cef317a0f0d5b58",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0153.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0153.png"
   },
   {
     "id": "c0154",
     "char": "殘",
     "path": "img/chars/c0154.webp",
-    "sha256": "20d9fb413d30082cf5810bf35c37923843a7a991ee3cf05635dd205845734695",
+    "sha256": "9a1834a100675e0f138819d426dfc5829127de20e94985a5d1f8b54d21bb506d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0154.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0154.png"
   },
   {
     "id": "c0155",
     "char": "湖",
     "path": "img/chars/c0155.webp",
-    "sha256": "e48e6d5531320d364fd13ce59d38b3e3b6fb9b62fdd576367fb4252a956a39cd",
+    "sha256": "87c47bd998ceb1aae052d36c0d45ba20bc0cd94b2dd22d2d4732dac908d70117",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0155.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0155.png"
   },
   {
     "id": "c0156",
     "char": "菜",
     "path": "img/chars/c0156.webp",
-    "sha256": "8cb64daecb48c0def834a31290eaa5f4cde1730cc6bbbc8d89a5f5e7b85e9a2e",
+    "sha256": "bbb822e95d723a935525efdef8c3f2da7b1c0c18cf231067010f8dc439c8d9b6",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0156.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0156.png"
   },
   {
     "id": "c0215",
     "char": "飯",
     "path": "img/chars/c0215.webp",
-    "sha256": "f7b1f532496c690e466b7b20b48ed35f164c68dbe1be2817cb581f6b900ad592",
+    "sha256": "46eb1de45ff77ff4ad73b7bdeadc09b47d483eef472ca630e6f9fc5bdadc2218",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0215.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0215.png"
   },
   {
     "id": "c0157",
     "char": "園",
     "path": "img/chars/c0157.webp",
-    "sha256": "9989cf4e0d675b2f983e55d74893429b0292ceae08058003f46be20b047a1c06",
+    "sha256": "0a1a59e090b1aeb66b2e7fe89afb38a44441d2bba834487730f31ec7cbeee914",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0157.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0157.png"
   },
   {
     "id": "c0158",
     "char": "想",
     "path": "img/chars/c0158.webp",
-    "sha256": "6de9f9c1f42210aae3831531c5e6448a7800238505f28b100b7aec4483b589a0",
+    "sha256": "8c8522378412634a7477bb30900ea9028257073afb535fe2586ce35f8713a89f",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0158.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0158.png"
   },
   {
     "id": "c0159",
     "char": "楓",
     "path": "img/chars/c0159.webp",
-    "sha256": "6bd81ca480c62cf2d277bbb98992df0b591038644342dc76fd72f62c230276a1",
+    "sha256": "a5909a4325bba66a11caafc0de708de79cb4484597056600ebfc62be62c9e0ef",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0159.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0159.png"
   },
   {
     "id": "c0160",
     "char": "煎",
     "path": "img/chars/c0160.webp",
-    "sha256": "1109e279676fbd2bf2ec211a4b7b4f9fa3a359e125389ac99bb8c789a56dfbf2",
+    "sha256": "b5a241e5beaaa47b165e2ac9ce5c9d344d4c12ede68645a8f3498e8552e0b395",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0160.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0160.png"
   },
   {
     "id": "c0161",
     "char": "賊",
     "path": "img/chars/c0161.webp",
-    "sha256": "49f4b7696b843751231d3d62c4d3e4fff06535995ebba211169946b188b43264",
+    "sha256": "e16b22e0d11db846df6e0404dfde8b2238e968517c6a4af848223793e828a283",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0161.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0161.png"
   },
   {
     "id": "c0162",
     "char": "箋",
     "path": "img/chars/c0162.webp",
-    "sha256": "8a5344b0ed2274b89264b617df9aaba18c6cc43ee1c0a785224eaf72b5231406",
+    "sha256": "6e87b7b03b4be1bec2f79798591c567e6962c5f29a8d2c5ff4a7a91b48fb3f00",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0162.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0162.png"
   },
   {
     "id": "c0163",
     "char": "聞",
     "path": "img/chars/c0163.webp",
-    "sha256": "3eeb79273f2288fcff67c9861a8e54e59540c8ae6420f790b5695feaa9df1c69",
+    "sha256": "18280f1c2035d26c264099f388a0a967e50fc9a1d737eaa92e49603996a87839",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0163.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0163.png"
   },
   {
     "id": "c0216",
     "char": "語",
     "path": "img/chars/c0216.webp",
-    "sha256": "538a1e8b3aa962023b50e0a81a70569bd9d82b9e5752161ce50dbdc8a634612a",
+    "sha256": "4404c5dd68812b460ea6d665bcb6b9a7e10cfc9a4dfd209e19c9ab77d6e527bd",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0216.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0216.png"
   },
   {
     "id": "c0164",
     "char": "銅",
     "path": "img/chars/c0164.webp",
-    "sha256": "d4d7113d959f4d69075091831b862913954f8fd982a3b5e42ac0c2c69c5db88c",
+    "sha256": "e328779990bfee8bd3cad733cbe94614ef4c94e835af31ed34a4dad5896cd751",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0164.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0164.png"
   },
   {
     "id": "c0165",
     "char": "閣",
     "path": "img/chars/c0165.webp",
-    "sha256": "88a4a2dd4d4200ea5500e6372630d4070e56c39933e9e74d442baeab9dc83169",
+    "sha256": "6fdeee2a13490f7af40b3cef129440ac1c4083d42c5485df06e9f5b558ced495",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0165.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0165.png"
   },
   {
     "id": "c0166",
     "char": "閩",
     "path": "img/chars/c0166.webp",
-    "sha256": "32d773bd1af65ebfb9e8cea931734417d786543625c2963ccfa25328fa77051a",
+    "sha256": "63f16f2acfab9d494d8c1cfc383e589b2468d1fe2f68b052323d078fa21e8f79",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0166.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0166.png"
   },
   {
     "id": "c0167",
     "char": "箱",
     "path": "img/chars/c0167.webp",
-    "sha256": "a7b0db10ee4e9bed1904b5ed5cb95b2f9f05d79d5f042d266a409a3ed4b00731",
+    "sha256": "a0c1458d9c819e75a948197220503420ec585b983de2b7b71490c1709c28aeae",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0167.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0167.png"
   },
   {
     "id": "c0168",
     "char": "蝗",
     "path": "img/chars/c0168.webp",
-    "sha256": "b3bd846e4b3ed75fc574af1b6d84b94968d254fc3c557a3e85a2433b2f53ab0f",
+    "sha256": "804a7704943b849d286f6458c497dde4463acd2627c8fd72e8c5eae6902ef268",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0168.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0168.png"
   },
   {
     "id": "c0169",
     "char": "課",
     "path": "img/chars/c0169.webp",
-    "sha256": "713ae5b3f624a7e9d24777af12d16b45bd9ee19a2a6e437c2cda7204f6acb535",
+    "sha256": "ffdc73c0f347e3564ccbf590ecaad69da751a91d5d2d6ded9199ecf9cb224389",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0169.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0169.png"
   },
   {
     "id": "c0217",
     "char": "請",
     "path": "img/chars/c0217.webp",
-    "sha256": "3f04dbc97b6cd3163a8440720c534b022f17c3ae148793f672274e66904ab5f3",
+    "sha256": "56fd9a7835070da19f3ec8163d59247de10d1ac8804c7efc5f0e7812883d6a85",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0217.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0217.png"
   },
   {
     "id": "c0218",
     "char": "橋",
     "path": "img/chars/c0218.webp",
-    "sha256": "d32b14822b47629589135f6720edff02c6f90f5f45dfad054a3e757d739c7e3b",
+    "sha256": "df09c2c869c0ab3695204d55478b553108f11090d483ac615fdfa8884fe30055",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0218.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0218.png"
   },
   {
     "id": "c0170",
     "char": "燈",
     "path": "img/chars/c0170.webp",
-    "sha256": "0676d76fa5960a48d8086195ad718f6f2e8b77282a7c7b9905eb714173cc8b37",
+    "sha256": "99099d110eaf7faa387c15e4984f3317e7b8e05373651b8fa84f094660e28125",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0170.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0170.png"
   },
   {
     "id": "c0171",
     "char": "錢",
     "path": "img/chars/c0171.webp",
-    "sha256": "866ad4d98c0c15b75901889283e072fc061d1db544370072d6887070e86e99b7",
+    "sha256": "885fce169f1a6f6df9a8952eb9739048d25d75150c01848d0d0c8ebe083d2ead",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0171.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0171.png"
   },
   {
     "id": "c0172",
     "char": "錦",
     "path": "img/chars/c0172.webp",
-    "sha256": "45148eb1bdc4eba2b260e5cb92dcb2d1b6ad51f52a2843ecaa8b542e39315686",
+    "sha256": "152fdfe79657fd69492052730fc5b08b85020f26b7cdbb019243ec5d53f0966b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0172.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0172.png"
   },
   {
     "id": "c0173",
     "char": "霖",
     "path": "img/chars/c0173.webp",
-    "sha256": "8496a6a24e696ece23410fa5726408b65cee68cb9a7a81eb725929532f4f76d7",
+    "sha256": "d8721a1710b7699ac8ada1ec9043b33b9f9a9ccabf619ec1b8ac5d3a9f492070",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0173.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0173.png"
   },
   {
     "id": "c0174",
     "char": "頸",
     "path": "img/chars/c0174.webp",
-    "sha256": "648fc2b95cf880921a6331c85e023efda5e76b7f1d151845cc51b256b40b84dd",
+    "sha256": "c8ec056f83fef1cdfb3dd0cf20441daae6648fffb3309d77a740e75dba4a49e5",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0174.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0174.png"
   },
   {
     "id": "c0175",
     "char": "鴨",
     "path": "img/chars/c0175.webp",
-    "sha256": "da0733aed1d04dcbf2803d684fad8ef9f67455c36d136d8e201c315a8bcbef8e",
+    "sha256": "416f7531e2686161b4dc123549cab241e8db64c8fab399abf56b9f3539523070",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0175.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0175.png"
   },
   {
     "id": "c0176",
     "char": "霜",
     "path": "img/chars/c0176.webp",
-    "sha256": "60687f8e6de3221a8aa9d07e413c025379e8f5fbcbb9eafe0e3480ff501a118e",
+    "sha256": "7f1907060bc4382192ab45ad1eebd5b754f58ac37b06c45522c291579bdb50ac",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0176.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0176.png"
   },
   {
     "id": "c0177",
     "char": "鴿",
     "path": "img/chars/c0177.webp",
-    "sha256": "7a3ac7f85f2d40891e03eb9529b132c4fd2ec0c9edeac8fb5c5095736d55edb5",
+    "sha256": "b6383140bcfdd080d537d0f709945bd8c6e792c24d4f02a8f85ae41af8dbaa32",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0177.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0177.png"
   },
   {
     "id": "c0178",
     "char": "雞",
     "path": "img/chars/c0178.webp",
-    "sha256": "02fb048aefe602483ccb7b95471ebf61a7627fc1980ed3fdf3f8f2aa1f868b04",
+    "sha256": "6eab85abe90768bde806cc0034c4ed0b5326918e337c5c90d7e3ff2d4c1f5d26",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0178.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0178.png"
   },
   {
     "id": "c0179",
     "char": "辯",
     "path": "img/chars/c0179.webp",
-    "sha256": "0795965b3f90a4571123f60c30f28f6e6f4c35efbcfc7c46828035ee49f0ce0c",
+    "sha256": "95df74c6c1849c6c21723a7a85edc56914bc52c07c09864c1170b84f7cb3fd62",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0179.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0179.png"
   },
   {
     "id": "c0180",
     "char": "露",
     "path": "img/chars/c0180.webp",
-    "sha256": "f86bae7c55b438e4e3d13ccbc64782efb7c2a1b80240138cd9f249278028c127",
+    "sha256": "837cc0a9cce902a162dd6e72adf2bdc1dc7815ba35d719f50599e81a990a27c7",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0180.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0180.png"
   },
   {
     "id": "c0181",
     "char": "老",
     "path": "img/chars/c0181.webp",
-    "sha256": "7e69ec721e0e0e849b0fa45d16941ab18e91ba31c1f2dc68f155218329deec51",
+    "sha256": "6cc0b134af30d7cf15a6d741a870d4c27583caabd3443b77cf4c861409bad0c9",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0181.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0181.png"
   },
   {
     "id": "c0182",
     "char": "考",
     "path": "img/chars/c0182.webp",
-    "sha256": "dc100e625744fe6c3fcdfa52ca7cbbd5af0f34ece7371a05f664d4d06f81cdd4",
+    "sha256": "0432e6aff0873a84d8f33421ec6ad2657acca7ea9f52253cb7726d2e2d440038",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0182.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0182.png"
   },
   {
     "id": "c0183",
     "char": "空",
     "path": "img/chars/c0183.webp",
-    "sha256": "e496165e27f422669718d849b2fea34c711172fe5531ccefe217ed1894cc8e67",
+    "sha256": "e8aaa170a32b0babf0102cfc139fd3f8a59ba0a797bda9a32a753f9766f17b29",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0183.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0183.png"
   },
   {
     "id": "c0184",
     "char": "頂",
     "path": "img/chars/c0184.webp",
-    "sha256": "c280b3dea884c66ad7cc5c1e36db807b76837e64641826f71464825b3195fa5d",
+    "sha256": "3f950c63245bae4830bddf5ae4b506ecda6bf579b9086cb6164d378b5ca5de21",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0184.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0184.png"
   },
   {
     "id": "c0185",
     "char": "竅",
     "path": "img/chars/c0185.webp",
-    "sha256": "66f6450ae09d8f02c402c6148a8f21ae8ad9bec0b943cb40ccce49bf720469fa",
+    "sha256": "1322a1bcc00d549f4c7231f6c9ef34b9257e06a992a9850ffd548e14d73bbd9e",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0185.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0185.png"
   },
   {
     "id": "c0186",
     "char": "顛",
     "path": "img/chars/c0186.webp",
-    "sha256": "a1b43d7dd597ce013fe7323917a4178921331779e5096988533a5ad8e1243fd9",
+    "sha256": "7e3866d35673e316d678d4b614a5806f30c00678c0b7f6704f07fa7fac89b488",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0186.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0186.png"
   },
   {
     "id": "c0187",
     "char": "之",
     "path": "img/chars/c0187.webp",
-    "sha256": "a32b594b77c1425fbfae4c85fd84a38ca0f649db74c3a15e6e8118b3bf1b2d4f",
+    "sha256": "a8333661598f98253f467c62f740efd78ce18dece4052e1f79a3238bacbf2cd8",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0187.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0187.png"
   },
   {
     "id": "c0188",
     "char": "而",
     "path": "img/chars/c0188.webp",
-    "sha256": "ebe62e096e01732d57abc5c0fa28e4a971c29bbd0a5ffb95e9c38aa9b8d0dd5b",
+    "sha256": "1bc05d668f47d73146c50106ba1ecb3190b6135067ae80f64b31d0cea3ae38a3",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0188.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0188.png"
   },
   {
     "id": "c0219",
     "char": "自",
     "path": "img/chars/c0219.webp",
-    "sha256": "f3c44428e13d3fa9a3091ed0ececf536ba667ae7443b9e0d9e5686ed689a28e1",
+    "sha256": "3d6c3ae40eb7a5b9e6114d417735c5c8282b0e357d3d0c7047bc73f54a878089",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0219.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0219.png"
   },
   {
     "id": "c0189",
     "char": "西",
     "path": "img/chars/c0189.webp",
-    "sha256": "9e36d687741668ba56257ad867a87b017b9faf1a6ae7b43489f29be8a6f76aa3",
+    "sha256": "ba6702ce8215cb2a2342b820182f306c8fc3a074358f8ddde3f2fa4e65edc6fc",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0189.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0189.png"
   },
   {
     "id": "c0190",
     "char": "我",
     "path": "img/chars/c0190.webp",
-    "sha256": "ddb452de76cc8dd45ef3f103b0c32de07d67daff8cfac23495e91f9c7567b935",
+    "sha256": "90e4b5dc8c6d7f7257ac3135e0e08cad26e061d84fe15ee19c182c7f7644ab99",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0190.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0190.png"
   },
   {
     "id": "c0191",
     "char": "來",
     "path": "img/chars/c0191.webp",
-    "sha256": "19ad081bc47f04aedabe4883a42312f2569c59a55a6aa7ab64b9ad21d4d5fc20",
+    "sha256": "268707fea4948c6fd65c4dd7bf61955e54e2e4c692cdacc4676d1172d10ab2ef",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0191.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0191.png"
   },
   {
     "id": "c0192",
     "char": "其",
     "path": "img/chars/c0192.webp",
-    "sha256": "10167acd96973709cd47626be85ef24f181dc8da5a48e02116cbdbeecb0229dc",
+    "sha256": "ff9734cd558d01b7029b0ce47786234916f9c02c6025ba06a5c1b17281c71b6d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0192.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0192.png"
   },
   {
     "id": "c0193",
     "char": "舍",
     "path": "img/chars/c0193.webp",
-    "sha256": "4bd64feb7006b4f332cfb60207b705b3875487e565141472450d4835c5910e7c",
+    "sha256": "472ba1795090f4d7132430393325968a45dd28a5eb227433e5487a63b150900d",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0193.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0193.png"
   },
   {
     "id": "c0194",
     "char": "要",
     "path": "img/chars/c0194.webp",
-    "sha256": "f3580251278d1c2487f872908ac4280c34b0e1c14736f09bb7453718e50cdc7a",
+    "sha256": "4f09bca01c917d6d7de950a513f51c5e064455b82c4459a3c3687ed74f77cb11",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0194.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0194.png"
   },
   {
     "id": "c0195",
     "char": "烏",
     "path": "img/chars/c0195.webp",
-    "sha256": "0edae820799bba9efa49e091514e2436f4102d08a90f60d55c66cfd7177807f0",
+    "sha256": "7356eb2b6ff56dd5a1ca7ba27bc21f7df0b461c0941702ca09c4a519dea9ce6b",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0195.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0195.png"
   },
   {
     "id": "c0196",
     "char": "然",
     "path": "img/chars/c0196.webp",
-    "sha256": "9f4c17db7d7dc6d62b4f49e7c6fd460607427896e6a34b7f91ed72eb1eaeb671",
+    "sha256": "c876a990718d34ed0d7789dc79bad583ef3dc631b51967ebd07cde4adafb65ca",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0196.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0196.png"
   },
   {
     "id": "c0220",
     "char": "萬",
     "path": "img/chars/c0220.webp",
-    "sha256": "c12da313169467f416047c59efa1da8a2684c566a012c9d029b601a38c4c79de",
+    "sha256": "cc3a318f54b2e6e98f03683032dc4d01ace49da5ba93d5a0a716d477c695ebe4",
     "generator": "OpenAI image generation via Codex built-in tool",
-    "style": "picture3 單字情境圖",
-    "generated_at": "2026-08-07",
+    "style": "六書造字堂 v2 潑墨酒精風 Q版情境圖",
+    "generated_at": "2026-08-08",
     "lane": 4,
-    "source_original": "~/Downloads/liushu-picture3-source/lane-4/c0220.png"
+    "source_original": "~/Downloads/liushu-picture3-v2-source/lane-4/c0220.png"
   }
 ]
