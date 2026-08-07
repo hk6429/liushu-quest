@@ -181,3 +181,10 @@ textarea.io { width: 100%; min-height: 90px; font-family: monospace; font-size: 
   .flashcard .headchar { font-size: 3.4rem; }
   main { padding: .7rem; }
 }
+
+/* ── 插圖 ── */
+.story-fig { margin: .4rem 0 .9rem; }
+.story-fig img {
+  display: block; width: 100%; max-width: 100%; border-radius: .55rem;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}

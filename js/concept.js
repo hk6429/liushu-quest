@@ -7,6 +7,7 @@ const LSConcept = (() => {
   const html = `
 <div class="card">
   <h2>文字誕生之前：三種不完整的表達</h2>
+  <figure class="story-fig"><img src="img/concept/00-origin.webp" alt="結繩記事、壁畫、語言到文字的演進圖" loading="lazy"></figure>
   <p>古人一開始沒有文字，只能用別的方式記錄與溝通。但這些方式都各缺一角：</p>
   <div class="origin-grid">
     <div class="origin-cell"><b>結繩記事</b>形 ${N}　音 ${N}　義 ${Y}<p class="muted">打個結代表一件事——有「意思」，但沒有形體可辨、也念不出聲音。</p></div>
@@ -19,6 +20,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2>六書總覽</h2>
+  <figure class="story-fig"><img src="img/concept/01-overview.webp" alt="六書總覽：四種造字法與兩種用字法" loading="lazy"></figure>
   <p class="concept-toc">
     <span class="pill cat-象形">象形</span><span class="pill cat-指事">指事</span><span class="pill cat-會意">會意</span><span class="pill cat-形聲">形聲</span>＝造字之法（真正造出新字）；
     <span class="pill cat-轉注">轉注</span><span class="pill cat-假借">假借</span>＝用字之法（運用既有的字）。
@@ -28,6 +30,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-象形">一</span> 象形：照著東西畫下來</h2>
+  <figure class="story-fig"><img src="img/concept/02-pictograph.webp" alt="日月山水的甲骨文字形演變" loading="lazy"></figure>
   ${sw('象形者，畫成其物，隨體詰詘，日月是也。')}
   <p>照著東西的樣子畫下來，線條隨物體的形狀彎曲。是漢字最原始的一批「獨體」字。</p>
   <p class="example-chars">日 月 山 水 木 火</p>
@@ -39,6 +42,7 @@ const LSConcept = (() => {
 
 <div class="card">
   <h2><span class="pill cat-指事">二</span> 指事：畫不出來，就用記號指給你看</h2>
+  <figure class="story-fig"><img src="img/concept/03-indicative.webp" alt="上下本末刃旦的指事記號示意" loading="lazy"></figure>
   ${sw('指事者，視而可識，察而見意，上下是也。')}
   <p>抽象概念畫不出來，就用<b>符號</b>表示，或在象形字上<b>加記號</b>指出重點——「符號＋符號」或「象形＋符號」。</p>
   <p class="example-chars">上 下 本 末 刃 旦</p>
