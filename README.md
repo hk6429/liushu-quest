@@ -10,7 +10,7 @@
 - **自測闖關**：六書均衡與自適應題組、每日固定字陣；一般模式不以爭議字作無條件唯一答案
 - **大師對戰**：8 位文字學大師各有專長題組，最多 10 回合；解鎖門檻＝真實精通字數
 - **今日主線**：八卷故事旅程、短試煉、每日五題與不歸零的每週節奏
-- **成長系統**：熟練度與有效精通分流；有效精通須跨日客觀作答並說出理由
+- **成長系統**：熟練度與有效精通分流；有效精通須跨日客觀作答，並辨認正確理由或證據
 - **課堂共學**：匿名小組先答、聽理由、再作答，呈現答案變化與證據牆，不設速度榜或排行榜
 - **戰績與備份**：分類正確率、弱點字聚合、JSON 檔下載／選檔匯入，以及文字進度碼備援
 - **共用學習工具**：家庭／課堂、學習紀錄、自學星圖與匿名到訪統計
@@ -51,4 +51,4 @@ Cloudflare Pages（liushu-quest.pages.dev）＋ Netlify（liushu-quest.netlify.a
 
 ## 權利與來源
 
-原創教學文字、程式與人為編排的權利範圍，以及古籍核對資料、AI 生成配圖和第三方元件的界線，見 [`rights.html`](rights.html)、[`docs/text-provenance.md`](docs/text-provenance.md)、[`docs/asset-provenance.md`](docs/asset-provenance.md) 與 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。學生前台不展示外部原文或外部資料連結；台灣著作權風險審查紀錄見 [`docs/copyright-audit-2026-08-07.md`](docs/copyright-audit-2026-08-07.md)。
+原創教學文字、程式與人為編排的權利範圍，以及古籍核對資料、AI 生成配圖和第三方元件的界線，見 [`rights.html`](rights.html)、[`privacy.html`](privacy.html)、[`docs/text-provenance.md`](docs/text-provenance.md)、[`docs/asset-provenance.md`](docs/asset-provenance.md) 與 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。學生前台不展示外部原文或外部資料連結；台灣著作權風險審查紀錄見 [`docs/copyright-audit-2026-08-07.md`](docs/copyright-audit-2026-08-07.md)。

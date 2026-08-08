@@ -88,6 +88,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 1rem 1re
   background: rgba(255, 252, 244, .9);
   box-shadow: 0 2px 8px rgba(70, 49, 27, .06);
 }
+.parent-support[hidden], .tools-discovery-note[hidden] { display: none !important; }
 .parent-support > div:first-child { display: grid; gap: .15rem; }
 .parent-support > div:first-child span { color: var(--ink-soft); font-size: .86rem; }
 .parent-guide-panel { grid-column: 1 / -1; border-top: 1px dashed #d8c8aa; padding-top: .85rem; }
@@ -184,8 +185,10 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .chapter-map .is-current button { border: 2px solid var(--cinnabar); background: #fff8ed; }
 .chapter-map .is-done button > span { background: var(--green); color: white; }
 .week-dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: .45rem; max-width: 24rem; }
-.week-dots span { height: .7rem; border-radius: 99px; background: #d8cfbb; }
+.week-dots span { display: grid; place-items: center; min-height: 2rem; border-radius: .45rem; background: #e1d8c6; color: var(--ink-soft); }
 .week-dots span.done { background: var(--green); }
+.week-dots span.done small { color: white; }
+.week-dots small { font-size: .72rem; font-weight: 700; }
 .next-hook { padding: .7rem; border-left: 4px solid var(--gold); background: #faf2df; }
 
 /* ── 概念導讀 ── */
@@ -214,8 +217,12 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .story-chapter-nav button { flex: 0 0 2.7rem; border: 1px solid var(--line); border-radius: 50%; background: var(--paper-deep); }
 .story-chapter-nav button.active { background: var(--cinnabar); color: white; border-color: var(--cinnabar); font-weight: 700; }
 .story-chapter[hidden] { display: none; }
+.story-scene[hidden] { display: none; }
 .story-chapter > h3 { font-size: 1.2rem; }
+.story-order-warning { margin: .35rem 0 .8rem; padding: .5rem .65rem; border-left: 3px solid var(--gold); background: #faf2df; }
+.story-scene-status { align-self: center; color: var(--ink-soft); font-weight: 700; }
 .story-controls { justify-content: space-between; border-top: 1px dashed var(--line); padding-top: .9rem; }
+.story-character-guide { margin-bottom: 1rem !important; }
 .story-characters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0 1.2rem; }
 .story-characters figure { overflow: hidden; border: 1px solid var(--line); border-radius: .65rem; background: var(--paper-deep); }
 .story-characters img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
@@ -238,6 +245,12 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .evidence-wall b { color: var(--cinnabar-dark); font-size: 1.2rem; }
 .answer-shift { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
 .answer-shift > div { padding: .7rem; border: 1px solid var(--line); border-radius: .55rem; background: #faf5e8; }
+
+/* ── 練功房 ── */
+.practice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: .8rem; }
+.practice-grid button { display: grid; gap: .3rem; min-height: 7rem; padding: .9rem; border: 1px solid var(--line); border-radius: .65rem; background: #faf5e8; color: var(--ink); text-align: left; }
+.practice-grid b { color: var(--cinnabar-dark); font-size: 1.05rem; }
+.practice-grid span { color: var(--ink-soft); line-height: 1.55; }
 
 /* ── 字例總覽 ── */
 .filterbar { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: .55rem; align-items: end; }
@@ -264,6 +277,16 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 }
 .char-detail { max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto; }
 .char-detail .headchar { font-size: 3.2rem; font-weight: 700; color: var(--cinnabar-dark); line-height: 1.1; }
+.mastery-checklist { margin-top: .9rem; padding-top: .7rem; border-top: 1px dashed var(--line); }
+.mastery-axis { padding: .55rem .65rem; margin-top: .5rem; border-radius: .55rem; background: #faf5e8; }
+.mastery-axis h3 { margin-top: 0; }
+.mastery-axis ul { display: grid; gap: .25rem; list-style: none; padding: 0; }
+.mastery-axis li { color: var(--ink-soft); }
+.mastery-axis li.done { color: #2f5233; font-weight: 700; }
+.mastery-axis li span { display: inline-block; width: 1.5rem; }
+
+.privacy-toggle { display: flex; align-items: center; gap: .55rem; min-height: 44px; padding: .7rem; border: 1px solid var(--line); border-radius: .55rem; background: #faf5e8; font-weight: 700; }
+.privacy-toggle input { width: 1.25rem; height: 1.25rem; }
 .dialog-close-icon {
   position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px;
   margin: -.2rem -.2rem .2rem .5rem; border: 1.5px solid var(--cinnabar); border-radius: 50%;
@@ -430,6 +453,7 @@ textarea.io { width: 100%; min-height: 90px; font-family: monospace; font-size: 
 .legal-meta { color: var(--ink-soft); font-size: .9rem; }
 
 @media (max-width: 480px) {
+  .practice-grid { grid-template-columns: 1fr; }
   .brand h1 { font-size: 1.15rem; }
   .tab-scroll-hint { display: block; padding: .12rem .75rem .25rem; color: var(--ink-soft); font-size: .7rem; text-align: right; }
   .flashcard .headchar { font-size: 3.4rem; }

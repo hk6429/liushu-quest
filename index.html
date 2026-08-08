@@ -13,12 +13,9 @@
   <div class="brand"><span class="seal">字</span><h1>六書造字堂</h1><span class="subtitle">漢字造字法練功站</span></div>
   <nav class="tabs" id="navTabs" aria-label="主要練功頁面">
     <button type="button" data-view="home" class="active" aria-controls="view-home" aria-current="page">今日主線</button>
-    <button type="button" data-view="concept" aria-controls="view-concept">概念導讀</button>
     <button type="button" data-view="story" aria-controls="view-story">造字故事</button>
-    <button type="button" data-view="browse" aria-controls="view-browse">字例總覽</button>
-    <button type="button" data-view="flash" aria-controls="view-flash">閃卡複習</button>
-    <button type="button" data-view="quiz" aria-controls="view-quiz">自測闖關</button>
-    <button type="button" data-view="battle" aria-controls="view-battle">大師對戰</button>
+    <button type="button" data-view="concept" aria-controls="view-concept">概念導讀</button>
+    <button type="button" data-view="practice" aria-controls="view-practice">練功房</button>
     <button type="button" data-view="classroom" aria-controls="view-classroom">課堂共學</button>
     <button type="button" data-view="stats" aria-controls="view-stats">戰績</button>
   </nav>
@@ -26,9 +23,10 @@
 </header>
 
 <main id="main">
-  <p class="tools-discovery-note"><b>學習工具：</b>可從右下角開啟家庭／課堂、學習紀錄、自學星圖與匿名到訪統計。</p>
   <p id="storageWarning" class="storage-warning" role="alert" hidden></p>
-  <section class="parent-support" aria-labelledby="parentSupportTitle">
+  <section id="view-home" class="view active" aria-hidden="false"></section>
+  <p class="tools-discovery-note" data-home-support><b>延伸工具：</b>右下角可開啟家庭／課堂、學習紀錄、自學星圖與匿名到訪統計。</p>
+  <section class="parent-support" data-home-support aria-labelledby="parentSupportTitle">
     <div>
       <strong id="parentSupportTitle">家長陪學：一次 10 分鐘就好</strong>
       <span>先聽孩子說，再一起查證；不必追求一次全會。</span>
@@ -36,9 +34,9 @@
     <button type="button" class="btn small ghost" id="parentGuideToggle" aria-expanded="false" aria-controls="parentGuidePanel">打開陪學指南</button>
     <div id="parentGuidePanel" class="parent-guide-panel" hidden></div>
   </section>
-  <section id="view-home" class="view active" aria-hidden="false"></section>
   <section id="view-concept" class="view" aria-hidden="true"></section>
   <section id="view-story" class="view" aria-hidden="true"></section>
+  <section id="view-practice" class="view" aria-hidden="true"></section>
   <section id="view-browse" class="view" aria-hidden="true"></section>
   <section id="view-flash" class="view" aria-hidden="true"></section>
   <section id="view-quiz" class="view" aria-hidden="true"></section>
@@ -49,13 +47,24 @@
 
 <footer class="foot">
   <p>教學解說、故事與題目均為本站重新撰寫；標「⚡爭議」者表示分類仍有不同見解。發現錯誤歡迎回報。</p>
-  <p>© 2026 大乃老師（原創內容與編排；公版、AI 生成及第三方素材依各自權利狀態） · <a href="rights.html">權利、來源與著作權說明</a></p>
+  <p>© 2026 大乃老師（原創內容與編排；公版、AI 生成及第三方素材依各自權利狀態） · <a href="rights.html">權利、來源與著作權說明</a> · <a href="privacy.html">隱私與統計設定</a></p>
   <p>純前端靜態站，進度保存在你的瀏覽器（可在「戰績」頁匯出備份）。</p>
 </footer>
 
-<script>window.goatcounter = {path: p => location.host + p}</script>
-<script data-goatcounter="https://hk6429.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="https://self-learning-orbit.pages.dev/platform-counter.js?v=20260807-liushu-2" data-site="liushu-quest" data-default-open="true" defer></script>
+<script>
+(() => {
+  const optedOut = (() => { try { return localStorage.getItem('liushu.analytics.optout') === 'true'; } catch { return true; } })();
+  window.goatcounter = { path: p => location.host + p, no_onload: optedOut };
+  if (optedOut) return;
+  const goat = document.createElement('script');
+  goat.dataset.goatcounter = 'https://hk6429.goatcounter.com/count';
+  goat.src = 'https://gc.zgo.at/count.js'; goat.async = true; document.head.appendChild(goat);
+  const platform = document.createElement('script');
+  platform.src = 'https://self-learning-orbit.pages.dev/platform-counter.js?v=20260808-liushu-3';
+  platform.dataset.site = 'liushu-quest'; platform.dataset.defaultOpen = 'false'; platform.defer = true;
+  document.head.appendChild(platform);
+})();
+</script>
 <script src="js/store.js"></script>
 <script src="js/progression.js"></script>
 <script src="js/data.js"></script>

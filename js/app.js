@@ -1,7 +1,7 @@
 // 分頁路由 + 字例總覽 + 字卡詳情
 const LSApp = (() => {
   const VIEW_LABELS = {
-    home: '今日主線',
+    home: '今日主線', practice: '練功房',
     concept: '概念導讀', story: '造字故事', browse: '字例總覽', flash: '閃卡複習',
     quiz: '自測闖關', battle: '大師對戰', classroom: '課堂共學', stats: '戰績'
   };
@@ -9,6 +9,7 @@ const LSApp = (() => {
     home: () => LSJourney.render(el('view-home')),
     concept: () => LSConcept.render(el('view-concept')),
     story: () => LSStory.render(el('view-story')),
+    practice: renderPractice,
     browse: renderBrowse,
     flash: () => LSFlash.render(el('view-flash')),
     quiz: () => LSQuiz.render(el('view-quiz')),
@@ -31,9 +32,11 @@ const LSApp = (() => {
     const shouldFocus = options.focus !== false;
     const currentDialogClose = document.querySelector('.char-detail-overlay [data-close-dialog]');
     if (currentDialogClose) currentDialogClose.click();
-    const activeTab = document.querySelector(`.tabs button[data-view="${name}"]`);
+    const practiceViews = ['browse', 'flash', 'quiz', 'battle'];
+    const tabName = practiceViews.includes(name) ? 'practice' : name;
+    const activeTab = document.querySelector(`.tabs button[data-view="${tabName}"]`);
     document.querySelectorAll('.tabs button').forEach(b => {
-      const active = b.dataset.view === name;
+      const active = b.dataset.view === tabName;
       b.classList.toggle('active', active);
       if (active) b.setAttribute('aria-current', 'page');
       else b.removeAttribute('aria-current');
@@ -43,6 +46,7 @@ const LSApp = (() => {
       v.classList.toggle('active', active);
       v.setAttribute('aria-hidden', String(!active));
     });
+    document.querySelectorAll('[data-home-support]').forEach(node => { node.hidden = name !== 'home'; });
     views[name]();
     enhanceView(name);
     document.title = `${VIEW_LABELS[name]}｜六書造字堂`;
@@ -50,6 +54,12 @@ const LSApp = (() => {
     const heading = el('view-' + name).querySelector('h2');
     if (shouldFocus && heading) heading.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: reducedMotion() ? 'auto' : 'smooth' });
+  }
+
+  function renderPractice() {
+    const root = el('view-practice');
+    root.innerHTML = `<section class="card practice-hub"><p class="eyebrow">自己選一條練功路線</p><h2>練功房</h2><p class="muted">想查字、複習、測驗或挑戰大師，都從這裡出發。</p><div class="practice-grid"><button type="button" data-practice="browse"><b>字例總覽</b><span>查 220 個字的分類、證據與精通進度</span></button><button type="button" data-practice="flash"><b>閃卡複習</b><span>優先複習到期與容易混淆的字</span></button><button type="button" data-practice="quiz"><b>自測闖關</b><span>均衡十題或快速證據五題</span></button><button type="button" data-practice="battle"><b>大師對戰</b><span>用專題題組檢驗遷移能力</span></button></div></section>`;
+    root.querySelectorAll('[data-practice]').forEach(button => { button.onclick = () => go(button.dataset.practice); });
   }
 
   function enhanceView(name) {
@@ -126,6 +136,8 @@ const LSApp = (() => {
   function showChar(id, trigger = document.activeElement) {
     const c = LSData.byId[id];
     if (!c) return;
+    const mastery = typeof LSProgress !== 'undefined' ? LSProgress.masteryChecklist(LSStore.raw, id, c) : [];
+    const masteryHtml = mastery.map(axis => `<section class="mastery-axis"><h3>${axis.label}：${axis.mastered ? '已達有效精通' : '仍在累積證據'}</h3><ul>${axis.checks.map(check => `<li class="${check.done ? 'done' : ''}"><span aria-hidden="true">${check.done ? '✓' : '○'}</span>${check.label}（${Math.min(check.value, check.target)}/${check.target}）</li>`).join('')}</ul></section>`).join('');
     const ov = document.createElement('div');
     ov.className = 'char-detail-overlay';
     ov.innerHTML = `<div class="card char-detail" role="dialog" aria-modal="true" aria-labelledby="charDetailTitle" tabindex="-1">
@@ -139,6 +151,7 @@ const LSApp = (() => {
       <p>${c.explain}</p>
       ${c.disputed && c.dispute_note ? `<p class="muted">⚡ ${c.dispute_note}</p>` : ''}
       ${typeof LSEvidence !== 'undefined' ? LSEvidence.render(c) : ''}
+      <section class="mastery-checklist" aria-label="有效精通條件"><h3>有效精通檢核</h3><p class="muted">構形與用字關係分開計算；雙軸字兩條都達標才算有效精通。</p>${masteryHtml}</section>
       <div class="btnrow"><button type="button" class="btn small ghost" data-close-dialog>關閉</button></div>
     </div>`;
     const returnFocus = trigger instanceof HTMLElement ? trigger : null;

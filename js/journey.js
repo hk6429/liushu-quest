@@ -1,5 +1,6 @@
 // 今日主線：短章節、短試煉、跨日回訪與溫和的每週節奏。
 const LSJourney = (() => {
+  const TRIAL_PASS_RATE = 2 / 3;
   const CHAPTERS = [
     { title: '楔子・結繩記事', hook: '阿滿一覺醒來，站在繩結堆成的上古倉庫。', chars: [], types: ['concept', 'concept', 'evidence'] },
     { title: '第一章・象形', hook: '眼睛看得到的輪廓，能不能直接變成字？', chars: ['日', '月', '山', '水', '木', '火'], types: ['evidence', 'transfer', 'contrast'] },
@@ -16,6 +17,22 @@ const LSJourney = (() => {
     const wanted = new Set(CHAPTERS[chapter]?.chars || []);
     return LSData.all.filter(c => wanted.has(c.char)).map(c => c.id);
   };
+
+  function passedTrial(score, total = 3) {
+    return Number(score) >= Math.ceil(Number(total) * TRIAL_PASS_RATE);
+  }
+
+  function applyChapterResult(save, chapter, score, total = 3, now = new Date()) {
+    const passed = passedTrial(score, total);
+    if (passed) {
+      save.journey.completed[chapter] = now.toISOString();
+      save.journey.chapter = Math.min(CHAPTERS.length - 1, Math.max(save.journey.chapter, chapter + 1));
+      save.journey.pendingChapter = null;
+    } else {
+      if (!save.journey.completed[chapter]) save.journey.pendingChapter = chapter;
+    }
+    return passed;
+  }
 
   function missionState() {
     const save = LSStore.raw;
@@ -58,7 +75,7 @@ const LSJourney = (() => {
 <section class="card gentle-rhythm">
   <h2>這週的節奏</h2>
   <p><b>${weekly.completed}/${weekly.goal} 次</b>就很不錯。漏一天不會歸零，下次回來仍從原本的位置繼續。</p>
-  <div class="week-dots" aria-label="本週完成情形">${weekly.days.map(dayKey => `<span class="${LSProgress.normalizeDay(save.days[dayKey]).complete ? 'done' : ''}" title="${dayKey}"></span>`).join('')}</div>
+  <div class="week-dots" aria-label="本週完成情形">${weekly.days.map((dayKey, index) => { const done = LSProgress.normalizeDay(save.days[dayKey]).complete; const weekday = ['一', '二', '三', '四', '五', '六', '日'][index]; return `<span class="${done ? 'done' : ''}" title="星期${weekday}・${dayKey}・${done ? '已完成' : '未完成'}" aria-label="星期${weekday}，${done ? '已完成' : '未完成'}"><small>${weekday}</small></span>`; }).join('')}</div>
 </section>
 <div id="journeyPlay" aria-live="polite"></div>`;
     el.querySelector('#journeyContinue').onclick = () => openChapter(current);
@@ -110,10 +127,11 @@ const LSJourney = (() => {
         area.querySelector(`[data-i="${q.answer}"]`).classList.add('correct');
         if (!ok) button.classList.add('wrong');
         if (ok) run.right++;
-        LSStore.recordAnswer(q.charId, q.cat, ok, 'quiz', `${run.token}:${q.key}`, {
+        const answerMode = run.kind === 'chapter' ? 'chapter_trial' : 'home_daily';
+        LSStore.recordAnswer(q.charId, q.cat, ok, answerMode, `${run.token}:${q.key}`, {
           axis: q.axis, rationale: !!q.rationale, transfer: !!q.transfer, misconception: q.misconception
         });
-        area.querySelector('#journeyFeedback').innerHTML = `<div class="feedback">${ok ? '答對了。' : '先看證據，再修正一次。'} ${q.explain}</div><div class="btnrow"><button class="btn" id="journeyNext">${run.n >= run.questions ? '看學習摘要' : '下一題'}</button></div>`;
+        area.querySelector('#journeyFeedback').innerHTML = `<div class="feedback">${ok ? '答對了。' : '先看完證據，下一題再試。'} ${q.explain}</div><div class="btnrow"><button class="btn" id="journeyNext">${run.n >= run.questions ? '看學習摘要' : '下一題'}</button></div>`;
         area.querySelector('#journeyNext').onclick = () => ask(area);
         area.querySelector('#journeyNext').focus();
       };
@@ -122,17 +140,14 @@ const LSJourney = (() => {
 
   function finish(area) {
     const save = LSStore.raw;
-    if (run.kind === 'chapter') {
-      save.journey.completed[run.chapter] = new Date().toISOString();
-      save.journey.chapter = Math.min(CHAPTERS.length - 1, Math.max(save.journey.chapter, run.chapter + 1));
-      save.journey.pendingChapter = null;
-    }
-    LSStore.completeSession('quiz', { score: run.right, total: run.questions, eventId: `${run.token}:complete` });
+    const passed = run.kind !== 'chapter' || applyChapterResult(save, run.chapter, run.right, run.questions);
+    LSStore.completeSession(run.kind === 'chapter' ? 'chapter_trial' : 'home_daily', { score: run.right, total: run.questions, eventId: `${run.token}:complete` });
     LSStore.persist();
     const next = CHAPTERS[Math.min(CHAPTERS.length - 1, run.chapter + 1)];
-    area.innerHTML = `<section class="card journey-summary"><p class="eyebrow">本輪完成</p><h2>${run.right}/${run.questions} 題答對</h2><p>${run.kind === 'chapter' ? `你已留下「${CHAPTERS[run.chapter].title}」的通關印記。` : '今日有效進度已更新；錯誤會保留成下次可修復的線索。'}</p>${run.kind === 'chapter' && run.chapter < CHAPTERS.length - 1 ? `<p class="next-hook"><b>下一卷：</b>${next.hook}</p>` : ''}<div class="btnrow"><button class="btn" id="journeyHome">回到今日主線</button><button class="btn ghost" onclick="LSApp.go('flash')">複習需要補強的字</button></div></section>`;
-    area.querySelector('#journeyHome').onclick = () => LSApp.go('home');
+    area.innerHTML = `<section class="card journey-summary"><p class="eyebrow">本輪完成</p><h2>${run.right}/${run.questions} 題答對</h2><p>${run.kind === 'chapter' ? passed ? `達到 2/3 通關標準，已留下「${CHAPTERS[run.chapter].title}」的通關印記。` : '尚未達到 2/3 通關標準；本卷不會標成完成，也不會開啟下一卷。先看證據，再重試一次。' : '今日有效進度已更新；錯誤會保留成下次可修復的線索。'}</p>${run.kind === 'chapter' && passed && run.chapter < CHAPTERS.length - 1 ? `<p class="next-hook"><b>下一卷：</b>${next.hook}</p>` : ''}<div class="btnrow">${run.kind === 'chapter' && !passed ? '<button class="btn" id="journeyRetry">重試本卷 3 題</button>' : '<button class="btn" id="journeyHome">回到今日主線</button>'}<button class="btn ghost" onclick="LSApp.go('flash')">複習需要補強的字</button></div></section>`;
+    area.querySelector('#journeyRetry')?.addEventListener('click', () => startTrial(area, run.chapter));
+    area.querySelector('#journeyHome')?.addEventListener('click', () => LSApp.go('home'));
   }
 
-  return { CHAPTERS, render, startTrial };
+  return { CHAPTERS, TRIAL_PASS_RATE, passedTrial, applyChapterResult, render, startTrial };
 })();

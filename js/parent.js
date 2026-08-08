@@ -19,10 +19,13 @@ const LSParent = (() => {
     const seen = ids.filter(id => Number(save.cards[id]?.seen) > 0).length;
     const mastered = LSStore.masteredCount(ids);
     const weak = LSStore.weakIds(ids).length;
+    const passedChapters = Object.keys(save.journey.completed || {}).length;
+    const readChapters = Object.keys(save.journey.read || {}).length;
+    if (!seen && readChapters) return { text: `已閱讀 ${readChapters}/8 卷、通過 ${passedChapters}/8 卷；目前還沒有累積字卡練習，這不等於沒有學習。`, next: 'story', label: '接著共讀下一幕' };
     if (!seen) return { text: `尚未開始；全站共有 ${ids.length} 字，不需要一次學完。`, next: 'story', label: '先共讀一段故事' };
-    if (weak) return { text: `已接觸 ${seen} 字、穩定精通 ${mastered} 字；有 ${weak} 字適合再看一次。`, next: 'flash', label: `陪孩子複習 ${Math.min(5, weak)} 個字` };
-    if (save.quiz.answered < 5) return { text: `已接觸 ${seen} 字、穩定精通 ${mastered} 字；可以用短測驗聽聽孩子怎麼想。`, next: 'quiz', label: '一起完成 5 題自測' };
-    return { text: `已接觸 ${seen} 字、穩定精通 ${mastered} 字；今天維持短時間練習即可。`, next: 'flash', label: '複習幾張到期閃卡' };
+    if (weak) return { text: `已接觸 ${seen} 字、有效精通 ${mastered} 字；有 ${weak} 字適合再看一次。`, next: 'flash', label: `陪孩子複習 ${Math.min(5, weak)} 個字` };
+    if (save.quiz.answered < 5) return { text: `已接觸 ${seen} 字、有效精通 ${mastered} 字；可以用短測驗聽聽孩子怎麼想。`, next: 'quiz', label: '一起完成 5 題自測' };
+    return { text: `已接觸 ${seen} 字、有效精通 ${mastered} 字；今天維持短時間練習即可。`, next: 'flash', label: '複習幾張到期閃卡' };
   }
 
   function render() {

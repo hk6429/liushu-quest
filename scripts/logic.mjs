@@ -6,6 +6,7 @@ import vm from 'node:vm';
 const progressionSource = await readFile(new URL('../js/progression.js', import.meta.url), 'utf8');
 const storeSource = await readFile(new URL('../js/store.js', import.meta.url), 'utf8');
 const quizSource = await readFile(new URL('../js/quiz.js', import.meta.url), 'utf8');
+const journeySource = await readFile(new URL('../js/journey.js', import.meta.url), 'utf8');
 const flashSource = await readFile(new URL('../js/flashcard.js', import.meta.url), 'utf8');
 const chars = JSON.parse(await readFile(new URL('../data/chars.json', import.meta.url), 'utf8'));
 
@@ -193,6 +194,24 @@ test('對戰與每日字陣表現不會污染一般自測難度', () => {
   assert.equal(P.recentAccuracy(save), 0);
 });
 
+test('首頁五題與章節試煉分開統計，不污染一般自測難度', () => {
+  Store.resetAll();
+  const id = chars[0].id;
+  for (let i = 0; i < 8; i++) Store.recordAnswer(id, chars[0].category, true, i % 2 ? 'home_daily' : 'chapter_trial', `journey-mode:${i}`);
+  assert.equal(Store.raw.quiz.byMode.home_daily.r, 4);
+  assert.equal(Store.raw.quiz.byMode.chapter_trial.r, 4);
+  assert.equal(P.recentAccuracy(Store.raw), null);
+  assert.equal(P.adaptiveLevel(Store.raw), '基礎');
+});
+
+test('有效精通檢核逐軸列出四項可見條件', () => {
+  const sample = chars.find(char => char.usage_relations.length);
+  const checklist = P.masteryChecklist(P.migrateSave({}), sample.id, sample);
+  assert.deepEqual([...checklist].map(axis => axis.axis), ['formation', 'usage']);
+  assert.ok([...checklist].every(axis => axis.checks.length === 4));
+  assert.ok([...checklist].every(axis => axis.checks.some(check => check.id === 'evidence')));
+});
+
 test('弱項排序先補真實錯題，再探索未作答類別', () => {
   const save = P.migrateSave({ quiz: { byCat: {
     象形: { r: 9, w: 1 }, 指事: { r: 2, w: 3 }, 會意: { r: 5, w: 0 }
@@ -295,6 +314,42 @@ context.__data = {
 vm.runInContext('const LSData = globalThis.__data;', context);
 vm.runInContext(`${quizSource}\n;globalThis.__Quiz = LSQuiz;`, context);
 vm.runInContext(`${flashSource}\n;globalThis.__Flash = LSFlash;`, context);
+vm.runInContext(`${journeySource}\n;globalThis.__Journey = LSJourney;`, context);
+
+test('章節試煉必須至少答對三題中的兩題', () => {
+  const failed = P.migrateSave({});
+  assert.equal(context.__Journey.applyChapterResult(failed, 0, 0, 3, new Date('2026-08-08T00:00:00Z')), false);
+  assert.equal(failed.journey.completed[0], undefined);
+  assert.equal(failed.journey.chapter, 0);
+  assert.equal(failed.journey.pendingChapter, 0);
+  const passed = P.migrateSave({});
+  assert.equal(context.__Journey.applyChapterResult(passed, 0, 2, 3, new Date('2026-08-08T00:00:00Z')), true);
+  assert.equal(typeof passed.journey.completed[0], 'string');
+  assert.equal(passed.journey.chapter, 1);
+  assert.equal(passed.journey.pendingChapter, null);
+});
+
+test('快速證據模式固定五題且涵蓋軸線、證據、對比與遷移', () => {
+  const session = context.__Quiz.buildSession({ quick: true });
+  assert.equal(session.round, 5);
+  assert.deepEqual([...session.blueprint].map(slot => slot.type), ['axis', 'evidence', 'contrast', 'transfer', 'evidence']);
+});
+
+test('轉注自動題一定呈現成對互訓脈絡，不以單字直接判類', () => {
+  const questions = vm.runInContext(`Array.from({ length: 12 }, (_, i) => LSQuiz.gen({ cat: '轉注', type: i % 2 ? 'transfer' : 'evidence', rng: LSProgress.seededRandom('transfer-' + i) }))`, context);
+  for (const question of questions) {
+    const text = `${question.stemHtml} ${question.options.join(' ')}`;
+    assert.match(text, /彼此訓釋|互相訓釋|同類近義/);
+    assert.doesNotMatch(text, /下面這個字呈現六書中的哪一種/);
+  }
+});
+
+test('假借自動題呈現本義與借義關係，不只顯示單一字形', () => {
+  const question = vm.runInContext(`LSQuiz.gen({ cat: '假借', type: 'evidence', rng: LSProgress.seededRandom('loan-context') })`, context);
+  const text = `${question.stemHtml} ${question.explain}`;
+  assert.match(text, /本義|原本/);
+  assert.match(text, /借|借義/);
+});
 
 test('今日五題的四類深度題都綁定真實字例', () => {
   const result = vm.runInContext(`(() => {

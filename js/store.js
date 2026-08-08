@@ -41,12 +41,12 @@ const LSStore = (() => {
       activity: { days: {} },
       onboarding: { step: 0, completedAt: null, skipped: false },
       badges: {},
-      sessions: { quiz: 0, flash: 0, battle: 0, lastQuiz: null },
+      sessions: { quiz: 0, flash: 0, battle: 0, home_daily: 0, chapter_trial: 0, lastQuiz: null },
       dailyChallenges: {},
       skillEvidence: {},
       recovery: {},
-      journey: { chapter: 0, completed: {}, pendingChapter: null, lastVisit: null, weeklyGoal: 3 },
-      classroom: { sessions: [], evidenceWall: {} },
+      journey: { chapter: 0, completed: {}, read: {}, pendingChapter: null, lastVisit: null, weeklyGoal: 3 },
+      classroom: { sessions: [], evidenceWall: {}, active: null },
       eventIds: [],
       schemaVersion: 3,
       created: Date.now()
@@ -165,14 +165,14 @@ const LSStore = (() => {
     if (ok) save.quiz.right++;
     if (!save.quiz.byCat[cat]) save.quiz.byCat[cat] = { r: 0, w: 0 };
     save.quiz.byCat[cat][ok ? 'r' : 'w']++;
-    const safeMode = ['quiz', 'daily', 'battle'].includes(mode) ? mode : 'quiz';
+    const safeMode = ['quiz', 'daily', 'battle', 'home_daily', 'chapter_trial'].includes(mode) ? mode : 'quiz';
     if (!save.quiz.byMode[safeMode]) save.quiz.byMode[safeMode] = { r: 0, w: 0 };
     save.quiz.byMode[safeMode][ok ? 'r' : 'w']++;
     save.quiz.recent.push({ ok: !!ok, cat, mode: safeMode });
     save.quiz.recent = save.quiz.recent.slice(-20);
     if (c && progress()) progress().recordSkillEvidence(save, id, cat, ok, meta);
     noteActivity(safeMode === 'battle' ? 'battle' : 'quiz', ok && c ? 1 : 0);
-    if (progress() && safeMode !== 'battle') progress().advanceOnboarding(save, 'quiz');
+    if (progress() && safeMode === 'quiz') progress().advanceOnboarding(save, 'quiz');
     persist();
     return true;
   }
@@ -290,7 +290,7 @@ const LSStore = (() => {
         out.quiz.byCat[cat] = { r: boundedInt(score.r), w: boundedInt(score.w) };
       }
     }
-    const allowedModes = new Set(['quiz', 'daily', 'battle']);
+    const allowedModes = new Set(['quiz', 'daily', 'battle', 'home_daily', 'chapter_trial']);
     if (isRecord(value.quiz.byMode)) {
       for (const [mode, score] of Object.entries(value.quiz.byMode)) {
         if (!allowedModes.has(mode) || !isRecord(score)) continue;
@@ -342,6 +342,8 @@ const LSStore = (() => {
       out.sessions.quiz = boundedInt(value.sessions.quiz);
       out.sessions.flash = boundedInt(value.sessions.flash);
       out.sessions.battle = boundedInt(value.sessions.battle);
+      out.sessions.home_daily = boundedInt(value.sessions.home_daily);
+      out.sessions.chapter_trial = boundedInt(value.sessions.chapter_trial);
       out.sessions.bestQuiz = boundedInt(value.sessions.bestQuiz);
       if (isRecord(value.sessions.lastQuiz)) out.sessions.lastQuiz = {
         score: boundedInt(value.sessions.lastQuiz.score, 1000), total: boundedInt(value.sessions.lastQuiz.total, 1000),
@@ -398,7 +400,7 @@ const LSStore = (() => {
     if (isRecord(value.journey)) {
       out.journey = {
         chapter: Math.min(7, boundedInt(value.journey.chapter, 7)),
-        completed: {}, pendingChapter: Number.isInteger(value.journey.pendingChapter) ? Math.min(7, Math.max(0, value.journey.pendingChapter)) : null,
+        completed: {}, read: {}, pendingChapter: Number.isInteger(value.journey.pendingChapter) ? Math.min(7, Math.max(0, value.journey.pendingChapter)) : null,
         lastVisit: typeof value.journey.lastVisit === 'string' ? value.journey.lastVisit.slice(0, 40) : null,
         weeklyGoal: Math.min(7, Math.max(1, boundedInt(value.journey.weeklyGoal, 7) || 3))
       };
@@ -407,14 +409,41 @@ const LSStore = (() => {
           if (/^[0-7]$/.test(chapter) && typeof completedAt === 'string') out.journey.completed[chapter] = completedAt.slice(0, 40);
         }
       }
+      if (isRecord(value.journey.read)) {
+        for (const [chapter, readAt] of Object.entries(value.journey.read)) {
+          if (/^[0-7]$/.test(chapter) && typeof readAt === 'string') out.journey.read[chapter] = readAt.slice(0, 40);
+        }
+      }
     }
     if (isRecord(value.classroom)) {
       out.classroom.evidenceWall = {};
       const evidenceLabels = new Set(['輪廓描畫', '指示記號', '部件會義', '讀音線索', '借音用字', '近義互訓']);
+      const promptIds = new Set(['ben-xiu', 'mo-axis', 'kao-lao']);
+      const answerLabels = new Set(['相同', '不同', '會意', '假借', '形聲', '象形', '轉注']);
+      const confidenceLabels = new Set(['不確定', '有點把握', '很有把握']);
+      const countMap = (source, labels) => {
+        const result = {};
+        if (!isRecord(source)) return result;
+        for (const [label, count] of Object.entries(source)) if (labels.has(label)) result[label] = boundedInt(count, 10000);
+        return result;
+      };
+      const aggregate = source => {
+        if (!isRecord(source) || !promptIds.has(source.promptId)) return null;
+        const result = {
+          promptId: source.promptId, groups: boundedInt(source.groups, 10000), changed: boundedInt(source.changed, 10000),
+          confidenceUp: boundedInt(source.confidenceUp, 10000), initialCounts: countMap(source.initialCounts, answerLabels),
+          revisedCounts: countMap(source.revisedCounts, answerLabels), evidenceCounts: countMap(source.evidenceCounts, evidenceLabels),
+          initialConfidence: countMap(source.initialConfidence, confidenceLabels), revisedConfidence: countMap(source.revisedConfidence, confidenceLabels),
+          startedAt: typeof source.startedAt === 'string' ? source.startedAt.slice(0, 40) : null
+        };
+        if (typeof source.completedAt === 'string') result.completedAt = source.completedAt.slice(0, 40);
+        return result;
+      };
       if (isRecord(value.classroom.evidenceWall)) {
         for (const [label, count] of Object.entries(value.classroom.evidenceWall)) if (evidenceLabels.has(label)) out.classroom.evidenceWall[label] = boundedInt(count, 10000);
       }
-      out.classroom.sessions = [];
+      out.classroom.active = aggregate(value.classroom.active);
+      out.classroom.sessions = Array.isArray(value.classroom.sessions) ? value.classroom.sessions.slice(-20).map(aggregate).filter(Boolean) : [];
     }
     out.schemaVersion = 3;
     return normalize(out);

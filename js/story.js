@@ -5,11 +5,11 @@ const LSStory = (() => {
   <h2>重生之我在上古看造字</h2>
   <p class="muted"><b>閱讀界線：</b>「國中生穿越到上古」與倉頡、黃帝的對話全是教學創作，不是造字史實；六章採本站的現代教學編排（象形、指事、會意、假借、形聲、轉注），不是《說文解字．敘》的原序，也不是六種方法先後發明的時間表。《說文解字．敘》原列指事、象形、形聲、會意、轉注、假借。每個字的「小故事」只幫你記住線索，判斷字例仍要查古文字形、讀音與可靠釋形。</p>
   <p><b>帶著任務讀：</b>每讀完一章，先闔上文字回答「這一類看什麼證據？」再展開「停看聽」核對。</p>
-  <div class="story-characters" aria-label="故事人物">
+  <details class="story-character-guide"><summary>先認識故事人物（可選）</summary><div class="story-characters" aria-label="故事人物">
     <figure><img src="img/characters/aman.webp" alt="虛構人物阿滿的教學插圖：從現代穿越的國中生" width="800" height="1000" loading="eager"><figcaption><b>阿滿</b><span>穿越的國中生・你的視角</span></figcaption></figure>
     <figure><img src="img/characters/cangjie.webp" alt="傳說人物倉頡的教學插圖：四目、手持毛筆與竹簡" width="800" height="1000" loading="lazy"><figcaption><b>倉頡</b><span>傳說人物・造字的師父</span></figcaption></figure>
     <figure><img src="img/characters/huangdi.webp" alt="傳說人物黃帝手持竹簡的教學插圖" width="800" height="1000" loading="lazy"><figcaption><b>黃帝</b><span>傳說人物・出難題的老闆</span></figcaption></figure>
-  </div>
+  </div></details>
 
   <h3>楔子：段考前一晚，我睡死在六書講義上</h3>
   <figure class="story-fig"><img src="img/story/00-prologue.webp" alt="教學故事場景：倉頡在掛滿繩結的庫房裡翻找，黃帝拿著竹簡出現在門口" loading="lazy"></figure>
@@ -72,10 +72,10 @@ const LSStory = (() => {
   <p>倉頡難得沉默了一會，然後說出一個聽起來很像作弊的辦法：「造字趕不上說話。這樣吧——<b>本來沒有這個字，只要讀音相同或相近，就把現成的字借過來用。</b>」</p>
   <p>他指著牆角一個簸米用的<b>畚箕</b>。原來早就有一個字，字形照著畚箕的輪廓畫，讀音恰好跟那個代詞相同或相近。「就借它！」從此，那個畫著畚箕的字形「<b>其</b>」，被拿去記代詞了。</p>
   <p>「借了以後呢？要還嗎？」我追問。倉頡說，接下來會走向兩種結局：</p>
-  <p><b>有借有還</b>——借來的字繼續身兼兩份工作，原本的意思和新借的意思都用它，這就造成後來「一字多義」的現象。<b>有借不還</b>——新用法太強勢，把字整個占住了，原本的意思反而沒字可用，只好<b>另造新字</b>。</p>
+  <p><b>有借有還</b>——借來的字繼續身兼兩份工作，本義、借義並存（故事暫用這個名稱），於是同一個字有不只一個意思。這是「一字多義」的<b>可能來源之一</b>，不是所有多義字的唯一成因。<b>有借不還</b>——新用法太強勢，把字整個占住了，原本的意思反而沒字可用，只好<b>另造新字</b>。</p>
   <p>「其」就是有借不還的苦主：代詞用法越來越常見，畚箕本人反而失業了。後來只好在「其」上加個竹字頭，另造「<b>箕</b>」，讓畚箕重新有字可寫——因為畚箕多用竹子編。</p>
   <p>還有一個更慘的。有個字的構形是<b>太陽沉進草叢裡</b>，表示天色將暗的傍晚——就是「<b>莫</b>」。畫面多美：夕陽落進草原，一天結束了。結果它被借去記否定用法，「莫要」「莫非」的莫，從此天天忙著說「不」。傍晚的意思沒字可用，只好再補一個「日」上去，另造「<b>暮</b>」。我每次看到「暮」都想笑：它字形裡其實有<b>兩個太陽</b>——下面那個是後來補的，因為原本那個被「借走了」。</p>
-  <p>「有借有還／有借不還」只是幫助記憶本義、借義是否並存的譬喻，不是真的借東西。有些本義另造字的例子能幫助理解部分形聲字的形成，<b>但不是所有形聲字的唯一來源，也不是固定的歷史先後</b>。</p>
+  <p>「有借有還／有借不還」只是故事中幫助記憶本義、借義是否並存的譬喻，不是真的借東西。另有「烏→嗚、舍→捨」這類<b>替借義另造字</b>的分化現象，本站另標「借義另造」，不硬塞進前述二分。有些本義另造字的例子能幫助理解部分形聲字的形成，<b>但不是所有形聲字的唯一來源，也不是固定的歷史先後</b>。</p>
   <p class="muted">✏️ 本章字例：其→箕、莫→暮。假借談<b>用字關係</b>；「其」本身的構形仍可另答象形，「莫」本身的構形仍可另答會意。</p>
   <details><summary>停看聽 4：「莫」該答會意還是假借？</summary><p>問字形構成時答會意；問借作否定詞的用字關係時答假借。先讀懂題幹再選答案。</p></details>
 
@@ -88,7 +88,7 @@ const LSStory = (() => {
   <p>「反過來也行啊！」倉頡四隻眼睛全亮了，「這次不玩『文加文』，改玩『<b>文加聲音</b>』——一個部件管意思，一個部件管讀音！」</p>
   <p>他當場示範。長江那條大河，當地人喊它的名字，讀音恰好和「工」相近（注意：是<b>當時</b>的讀音）。那就：<b>水字旁</b>表示「這是一條河」，旁邊放一個「<b>工</b>」提示怎麼念——「<b>江</b>」，造好了。黃河呢？當地人喊的音近「可」，那就水旁加「可」——「<b>河</b>」，收工。</p>
   <p>我看傻了。這根本是<b>造字的模具</b>：管意思的那半叫<b>形符</b>，提示讀音的那半叫<b>聲符</b>。天氣好、太陽露臉，日字旁配一個「青」提示讀音，就是「<b>晴</b>」。想造多少字就造多少字。</p>
-  <p>那天之後，造字的速度快得嚇人。我後來偷偷告訴倉頡一個「未來的情報」：這種「文加聲音」的辦法會大獲全勝——<b>中國字裡幾乎九成都是形聲字</b>，也就是我們常開玩笑的「有邊讀邊，沒邊讀中間」，其中不少正是「有借不還」之後另造新字的產物。<b>但這只是常見的一種形成路徑，不是所有形聲字的唯一來源，也不是固定的歷史先後。</b></p>
+  <p>那天之後，造字的速度快得嚇人。我後來偷偷告訴倉頡一個「未來的情報」：以《說文解字》收錄的<b>九千三百五十三個小篆</b>來看，形聲字約占九成。至於「有邊讀邊，沒邊讀中間」，只是我們常開的玩笑，<b>不是可靠的讀音規則</b>。部分形聲字確實可由「有借不還」後替本義另造字來理解，<b>但這只是其中一種形成路徑，不是所有形聲字的唯一來源，也不是固定的歷史先後。</b></p>
   <p>不過倉頡提醒了我兩件事，我原封不動抄給你：</p>
   <p>第一，<b>形符和聲符的位置不固定</b>——可以左形右聲、上形下聲、外形內聲，什麼組合都有，兩部分也<b>不一定各占字形的一半</b>。不能看到左邊有偏旁就直接說它是形符，要看<b>部件的功能</b>。第二，<b>古今語音會變</b>。「江」和「工」在今天的國語裡讀音已經不同了。<b>聲符是線索，不是現代讀音的保證</b>；反過來說，現代讀音不同，也不能直接否定形聲分析。</p>
   <p class="muted">✏️ 本章字例：江、河、晴、鴿、草、想、園、聞。判斷時依序問：哪裡表義？哪裡提示讀音？有什麼文字資料支持？</p>
@@ -97,12 +97,12 @@ const LSStory = (() => {
   <h3>第六章　轉注：最後才懂的一課——不同地方的字，互相注釋</h3>
   <figure class="story-fig"><img src="img/story/06-transfer.webp" alt="考與老兩個近義字彼此訓釋的教學示意" loading="lazy"></figure>
   <p>我在上古待了很久，久到以為六書我已經全懂了。直到有一天，東邊部落和西邊部落的使者同時來訪，兩邊都帶來他們記錄「年老」的字。</p>
-  <p>東邊的使者寫下一個字：長髮駝背的老人拄著杖——他們念「<b>老</b>」。西邊的使者寫下另一個字，也表示年老——他們念「<b>考</b>」。兩個部落隔著山，各記各的，誰也沒抄誰。</p>
+  <p>東邊的使者寫下一個字：長髮駝背的老人拄著杖——他們念「<b>老</b>」。西邊的使者寫下另一個字，也表示年老——他們念「<b>考</b>」。兩個部落隔著山，各記各的，誰也沒抄誰。<b>這段部落情節是教學想像，不是歷史考證。</b></p>
   <p>兩位使者當場尷尬：那……到底哪個才「對」？要廢掉一個嗎？</p>
-  <p>倉頡看了很久，緩緩說：「都不廢。不同時間、不同地方的人，各自寫出了意思相同的字。這些字以後可以<b>互相注釋</b>——查到『考』，就用『老』解釋它；查到『老』，就用『考』解釋它。」</p>
+  <p>倉頡看了很久，緩緩說：「都不廢。這些意思相近的字，以後可以<b>互相注釋</b>——查到『考』，就用『老』解釋它；查到『老』，就用『考』解釋它。」故事用時間、地域差異幫助想像，<b>但兩者不是判定轉注的必要條件</b>。</p>
   <p>我愣了一下：「師父，這跟前面的方法不一樣啊。前面都在講<b>一個字形怎麼造出來</b>，這個是在講<b>兩個字之間的關係</b>？」</p>
   <p>「正是。」倉頡點頭，「這次看的不是一個字形怎麼拼，而是<b>兩個字如何互相訓釋</b>。」</p>
-  <p>這就是常見的<b>轉注</b>教學例：同類的近義字分化後，仍能彼此訓釋。你現在還看得到它的痕跡——「壽考」的考就是長壽、年老的意思，「如喪考妣」的「考」指過世的父親。早期材料只留下簡短說明與考、老二例，後世對精確條件仍有不同解釋，所以考題多半只考這一組，別自己亂配對。</p>
+  <p>這就是本站採用的<b>互訓說</b>教學理解：同類的近義字能彼此訓釋。你現在還看得到它的痕跡——「壽考」的考就是長壽、年老的意思，「如喪考妣」的「考」指過世的父親。早期材料只留下簡短說明與考、老二例，後世對精確條件仍有不同解釋，所以考題多半只考這一組，別自己亂配對。</p>
   <p class="muted">✏️ 本章字例：考 ⇄ 老。轉注是<b>用字關係</b>；就本站採用的雙軸分析，「考」本身的構形是形聲，「老」本身的構形是象形。</p>
   <details><summary>停看聽 6：題目只給「考」一字，能直接答轉注嗎？</summary><p>不能。要看題目是否在問它和「老」互訓的關係；若問「考」的字形構成，答案是形聲。</p></details>
 
@@ -142,6 +142,24 @@ const LSStory = (() => {
         section.appendChild(node);
         node = next;
       }
+      heading.tabIndex = -1;
+      const warning = document.createElement('p');
+      warning.className = 'story-order-warning muted';
+      warning.innerHTML = '<b>閱讀提醒：</b>這是本站的教學關卡次序，不是六書依年代先後發明的歷史順序。';
+      heading.after(warning);
+
+      const contentNodes = [...section.children].filter(child => child !== heading && child !== warning);
+      const sceneCount = contentNodes.length >= 8 ? 3 : 2;
+      const sceneSize = Math.ceil(contentNodes.length / sceneCount);
+      for (let sceneIndex = 0; sceneIndex < sceneCount; sceneIndex++) {
+        const scene = document.createElement('div');
+        scene.className = 'story-scene';
+        scene.dataset.scene = sceneIndex;
+        scene.setAttribute('role', 'group');
+        scene.setAttribute('aria-label', `${heading.textContent.trim()}，第 ${sceneIndex + 1} 幕，共 ${sceneCount} 幕`);
+        contentNodes.slice(sceneIndex * sceneSize, (sceneIndex + 1) * sceneSize).forEach(child => scene.appendChild(child));
+        section.appendChild(scene);
+      }
     });
     const save = LSStore.raw;
     const selected = requestedChapter ?? save.journey.pendingChapter ?? save.journey.chapter;
@@ -149,26 +167,39 @@ const LSStory = (() => {
     const nav = document.createElement('nav');
     nav.className = 'story-chapter-nav';
     nav.setAttribute('aria-label', '故事分卷');
-    nav.innerHTML = headings.map((heading, index) => `<button type="button" data-story-chapter="${index}">${index + 1}</button>`).join('');
+    nav.innerHTML = headings.map((heading, index) => {
+      const available = index <= save.journey.chapter || !!save.journey.completed[index];
+      return `<button type="button" data-story-chapter="${index}" aria-label="第 ${index + 1} 卷：${heading.textContent.trim()}" ${available ? '' : 'disabled'}>${index + 1}</button>`;
+    }).join('');
     card.insertBefore(nav, card.querySelector('.story-chapter'));
-    const show = index => {
+    const show = (index, requestedScene = 0) => {
+      save.journey.read[index] ||= new Date().toISOString();
+      LSStore.persist();
       card.querySelectorAll('.story-chapter').forEach((section, i) => { section.hidden = i !== index; });
-      nav.querySelectorAll('button').forEach((button, i) => button.classList.toggle('active', i === index));
+      nav.querySelectorAll('button').forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+        if (i === index) button.setAttribute('aria-current', 'step');
+        else button.removeAttribute('aria-current');
+      });
+      const chapter = card.querySelector(`.story-chapter[data-chapter="${index}"]`);
+      const scenes = [...chapter.querySelectorAll('.story-scene')];
+      const sceneIndex = Math.max(0, Math.min(scenes.length - 1, requestedScene));
+      scenes.forEach((scene, i) => { scene.hidden = i !== sceneIndex; });
       let controls = card.querySelector('.story-controls');
       if (controls) controls.remove();
       controls = document.createElement('div');
       controls.className = 'story-controls btnrow';
-      controls.innerHTML = `${index > 0 ? '<button class="btn ghost" data-story-prev>上一卷</button>' : ''}<button class="btn" data-story-trial>完成本卷，進入短試煉</button>${index < headings.length - 1 ? '<button class="btn ghost" data-story-next>下一卷</button>' : ''}`;
-      card.appendChild(controls);
-      controls.querySelector('[data-story-prev]')?.addEventListener('click', () => show(index - 1));
-      controls.querySelector('[data-story-next]')?.addEventListener('click', () => show(index + 1));
-      controls.querySelector('[data-story-trial]').onclick = () => {
-        LSApp.go('home');
-        LSJourney.startTrial(document.querySelector('#journeyPlay'), index);
-      };
-      card.querySelector('.story-chapter:not([hidden]) h3')?.focus({ preventScroll: true });
+      controls.innerHTML = `<span class="story-scene-status" role="status">第 ${sceneIndex + 1}/${scenes.length} 幕</span>${sceneIndex > 0 ? '<button class="btn ghost" data-scene-prev>上一幕</button>' : ''}${sceneIndex < scenes.length - 1 ? '<button class="btn" data-scene-next>下一幕</button>' : '<button class="btn" data-story-trial>完成本卷，進入短試煉</button>'}`;
+      chapter.appendChild(controls);
+      controls.querySelector('[data-scene-prev]')?.addEventListener('click', () => show(index, sceneIndex - 1));
+      controls.querySelector('[data-scene-next]')?.addEventListener('click', () => show(index, sceneIndex + 1));
+      controls.querySelector('[data-story-trial]')?.addEventListener('click', () => {
+          LSApp.go('home');
+          LSJourney.startTrial(document.querySelector('#journeyPlay'), index);
+        });
+      chapter.querySelector('h3')?.focus({ preventScroll: true });
     };
-    nav.querySelectorAll('button').forEach(button => { button.onclick = () => show(Number(button.dataset.storyChapter)); });
+    nav.querySelectorAll('button:not(:disabled)').forEach(button => { button.onclick = () => show(Number(button.dataset.storyChapter), 0); });
     show(Math.max(0, Math.min(headings.length - 1, selected)));
   }
   return { render, openChapter };

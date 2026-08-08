@@ -46,9 +46,9 @@ await step('概念導讀載入', async () => {
   await page.waitForSelector('#view-concept .card h2', { timeout: 8000 });
   const jumpLinks = await page.locator('.concept-jump a').count();
   if (jumpLinks !== 6) throw new Error(`六書頁內導覽數=${jumpLinks}`);
-  if (!await page.locator('.tools-discovery-note').isVisible()) throw new Error('學習工具提示不可見');
+  if (await page.locator('.tools-discovery-note').isVisible()) throw new Error('非首頁仍顯示延伸工具提示');
   const defaultOpen = await page.locator('script[data-site="liushu-quest"]').getAttribute('data-default-open');
-  if (defaultOpen !== 'true') throw new Error('浮動學習工具未預設展開');
+  if (defaultOpen !== 'false') throw new Error('浮動學習工具不應預設展開');
   const safeBottom = await page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).scrollPaddingBottom));
   if (safeBottom < 80) throw new Error(`浮動工具安全區不足：${safeBottom}px`);
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -66,6 +66,7 @@ await step('概念導讀載入', async () => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
 });
 await step('家長陪學：摘要、字級與計時', async () => {
+  await page.click('[data-view="home"]');
   await page.click('#parentGuideToggle');
   await page.waitForSelector('#parentGuidePanel:not([hidden])');
   const guideText = await page.locator('#parentGuidePanel').textContent();
@@ -78,7 +79,6 @@ await step('家長陪學：摘要、字級與計時', async () => {
   await page.click('[data-reading-size="normal"]');
   await page.click('[data-parent-next]');
   if (!await page.locator('#view-story').evaluate(e => e.classList.contains('active'))) throw new Error('家長建議未帶到下一步');
-  await page.click('#parentGuideToggle');
 });
 await step('造字故事載入', async () => {
   await page.click('[data-view="story"]');
@@ -86,6 +86,13 @@ await step('造字故事載入', async () => {
   const n = await page.locator('#view-story h3').count();
   if (n < 7) throw new Error('故事章節只有 ' + n);
   if (await page.locator('.story-chapter:not([hidden])').count() !== 1) throw new Error('故事沒有一次只顯示一卷');
+  if (await page.locator('.story-chapter:not([hidden]) .story-scene:not([hidden])').count() !== 1) throw new Error('故事沒有一次只顯示一幕');
+  const storyNav = await page.evaluate(() => ({
+    current: document.querySelectorAll('.story-chapter-nav [aria-current="step"]').length,
+    disabled: document.querySelectorAll('.story-chapter-nav button:disabled').length,
+    label: document.querySelector('.story-chapter-nav button')?.getAttribute('aria-label')
+  }));
+  if (storyNav.current !== 1 || storyNav.disabled < 1 || !storyNav.label?.includes('楔子')) throw new Error(`故事分卷無障礙或鎖定異常：${JSON.stringify(storyNav)}`);
   const navState = await page.evaluate(() => ({
     current: document.querySelectorAll('.tabs [aria-current="page"]').length,
     view: document.querySelector('.tabs [aria-current="page"]')?.dataset.view,
@@ -97,6 +104,7 @@ await step('造字故事載入', async () => {
   }
 });
 await step('故事短試煉可進入並作答', async () => {
+  while (await page.locator('[data-scene-next]').count()) await page.click('[data-scene-next]');
   await page.click('[data-story-trial]');
   await page.waitForSelector('#journeyPlay .journey-trial .opt');
   await page.locator('#journeyPlay .opt').first().click();
@@ -106,16 +114,24 @@ await step('課堂共學：先答、理由、再答', async () => {
   await page.click('[data-view="classroom"]');
   await page.locator('[data-prompt]').first().click();
   await page.locator('input[name="initial"]').first().check();
+  await page.click('#classInitialForm button[type="submit"]');
+  if (!await page.locator('[data-phase="discuss"]').count()) throw new Error('第一次答案送出後未鎖定進討論階段');
+  await page.click('#classRevise');
   await page.locator('input[name="evidence"]').first().check();
   await page.locator('input[name="revised"]').nth(1).check();
-  await page.click('#classroomForm button[type="submit"]');
+  await page.click('#classRevisionForm button[type="submit"]');
   await page.waitForSelector('#classShowSummary');
+  const activeAggregate = await page.evaluate(() => LSStore.raw.classroom.active);
+  if (activeAggregate?.groups !== 1 || !activeAggregate.initialCounts || !activeAggregate.revisedConfidence) throw new Error('課堂彙整未保存可續接的匿名診斷');
   await page.click('#classShowSummary');
   const summary = await page.locator('.classroom-summary').innerText();
   if (!summary.includes('改變不是扣分')) throw new Error('共學彙整缺少修正導向');
+  const completedAggregate = await page.evaluate(() => ({ active: LSStore.raw.classroom.active, last: LSStore.raw.classroom.sessions.at(-1) }));
+  if (completedAggregate.active !== null || !completedAggregate.last?.evidenceCounts) throw new Error('課堂完成後未保存匿名診斷或仍殘留進行中狀態');
 });
 await step('字例總覽＋開字卡', async () => {
-  await page.click('[data-view="browse"]');
+  await page.click('[data-view="practice"]');
+  await page.click('[data-practice="browse"]');
   await page.waitForSelector('.char-tile');
   const n = await page.locator('.char-tile').count();
   if (n < 150) throw new Error('字例只有 ' + n);
@@ -140,6 +156,7 @@ await step('字例總覽＋開字卡', async () => {
   const closeSize = await page.locator('.dialog-close-icon').evaluate(button => button.getBoundingClientRect().width);
   if (closeSize < 44) throw new Error(`字卡頂端關閉按鈕不足 44px：${closeSize}`);
   if (!await page.locator('.char-detail .evidence-block').count()) throw new Error('字卡沒有分類證據');
+  if (!await page.locator('.char-detail .mastery-checklist').count()) throw new Error('字卡沒有有效精通檢核');
   if (await page.locator('.char-detail .evidence-source, .char-detail .evidence-quote').count()) throw new Error('學生字卡仍顯示外部原文或來源');
   if (!await page.locator('.dialog-close-icon').evaluate(e => e === document.activeElement)) throw new Error('dialog 開啟後未移入頂端關閉按鈕');
   await page.keyboard.press('Escape');
@@ -150,7 +167,8 @@ await step('字例總覽＋開字卡', async () => {
   await page.keyboard.press('Escape');
 });
 await step('閃卡：翻面＋評分', async () => {
-  await page.click('[data-view="flash"]');
+  await page.click('[data-view="practice"]');
+  await page.click('[data-practice="flash"]');
   await page.click('#flashStart');
   await page.click('#fcard');
   await page.waitForSelector('.grade-row');
@@ -168,8 +186,9 @@ await step('閃卡：翻面＋評分', async () => {
   await page.waitForSelector('#fcard .headchar');
 });
 await step('自測：作答一題含回饋', async () => {
-  await page.click('[data-view="quiz"]');
-  await page.click('#quizStart');
+  await page.click('[data-view="practice"]');
+  await page.click('[data-practice="quiz"]');
+  await page.click('#quizQuick');
   await page.waitForSelector('#quizArea .opt');
   await page.locator('#quizArea .opt').first().click();
   await page.waitForSelector('#qFb .feedback');
@@ -179,7 +198,8 @@ await step('自測：作答一題含回饋', async () => {
   await page.waitForSelector('#quizArea .opt');
 });
 await step('對戰：挑戰第一位大師＋作答', async () => {
-  await page.click('[data-view="battle"]');
+  await page.click('[data-view="practice"]');
+  await page.click('[data-practice="battle"]');
   await page.waitForSelector('.master-card');
   await page.locator('.master-card .btn').first().click();
   await page.waitForSelector('.battle-arena .fighter-player');
@@ -251,6 +271,13 @@ await step('桌機導覽與內容寬度', async () => {
   if (desktop.tabsOverflow > 1 || desktop.mainWidth > 880 || desktop.jumpPosition !== 'sticky') {
     throw new Error(`桌機版面異常：${JSON.stringify(desktop)}`);
   }
+});
+await step('匿名統計退出後不載入外部計數程式', async () => {
+  await page.evaluate(() => localStorage.setItem('liushu.analytics.optout', 'true'));
+  await page.reload();
+  await page.waitForSelector('#view-home .journey-hero');
+  const external = await page.locator('script[src*="gc.zgo.at"], script[src*="platform-counter.js"]').count();
+  if (external !== 0) throw new Error(`退出後仍載入 ${external} 個統計程式`);
 });
 
 await browser.close();

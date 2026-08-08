@@ -28,6 +28,9 @@ const LSQuiz = (() => {
   const randPick = (arr, rng = Math.random) => arr[Math.floor(rng() * arr.length)];
   const isUsage = cat => cat === '轉注' || cat === '假借';
   const formationCat = c => c.formation_category || (!isUsage(c.category) ? c.category : null);
+  const relationEntries = c => Array.isArray(c.usage_relations)
+    ? c.usage_relations.map(rel => typeof rel === 'string' ? { type: rel, related_chars: [] } : rel).filter(rel => rel?.type)
+    : [];
   const usageRelations = c => Array.isArray(c.usage_relations) && c.usage_relations.length
     ? c.usage_relations.map(rel => typeof rel === 'string' ? rel : rel.type).filter(Boolean)
     : (isUsage(c.category) ? [c.category] : []);
@@ -46,6 +49,27 @@ const LSQuiz = (() => {
     return c.disputed ? '依本題資料採用的分類，' : '';
   }
 
+  function relationOf(c, cat) {
+    return relationEntries(c).find(rel => rel.type === cat)
+      || (isUsage(c.category) && c.category === cat ? { type: cat, related_chars: [] } : null);
+  }
+
+  function usageEvidence(c, cat) {
+    const rel = relationOf(c, cat);
+    if (cat === '轉注') {
+      const partner = rel?.related_chars?.[0];
+      return partner
+        ? `「${c.char}」與「${partner}」同類近義，兩字能彼此訓釋。`
+        : `「${c.char}」必須和另一個同類近義字成對互訓，才是在談轉注。`;
+    }
+    const compact = [...c.explain].length > 150 ? [...c.explain].slice(0, 150).join('') + '…' : c.explain;
+    return `${compact}（本題要判斷的是原有字被借來記錄另一語詞的關係。）`;
+  }
+
+  function evidenceFor(c, cat) {
+    return isUsage(cat) ? usageEvidence(c, cat) : c.explain;
+  }
+
   function qCatOfChar(pool, rng, requestedCat) {
     const c = randPick(pool, rng);
     const cat = requestedCat || c.category;
@@ -53,7 +77,9 @@ const LSQuiz = (() => {
     const opts = shuffle([cat, ...wrong], rng);
     const relation = isUsage(cat);
     return {
-      stemHtml: `${qualifier(c)}下面這個字呈現六書中的哪一種<b>${relation ? '用字關係' : '構形方式'}</b>？<span class="stem-char">${c.char} <small style="font-size:.95rem;color:var(--ink-soft)">${c.zhuyin}</small></span>`,
+      stemHtml: relation
+        ? `${qualifier(c)}閱讀完整關係證據：<div class="feedback usage-context">${usageEvidence(c, cat)}</div>這段材料呈現哪一種<b>用字關係</b>？`
+        : `${qualifier(c)}下面這個字呈現六書中的哪一種<b>構形方式</b>？<span class="stem-char">${c.char} <small style="font-size:.95rem;color:var(--ink-soft)">${c.zhuyin}</small></span>`,
       options: opts, answer: opts.indexOf(cat),
       explain: `【${c.char}】${cat}${c.sub ? '（' + c.sub + '）' : ''}——${c.explain}`,
       charId: c.id, cat, axis: isUsage(cat) ? 'usage' : 'formation',
@@ -69,9 +95,10 @@ const LSQuiz = (() => {
     const wrong = LSData.pick(sameLv, 3, rng);
     if (wrong.length < 3) return qCatOfChar(pool, rng, cat);
     const opts = shuffle([c, ...wrong], rng);
+    const usage = isUsage(cat);
     return {
-      stemHtml: `${qualifier(c)}下列哪一個字呈現<b>「${cat}」${isUsage(cat) ? '用字關係' : '構形方式'}</b>？`,
-      options: opts.map(x => x.char), answer: opts.indexOf(c),
+      stemHtml: `${qualifier(c)}下列哪一組材料呈現<b>「${cat}」${usage ? '用字關係' : '構形方式'}</b>？`,
+      options: usage ? opts.map(x => x === c ? evidenceFor(x, cat) : evidenceFor(x, isUsage(x.category) ? x.category : formationCat(x))) : opts.map(x => x.char), answer: opts.indexOf(c),
       explain: `【${c.char}】${c.explain}` + wrong.map(w => `／【${w.char}】本題資料列為${w.category}`).join(''),
       charId: c.id, cat, axis: isUsage(cat) ? 'usage' : 'formation', transfer: true,
       misconception: `無法把${cat}判準遷移到新字`, key: `pick:${cat}:${c.id}`
@@ -88,7 +115,7 @@ const LSQuiz = (() => {
       if (!wrong.includes(cand)) wrong.push(cand);
     }
     if (wrong.length < 3) return qCatOfChar(pool, rng, cat);
-    const masked = c.explain.split(c.char).join('◯');
+    const masked = evidenceFor(c, cat).split(c.char).join('◯');
     const opts = shuffle([c, ...wrong], rng);
     return {
       stemHtml: `${qualifier(c)}下面的解說描述哪一個字？（◯＝該字）<div class="feedback">${masked}</div>`,
@@ -103,7 +130,7 @@ const LSQuiz = (() => {
     const cands = pool.filter(c => c.sub);
     if (!cands.length) return qCatOfChar(pool, rng, requestedCat);
     const c = randPick(cands, rng);
-    const opts = ['同體會意', '異體會意', '有借有還', '有借不還'];
+    const opts = ['同體會意', '異體會意', '有借有還', '有借不還', '借義另造'];
     return {
       stemHtml: `${qualifier(c)}「<b>${c.char}</b>」在本題資料中列為${c.category}，更精確是哪一類？`,
       options: opts, answer: opts.indexOf(c.sub),
@@ -130,11 +157,14 @@ const LSQuiz = (() => {
     if (!dual.length) return qCatOfChar(pool, rng);
     const c = randPick(dual, rng);
     const relation = randPick(usageRelations(c), rng);
+    const relationPrompt = relation === '轉注'
+      ? `「${c.char}」與「${relationOf(c, relation)?.related_chars?.[0] || '另一近義字'}」彼此訓釋的用字關係`
+      : `「${c.char}」由本義借來記錄另一個同音或近音語詞的用字關係`;
     const askUsage = rng() >= .5;
     const correct = askUsage ? relation : formationCat(c);
     const opts = shuffle([correct, ...LSData.CATS.filter(cat => cat !== correct).slice(0, 3)], rng);
     return {
-      stemHtml: `「<b>${c.char}</b>」同時可以從兩條軸線分析。本題問的是<b>${askUsage ? '借作其他詞義的用字關係' : '字形本身如何構成'}</b>，應判為哪一類？`,
+      stemHtml: `「<b>${c.char}</b>」同時可以從兩條軸線分析。本題問的是<b>${askUsage ? relationPrompt : '字形本身如何構成'}</b>，應判為哪一類？`,
       options: opts, answer: opts.indexOf(correct),
       explain: `本題先辨認提問軸線：${askUsage ? `用字關係是${relation}` : `構形方式是${formationCat(c)}`}。同一字在不同題幹下，答案可以不同。`,
       charId: c.id, cat: correct, axis: askUsage ? 'usage' : 'formation', rationale: true,
@@ -142,14 +172,16 @@ const LSQuiz = (() => {
     };
   }
 
-  function qEvidence(pool, rng) {
+  function qEvidence(pool, rng, requestedCat = null, requestedAxis = null) {
     const c = randPick(pool, rng);
-    const cat = usageRelations(c)[0] || formationCat(c) || c.category;
+    const cat = requestedCat
+      || (requestedAxis === 'formation' ? formationCat(c) : requestedAxis === 'usage' ? usageRelations(c)[0] : null)
+      || formationCat(c) || usageRelations(c)[0] || c.category;
     const labels = { 象形: '早期字形描摹物體輪廓', 指事: '記號指出位置或抽象概念', 會意: '有意義部件的關係會出新義', 形聲: '形符表義、聲符提示讀音', 假借: '借同音或近音字記錄另一語詞', 轉注: '同類近義字可以彼此訓釋' };
     const correct = labels[cat];
     const opts = shuffle([correct, ...Object.values(labels).filter(x => x !== correct).slice(0, 3)], rng);
     return {
-      stemHtml: `若要支持「<b>${c.char}</b>」在本題應判為<b>${cat}</b>，下列哪一項是最關鍵的證據？`,
+      stemHtml: `${isUsage(cat) ? `<div class="feedback usage-context">${usageEvidence(c, cat)}</div>` : ''}若要支持${isUsage(cat) ? '上述字與字／字與詞的關係' : `「<b>${c.char}</b>」的構形`}應判為<b>${cat}</b>，下列哪一項是最關鍵的證據？`,
       options: opts, answer: opts.indexOf(correct), explain: `判斷不能只靠字形聯想；本題關鍵證據是：${correct}。${c.explain}`,
       charId: c.id, cat, axis: isUsage(cat) ? 'usage' : 'formation', rationale: true,
       misconception: `只記答案，沒有掌握${cat}的證據`, key: `evidence:${cat}:${c.id}`
@@ -190,7 +222,7 @@ const LSQuiz = (() => {
     }
     if (!pool.length) return qConcept(rng, excludeKeys);
     if (spec.type === 'axis') return qAxis(pool, rng);
-    if (spec.type === 'evidence') return qEvidence(pool, rng);
+    if (spec.type === 'evidence') return qEvidence(pool, rng, spec.cat, spec.axis);
     if (spec.type === 'contrast') return qContrast(pool, rng);
     if (spec.type === 'transfer') {
       const q = qCharOfCat(pool, rng, spec.cat);
@@ -216,12 +248,19 @@ const LSQuiz = (() => {
     return qConcept(rng, excludeKeys);
   }
 
-  function buildSession({ level = 'auto', daily = false } = {}) {
+  function buildSession({ level = 'auto', daily = false, quick = false } = {}) {
     const p = P();
     const adaptive = p ? p.adaptiveLevel(LSStore.raw) : '基礎';
     if (daily && p) {
       const challenge = p.dailyChallengeBlueprint(p.localDateKey(), `chars-${LSData.all.length}`);
       return { level: '進階', round: challenge.slots.length, blueprint: challenge.slots, rng: p.seededRandom(challenge.seed + '|questions'), dailyDate: challenge.date };
+    }
+    if (quick) {
+      const blueprint = [
+        { type: 'axis' }, { type: 'evidence' }, { type: 'contrast' },
+        { type: 'transfer' }, { type: 'evidence', axis: 'formation' }
+      ];
+      return { level: '進階', round: 5, blueprint, rng: Math.random, dailyDate: null, quick: true };
     }
     const actual = level === 'auto' ? adaptive : (level || null);
     const blueprint = p ? p.balancedBlueprint(LSStore.raw, ROUND) : Array.from({ length: ROUND }, () => ({}));
@@ -237,18 +276,20 @@ const LSQuiz = (() => {
   <div class="filterbar">
     <label>難度：<select id="quizLevel"><option value="auto">自動調整（目前${adaptive}）</option><option value="">全級混合</option><option>基礎</option><option>進階</option><option>挑戰</option></select></label>
     <button class="btn" id="quizStart">開始均衡自測</button>
+    <button class="btn ghost" id="quizQuick">快速證據 5 題</button>
     ${P() ? '<button class="btn ghost" id="quizDaily">今日字陣</button>' : ''}
   </div>
   <div id="quizArea"></div>
 </div>`;
     el.querySelector('#quizStart').onclick = () => start(el.querySelector('#quizArea'), { level: el.querySelector('#quizLevel').value });
+    el.querySelector('#quizQuick').onclick = () => start(el.querySelector('#quizArea'), { quick: true });
     el.querySelector('#quizDaily')?.addEventListener('click', () => start(el.querySelector('#quizArea'), { daily: true }));
   }
 
   function start(area, options) {
     const session = buildSession(options);
     st = { ...session, n: 0, right: 0, usedIds: new Set(), usedKeys: new Set(), missedIds: new Set(), completed: false,
-      mode: options.daily ? 'daily' : 'quiz', sessionId: sessionToken(options.daily ? 'daily' : 'quiz') };
+      mode: options.daily ? 'daily' : 'quiz', sessionId: sessionToken(options.daily ? 'daily' : options.quick ? 'quick' : 'quiz') };
     next(area);
   }
 
@@ -281,7 +322,7 @@ const LSQuiz = (() => {
       return;
     }
     const slot = st.blueprint[st.n] || {};
-    const q = gen({ level: st.level, cat: slot.cat, type: slot.type, rng: st.rng, excludeIds: st.usedIds, excludeKeys: st.usedKeys });
+      const q = gen({ level: st.level, cat: slot.cat, type: slot.type, axis: slot.axis, rng: st.rng, excludeIds: st.usedIds, excludeKeys: st.usedKeys });
     st.q = q;
     st.n++;
     if (q.charId) st.usedIds.add(q.charId);
@@ -316,7 +357,7 @@ const LSQuiz = (() => {
 
   function _again() {
     const area = document.querySelector('#quizArea');
-    start(area, st.dailyDate ? { daily: true } : { level: st.level });
+    start(area, st.dailyDate ? { daily: true } : st.quick ? { quick: true } : { level: st.level });
   }
 
   return { gen, render, _again, start, buildSession, CONCEPT_BANK };

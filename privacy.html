@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隱私與統計設定｜六書造字堂</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="seal">字</span><h1>隱私與統計設定</h1></div></header>
+<main>
+  <section class="card legal-page">
+    <h2>你的學習資料放在哪裡？</h2>
+    <p>六書造字堂不要求註冊帳號。作答紀錄、字卡進度、故事通關與課堂共學彙整，預設只保存在這台裝置的瀏覽器 localStorage。除非你主動使用右下角的學習紀錄同步工具，本站不會自動上傳題目答案、學生姓名或課堂內容。</p>
+    <h2>匿名到訪統計</h2>
+    <p>未關閉匿名統計時，本站會載入 GoatCounter 計算頁面到訪，也會載入「自學星系」平台到訪元件。平台元件只傳送站台代號與瀏覽器工作階段識別碼，用來估算目前到訪情形；不傳送作答內容或姓名。外部服務的技術紀錄與保存期限依其服務政策，本網站無法替外部服務保證永久固定的保存期間。</p>
+    <h2>關閉或重新開啟</h2>
+    <p>設定只存在這台瀏覽器；清除網站資料後會恢復預設。變更後重新整理首頁才會生效。</p>
+    <label class="privacy-toggle"><input id="analyticsOptout" type="checkbox"> 關閉 GoatCounter 與平台到訪統計</label>
+    <p id="privacyStatus" role="status" aria-live="polite"></p>
+    <div class="btnrow"><a class="btn ghost" href="index.html">回六書造字堂</a></div>
+  </section>
+</main>
+<script>
+(() => {
+  const key = 'liushu.analytics.optout';
+  const input = document.getElementById('analyticsOptout');
+  const status = document.getElementById('privacyStatus');
+  try { input.checked = localStorage.getItem(key) === 'true'; }
+  catch { input.checked = true; input.disabled = true; status.textContent = '瀏覽器拒絕存取設定；為保守起見，本頁視為已關閉統計。'; }
+  input.addEventListener('change', () => {
+    try {
+      localStorage.setItem(key, String(input.checked));
+      status.textContent = input.checked ? '已關閉匿名統計；重新整理首頁後生效。' : '已允許匿名統計；重新整理首頁後生效。';
+    } catch { status.textContent = '無法儲存設定，請檢查瀏覽器的網站資料權限。'; }
+  });
+})();
+</script>
+</body>
+</html>

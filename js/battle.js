@@ -1,7 +1,7 @@
 // 大師對戰（PvE）：薄包裝層——出題全部呼叫 LSQuiz.gen()，這裡只把答對/答錯換算成傷害
 const LSBattle = (() => {
   const MAX_HP = 100;
-  // 文字學大師名單：解鎖門檻＝跨日、客觀作答與理由證據形成的「有效精通字數」。
+  // 文字學大師名單：解鎖門檻＝跨日、客觀作答與理由／證據辨認形成的「有效精通字數」。
   // 攻擊力刻意非線性遞增
   const MASTERS = [
     { id: 'wangyirong', name: '王懿榮', avatar: '🦴', image: 'img/masters/wangyirong.webp', title: '甲骨文發現者', atk: 6, unlock: 0, level: null, focusCats: ['象形'], roundLimit: 10, taunt: '一片龍骨，讓我看見三千年前的文字。你呢？' },

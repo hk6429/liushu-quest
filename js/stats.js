@@ -24,7 +24,7 @@ const LSStats = (() => {
       if (!bc || !(bc.r + bc.w)) return `<span class="pill cat-${cat}">${cat} —</span>`;
       return `<span class="pill cat-${cat}">${cat} ${Math.round(bc.r / (bc.r + bc.w) * 100)}%（${bc.r + bc.w}題）</span>`;
     }).join('');
-    const modeNames = { quiz: '均衡自測', daily: '每日字陣', battle: '大師對戰' };
+    const modeNames = { quiz: '一般自測', daily: '每日字陣', home_daily: '首頁今日五題', chapter_trial: '故事章節試煉', battle: '大師對戰' };
     const modes = Object.entries(modeNames).map(([mode, name]) => {
       const score = s.quiz.byMode?.[mode] || { r: 0, w: 0 };
       const total = score.r + score.w;
