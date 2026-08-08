@@ -86,13 +86,13 @@ test('閃卡模糊留在原盒且不算答對或連勝', () => {
   assert.deepEqual([card.box, card.seen, card.right, card.wrong, card.streak], [3, 5, 2, 1, 0]);
 });
 
-test('舊存檔的 _concept 不會污染精通數', () => {
+test('舊存檔的熟練盒序不會冒充有效精通', () => {
   Store.importSave(JSON.stringify({
     cards: { _concept: { box: 5, right: 99, seen: 99 }, real: { box: 4, right: 2, seen: 2 } },
     quiz: { answered: 99, right: 99, byCat: {} }, battle: { beaten: {} }, days: {}
   }));
   assert.equal(Store.raw.cards._concept, undefined);
-  assert.equal(Store.masteredCount(['real']), 1);
+  assert.equal(Store.masteredCount(['real']), 0);
 });
 
 test('匯入拒絕未來版本並清除危險鍵', () => {
@@ -104,13 +104,15 @@ test('匯入拒絕未來版本並清除危險鍵', () => {
   assert.equal(Store.raw.quiz.byCat['惡意'], undefined);
 });
 
-test('三種有效活動都累計，五次才完成當日', () => {
+test('只有客觀答對才累計有效進度，五次才完成當日', () => {
   const save = P.migrateSave({});
   const now = new Date('2026-08-07T12:00:00+08:00');
   P.recordActivity(save, 'flash', 2, now);
-  P.recordActivity(save, 'quiz', 2, now);
-  let day = P.recordActivity(save, 'battle', 1, now);
-  assert.deepEqual([day.flash, day.quiz, day.battle, day.total, day.complete], [2, 2, 1, 5, true]);
+  P.recordActivity(save, 'quiz', 2, now, 2);
+  let day = P.recordActivity(save, 'battle', 1, now, 1);
+  assert.deepEqual([day.flash, day.quiz, day.battle, day.total, day.effective, day.complete], [2, 2, 1, 5, 3, false]);
+  day = P.recordActivity(save, 'quiz', 2, now, 2);
+  assert.deepEqual([day.total, day.effective, day.complete], [7, 5, true]);
 });
 
 test('目前與最長連續天數依完成日計算', () => {
@@ -130,12 +132,47 @@ test('新手三步導引可完成、跳過與重設', () => {
   assert.equal(P.advanceOnboarding(save, 'skip').skipped, true);
 });
 
-test('成長階段涵蓋未見到精通', () => {
+test('熟練盒序與有效精通分開命名', () => {
   assert.equal(P.masteryStage(null).label, '未見');
   assert.equal(P.masteryStage({ seen: 1, box: 1, right: 0 }).label, '初識');
   assert.equal(P.masteryStage({ seen: 2, box: 2, right: 1 }).label, '熟悉');
   assert.equal(P.masteryStage({ seen: 3, box: 3, right: 2 }).label, '穩固');
-  assert.equal(P.masteryStage({ seen: 4, box: 4, right: 2 }).label, '精通');
+  assert.equal(P.masteryStage({ seen: 4, box: 4, right: 2 }).label, '熟練');
+});
+
+test('同一天重複答對不能形成有效精通', () => {
+  const save = P.migrateSave({});
+  for (let i = 0; i < 6; i++) P.recordSkillEvidence(save, 'same-day', '指事', true, { rationale: true }, new Date(`2026-08-07T0${i}:00:00+08:00`));
+  assert.equal(P.isSkillMastered(save.skillEvidence['same-day'].formation), false);
+  assert.deepEqual([...save.skillEvidence['same-day'].formation.distinctDays], ['2026-08-07']);
+});
+
+test('跨日答對並說出理由後才形成有效精通', () => {
+  const save = P.migrateSave({});
+  P.recordSkillEvidence(save, 'delayed', '指事', true, { rationale: true }, new Date('2026-08-07T08:00:00+08:00'));
+  P.recordSkillEvidence(save, 'delayed', '指事', true, {}, new Date('2026-08-07T09:00:00+08:00'));
+  P.recordSkillEvidence(save, 'delayed', '指事', true, { transfer: true }, new Date('2026-08-08T08:00:00+08:00'));
+  assert.equal(P.isSkillMastered(save.skillEvidence.delayed.formation), true);
+});
+
+test('雙軸字的構形與用字證據分開，不互相灌水', () => {
+  const save = P.migrateSave({});
+  for (const now of ['2026-08-07T08:00:00+08:00', '2026-08-07T09:00:00+08:00', '2026-08-08T08:00:00+08:00']) {
+    P.recordSkillEvidence(save, 'c0116', '會意', true, { rationale: true, axis: 'formation' }, new Date(now));
+  }
+  assert.equal(P.validatedCharMastered(save, 'c0116', chars.find(c => c.id === 'c0116')), false);
+  assert.equal(P.isSkillMastered(save.skillEvidence.c0116.formation), true);
+  assert.equal(P.isSkillMastered(save.skillEvidence.c0116.usage), false);
+});
+
+test('大量自評熟悉不會完成今日有效任務或精通', () => {
+  Store.resetAll();
+  const id = chars[0].id;
+  for (let i = 0; i < 30; i++) Store.gradeCard(id, 2, `flash:self:${i}`);
+  const day = Object.values(Store.raw.days)[0];
+  assert.equal(day.effective, 0);
+  assert.equal(day.complete, false);
+  assert.equal(Store.isMastered(id), false);
 });
 
 test('自適應難度依最近正確率升降', () => {
@@ -187,10 +224,11 @@ test('每日成績保留首次與最佳，不被低分覆蓋', () => {
   assert.deepEqual([result.first, result.best, result.attempts], [8, 8, 2]);
 });
 
-test('每日分享文字不含題目或答案', () => {
-  const text = P.challengeShareText({ date: '2026-08-07', score: 9, total: 12, streak: 3 });
+test('每日分享文字採溫和週節奏且不含題目或答案', () => {
+  const text = P.challengeShareText({ date: '2026-08-07', score: 9, total: 12, weekly: 2, goal: 3 });
   assert.match(text, /9／12/);
-  assert.match(text, /連續修行 3 天/);
+  assert.match(text, /本週完成 2／3 次/);
+  assert.doesNotMatch(text, /連續/);
   assert.doesNotMatch(text, /正解|題目|answer/i);
 });
 
@@ -206,10 +244,7 @@ test('今日任務鎖定真實弱點，且不把未解鎖大師當可挑戰', ()
   let mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, weakIds: ['a', 'b', 'c'], mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
   assert.equal(mission.id, 'weak');
   assert.deepEqual([...mission.focusIds], ['a', 'b', 'c']);
-  P.recordActivity(save, 'flash', 5, new Date());
-  mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
-  assert.equal(mission.id, 'quiz');
-  P.recordActivity(save, 'quiz', 5, new Date());
+  P.recordActivity(save, 'quiz', 5, new Date(), 5);
   mission = P.todayMission({ save, weakCount: 3, dueCount: 4, newCount: 10, mastered: 0, masters: [{ id: 'lisi', name: '李斯', unlock: 8 }] });
   assert.equal(mission.id, 'unlock');
   mission = P.todayMission({ save, mastered: 0, masters: [{ id: 'wang', name: '王懿榮', unlock: 0 }] });
@@ -231,7 +266,12 @@ test('完成事件具冪等性，不會重複增加回合數', () => {
 test('印記判定具冪等性', () => {
   const sample = chars.slice(0, 6);
   const save = P.migrateSave({ cards: {}, sessions: { quiz: 1, lastQuiz: { score: 10, total: 10 } } });
-  for (const c of sample) save.cards[c.id] = { box: 4, right: 2, seen: 2 };
+  for (const c of sample) {
+    save.skillEvidence[c.id] = {
+      formation: { objectiveRight: 3, objectiveWrong: 0, distinctDays: ['2026-08-06', '2026-08-07'], delayedPasses: 1, rationalePasses: 1 },
+      usage: { objectiveRight: 3, objectiveWrong: 0, distinctDays: ['2026-08-06', '2026-08-07'], delayedPasses: 1, rationalePasses: 1 }
+    };
+  }
   const first = P.evaluateBadges(save, { chars: sample, masters: [] }, new Date('2026-08-07T00:00:00Z'));
   const second = P.evaluateBadges(save, { chars: sample, masters: [] }, new Date('2026-08-07T00:00:01Z'));
   assert.ok(first.includes('first-quiz'));
@@ -255,6 +295,21 @@ context.__data = {
 vm.runInContext('const LSData = globalThis.__data;', context);
 vm.runInContext(`${quizSource}\n;globalThis.__Quiz = LSQuiz;`, context);
 vm.runInContext(`${flashSource}\n;globalThis.__Flash = LSFlash;`, context);
+
+test('今日五題的四類深度題都綁定真實字例', () => {
+  const result = vm.runInContext(`(() => {
+    const types = ['axis', 'evidence', 'contrast', 'transfer', 'evidence'];
+    const ids = new Set(), keys = new Set();
+    return types.map(type => {
+      const q = LSQuiz.gen({ type, excludeIds: ids, excludeKeys: keys });
+      if (q.charId) ids.add(q.charId);
+      keys.add(q.key);
+      return { type, charId: q.charId, cat: q.cat };
+    });
+  })()`, context);
+  assert.equal(result.length, 5);
+  assert.ok(result.every(question => question.charId && question.cat !== '概念'), JSON.stringify(result));
+});
 
 test('指定弱點即使位於資料尾端仍排在牌組最前', () => {
   const result = vm.runInContext(`(() => {

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 端到端煙霧測試：手機寬度走完陪學、概念、總覽、閃卡、自測、對戰、戰績與證據卡，零前端錯誤、不橫向跑版
+// 端到端煙霧測試：手機寬度走完今日主線、故事、共學與既有功能，零前端錯誤、不橫向跑版
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { join, dirname, extname } from 'node:path';
@@ -33,6 +33,14 @@ const step = async (name, fn) => {
 };
 
 await page.goto(`http://localhost:${port}/`);
+
+await step('今日主線預設載入', async () => {
+  await page.waitForSelector('#view-home .journey-hero h2', { timeout: 8000 });
+  const active = await page.locator('.tabs [aria-current="page"]').getAttribute('data-view');
+  if (active !== 'home') throw new Error(`預設分頁=${active}`);
+  if (await page.locator('.chapter-map li').count() !== 8) throw new Error('故事旅程不是八卷');
+  await page.click('[data-view="concept"]');
+});
 
 await step('概念導讀載入', async () => {
   await page.waitForSelector('#view-concept .card h2', { timeout: 8000 });
@@ -77,6 +85,7 @@ await step('造字故事載入', async () => {
   await page.waitForSelector('#view-story .story-card h3');
   const n = await page.locator('#view-story h3').count();
   if (n < 7) throw new Error('故事章節只有 ' + n);
+  if (await page.locator('.story-chapter:not([hidden])').count() !== 1) throw new Error('故事沒有一次只顯示一卷');
   const navState = await page.evaluate(() => ({
     current: document.querySelectorAll('.tabs [aria-current="page"]').length,
     view: document.querySelector('.tabs [aria-current="page"]')?.dataset.view,
@@ -86,6 +95,24 @@ await step('造字故事載入', async () => {
   if (navState.current !== 1 || navState.view !== 'story' || navState.focus !== 'view-story-title' || !navState.hintVisible) {
     throw new Error(`分頁狀態或焦點異常：${JSON.stringify(navState)}`);
   }
+});
+await step('故事短試煉可進入並作答', async () => {
+  await page.click('[data-story-trial]');
+  await page.waitForSelector('#journeyPlay .journey-trial .opt');
+  await page.locator('#journeyPlay .opt').first().click();
+  await page.waitForSelector('#journeyFeedback .feedback');
+});
+await step('課堂共學：先答、理由、再答', async () => {
+  await page.click('[data-view="classroom"]');
+  await page.locator('[data-prompt]').first().click();
+  await page.locator('input[name="initial"]').first().check();
+  await page.locator('input[name="evidence"]').first().check();
+  await page.locator('input[name="revised"]').nth(1).check();
+  await page.click('#classroomForm button[type="submit"]');
+  await page.waitForSelector('#classShowSummary');
+  await page.click('#classShowSummary');
+  const summary = await page.locator('.classroom-summary').innerText();
+  if (!summary.includes('改變不是扣分')) throw new Error('共學彙整缺少修正導向');
 });
 await step('字例總覽＋開字卡', async () => {
   await page.click('[data-view="browse"]');
@@ -143,13 +170,13 @@ await step('閃卡：翻面＋評分', async () => {
 await step('自測：作答一題含回饋', async () => {
   await page.click('[data-view="quiz"]');
   await page.click('#quizStart');
-  await page.waitForSelector('.opt');
-  await page.locator('.opt').first().click();
+  await page.waitForSelector('#quizArea .opt');
+  await page.locator('#quizArea .opt').first().click();
   await page.waitForSelector('#qFb .feedback');
-  const nonColorCue = await page.locator('.opt.correct').evaluate(e => getComputedStyle(e, '::after').content);
+  const nonColorCue = await page.locator('#quizArea .opt.correct').evaluate(e => getComputedStyle(e, '::after').content);
   if (!nonColorCue.includes('正確答案')) throw new Error(`正確選項缺少非顏色提示：${nonColorCue}`);
   await page.click('#qNext');
-  await page.waitForSelector('.opt');
+  await page.waitForSelector('#quizArea .opt');
 });
 await step('對戰：挑戰第一位大師＋作答', async () => {
   await page.click('[data-view="battle"]');

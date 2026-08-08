@@ -121,6 +121,55 @@ const LSStory = (() => {
   </div>
 </div>`;
 
-  function render(el) { el.innerHTML = html; }
-  return { render };
+  let requestedChapter = null;
+
+  function openChapter(index) { requestedChapter = Math.max(0, Math.min(7, Number(index) || 0)); }
+
+  function render(el) {
+    el.innerHTML = html;
+    if (!el.querySelectorAll) return;
+    const card = el.querySelector('.story-card');
+    const headings = [...card.querySelectorAll('h3')];
+    if (!headings.length) return;
+    headings.forEach((heading, index) => {
+      const section = document.createElement('section');
+      section.className = 'story-chapter';
+      section.dataset.chapter = index;
+      heading.before(section);
+      let node = heading;
+      while (node && !(node !== heading && node.tagName === 'H3')) {
+        const next = node.nextSibling;
+        section.appendChild(node);
+        node = next;
+      }
+    });
+    const save = LSStore.raw;
+    const selected = requestedChapter ?? save.journey.pendingChapter ?? save.journey.chapter;
+    requestedChapter = null;
+    const nav = document.createElement('nav');
+    nav.className = 'story-chapter-nav';
+    nav.setAttribute('aria-label', '故事分卷');
+    nav.innerHTML = headings.map((heading, index) => `<button type="button" data-story-chapter="${index}">${index + 1}</button>`).join('');
+    card.insertBefore(nav, card.querySelector('.story-chapter'));
+    const show = index => {
+      card.querySelectorAll('.story-chapter').forEach((section, i) => { section.hidden = i !== index; });
+      nav.querySelectorAll('button').forEach((button, i) => button.classList.toggle('active', i === index));
+      let controls = card.querySelector('.story-controls');
+      if (controls) controls.remove();
+      controls = document.createElement('div');
+      controls.className = 'story-controls btnrow';
+      controls.innerHTML = `${index > 0 ? '<button class="btn ghost" data-story-prev>上一卷</button>' : ''}<button class="btn" data-story-trial>完成本卷，進入短試煉</button>${index < headings.length - 1 ? '<button class="btn ghost" data-story-next>下一卷</button>' : ''}`;
+      card.appendChild(controls);
+      controls.querySelector('[data-story-prev]')?.addEventListener('click', () => show(index - 1));
+      controls.querySelector('[data-story-next]')?.addEventListener('click', () => show(index + 1));
+      controls.querySelector('[data-story-trial]').onclick = () => {
+        LSApp.go('home');
+        LSJourney.startTrial(document.querySelector('#journeyPlay'), index);
+      };
+      card.querySelector('.story-chapter:not([hidden]) h3')?.focus({ preventScroll: true });
+    };
+    nav.querySelectorAll('button').forEach(button => { button.onclick = () => show(Number(button.dataset.storyChapter)); });
+    show(Math.max(0, Math.min(headings.length - 1, selected)));
+  }
+  return { render, openChapter };
 })();

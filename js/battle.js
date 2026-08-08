@@ -1,7 +1,7 @@
 // 大師對戰（PvE）：薄包裝層——出題全部呼叫 LSQuiz.gen()，這裡只把答對/答錯換算成傷害
 const LSBattle = (() => {
   const MAX_HP = 100;
-  // 文字學大師名單：解鎖門檻＝「精通字數」（盒序≥4 且答對≥2 的字），掛真實學習量
+  // 文字學大師名單：解鎖門檻＝跨日、客觀作答與理由證據形成的「有效精通字數」。
   // 攻擊力刻意非線性遞增
   const MASTERS = [
     { id: 'wangyirong', name: '王懿榮', avatar: '🦴', image: 'img/masters/wangyirong.webp', title: '甲骨文發現者', atk: 6, unlock: 0, level: null, focusCats: ['象形'], roundLimit: 10, taunt: '一片龍骨，讓我看見三千年前的文字。你呢？' },
@@ -28,7 +28,7 @@ const LSBattle = (() => {
 <div class="card battle-shell">
   <div class="battle-lobby">
     <h2>大師對戰</h2>
-    <p class="muted">與歷代文字學大師過招：答對造成傷害（連擊加成），答錯挨大師一擊。目前精通 <b>${mastered}</b> 字（閃卡升到第 4 盒＋答對 2 次以上算精通），精通越多、解鎖越多大師。</p>
+    <p class="muted">與歷代文字學大師過招：答對造成傷害（連擊加成），答錯挨大師一擊。目前有效精通 <b>${mastered}</b> 字；須跨日客觀答對並通過理由題，才會列入解鎖。</p>
     <p class="muted"><b>創作說明：</b>人物插畫是 AI 輔助的教學想像圖，不是歷史肖像復原；對戰台詞是本站戲劇化創作，不是史料原句。</p>
     <div class="roster">${MASTERS.map(m => {
       const locked = mastered < m.unlock;
@@ -39,7 +39,7 @@ const LSBattle = (() => {
         <div class="muted">攻擊 ${m.atk}${m.level ? '・出題限' + m.level : ''}・主題 ${m.focusCats.join('／')}</div>
         ${beaten[m.id] ? `<div class="beaten">已擊敗 ×${beaten[m.id]}</div>` : ''}
         ${best[m.id] != null ? `<div class="muted">個人最佳 ${best[m.id]}／${m.roundLimit}</div>` : ''}
-        ${locked ? `<div class="muted">🔒 精通 ${m.unlock} 字解鎖</div>` : `<button class="btn small" data-m="${m.id}">挑戰</button>`}
+        ${locked ? `<div class="muted">🔒 有效精通 ${m.unlock} 字解鎖</div>` : `<button class="btn small" data-m="${m.id}">挑戰</button>`}
       </div>`;
     }).join('')}</div>
   </div>
@@ -146,7 +146,9 @@ const LSBattle = (() => {
         if (!ok) btn.classList.add('wrong');
         const p = typeof LSProgress !== 'undefined' ? LSProgress : null;
         const before = q.charId && p ? p.masteryStage(LSStore.raw.cards[q.charId]) : null;
-        LSStore.recordAnswer(q.charId, q.cat, ok, 'battle', `${st.sessionId}:${q.key}`);
+        LSStore.recordAnswer(q.charId, q.cat, ok, 'battle', `${st.sessionId}:${q.key}`, {
+          axis: q.axis, rationale: !!q.rationale, transfer: !!q.transfer, misconception: q.misconception
+        });
         const after = q.charId && p ? p.masteryStage(LSStore.raw.cards[q.charId]) : null;
         let msg;
         if (ok) {

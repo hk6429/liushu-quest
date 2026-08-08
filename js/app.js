@@ -1,16 +1,19 @@
 // 分頁路由 + 字例總覽 + 字卡詳情
 const LSApp = (() => {
   const VIEW_LABELS = {
+    home: '今日主線',
     concept: '概念導讀', story: '造字故事', browse: '字例總覽', flash: '閃卡複習',
-    quiz: '自測闖關', battle: '大師對戰', stats: '戰績'
+    quiz: '自測闖關', battle: '大師對戰', classroom: '課堂共學', stats: '戰績'
   };
   const views = {
+    home: () => LSJourney.render(el('view-home')),
     concept: () => LSConcept.render(el('view-concept')),
     story: () => LSStory.render(el('view-story')),
     browse: renderBrowse,
     flash: () => LSFlash.render(el('view-flash')),
     quiz: () => LSQuiz.render(el('view-quiz')),
     battle: () => LSBattle.render(el('view-battle')),
+    classroom: () => LSClassroom.render(el('view-classroom')),
     stats: () => LSStats.render(el('view-stats'))
   };
   function el(id) { return document.getElementById(id); }
@@ -163,7 +166,7 @@ const LSApp = (() => {
   window.addEventListener('liushu:storage-error', event => showStorageWarning(event.detail));
   showStorageWarning();
   document.querySelectorAll('.tabs button').forEach(b => { b.onclick = () => go(b.dataset.view); });
-  LSData.init().then(() => go('concept', { focus: false })).catch(err => {
+  LSData.init().then(() => go('home', { focus: false })).catch(err => {
     document.getElementById('main').innerHTML = `<div class="card"><h2>資料載入失敗</h2><p class="muted">${err}</p></div>`;
   });
 

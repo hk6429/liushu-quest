@@ -171,6 +171,23 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 .btn:disabled { opacity: .45; cursor: default; }
 .btnrow { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .8rem; }
 
+/* ── 今日主線 ── */
+.eyebrow { color: var(--cinnabar-dark); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.journey-hero { background: linear-gradient(145deg, #fffdf7 55%, #efe3c9); border-top: 4px solid var(--cinnabar); }
+.journey-hero h2 { font-size: clamp(1.25rem, 4vw, 1.8rem); }
+.journey-meter { height: .65rem; overflow: hidden; margin: .9rem 0 .45rem; border-radius: 99px; background: #ddd2bc; }
+.journey-meter span { display: block; height: 100%; min-width: .25rem; border-radius: inherit; background: linear-gradient(90deg, var(--cinnabar), #d19b3f); }
+.chapter-map { list-style: none; display: grid; gap: .45rem; padding: 0; }
+.chapter-map button { display: grid; grid-template-columns: 2.4rem 1fr auto; align-items: center; gap: .65rem; width: 100%; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: .55rem; background: #faf5e8; text-align: left; }
+.chapter-map button > span { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--paper-deep); color: var(--cinnabar-dark); font-weight: 700; }
+.chapter-map small { color: var(--ink-soft); }
+.chapter-map .is-current button { border: 2px solid var(--cinnabar); background: #fff8ed; }
+.chapter-map .is-done button > span { background: var(--green); color: white; }
+.week-dots { display: grid; grid-template-columns: repeat(7, 1fr); gap: .45rem; max-width: 24rem; }
+.week-dots span { height: .7rem; border-radius: 99px; background: #d8cfbb; }
+.week-dots span.done { background: var(--green); }
+.next-hook { padding: .7rem; border-left: 4px solid var(--gold); background: #faf2df; }
+
 /* ── 概念導讀 ── */
 .origin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .7rem; margin: .6rem 0; }
 .origin-cell { border: 1px dashed var(--line); border-radius: .5rem; padding: .7rem; background: var(--paper-deep); }
@@ -193,12 +210,34 @@ html[data-reading-size="large"] { font-size: 112.5%; }
 /* ── 造字故事 ── */
 .story-card h3 { color: var(--cinnabar-dark); margin-top: 1.3rem; letter-spacing: .06em; }
 .story-card p { text-indent: 0; }
+.story-chapter-nav { position: sticky; top: 5.9rem; z-index: 9; display: flex; gap: .35rem; overflow-x: auto; padding: .5rem; margin: .6rem 0 1rem; border: 1px solid var(--line); border-radius: .55rem; background: rgba(255, 253, 247, .96); }
+.story-chapter-nav button { flex: 0 0 2.7rem; border: 1px solid var(--line); border-radius: 50%; background: var(--paper-deep); }
+.story-chapter-nav button.active { background: var(--cinnabar); color: white; border-color: var(--cinnabar); font-weight: 700; }
+.story-chapter[hidden] { display: none; }
+.story-chapter > h3 { font-size: 1.2rem; }
+.story-controls { justify-content: space-between; border-top: 1px dashed var(--line); padding-top: .9rem; }
 .story-characters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0 1.2rem; }
 .story-characters figure { overflow: hidden; border: 1px solid var(--line); border-radius: .65rem; background: var(--paper-deep); }
 .story-characters img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .story-characters figcaption { display: grid; gap: .15rem; padding: .55rem .65rem; line-height: 1.35; }
 .story-characters figcaption b { color: var(--cinnabar-dark); }
 .story-characters figcaption span { color: var(--ink-soft); font-size: .78rem; }
+
+/* ── 課堂共學 ── */
+.prompt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .65rem; margin-top: .8rem; }
+.prompt-card { display: grid; gap: .35rem; padding: .8rem; border: 1px solid var(--line); border-radius: .6rem; background: #faf5e8; text-align: left; }
+.prompt-card b { color: var(--cinnabar-dark); }
+.prompt-card span { color: var(--ink-soft); line-height: 1.5; }
+.classroom-flow form { display: grid; gap: .85rem; }
+.classroom-flow fieldset { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: .75rem; border: 1px solid var(--line); border-radius: .55rem; }
+.classroom-flow legend { padding: 0 .3rem; color: var(--cinnabar-dark); font-weight: 700; }
+.classroom-flow label { min-height: 44px; display: inline-flex; align-items: center; gap: .35rem; }
+.classroom-flow select { margin-left: .4rem; padding: .35rem; border: 1px solid var(--line); border-radius: .4rem; background: white; }
+.evidence-wall { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .45rem; margin: .7rem 0; }
+.evidence-wall span { display: grid; gap: .1rem; padding: .55rem; border-radius: .5rem; background: var(--paper-deep); text-align: center; font-size: .82rem; }
+.evidence-wall b { color: var(--cinnabar-dark); font-size: 1.2rem; }
+.answer-shift { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+.answer-shift > div { padding: .7rem; border: 1px solid var(--line); border-radius: .55rem; background: #faf5e8; }
 
 /* ── 字例總覽 ── */
 .filterbar { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: .55rem; align-items: end; }

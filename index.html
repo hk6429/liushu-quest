@@ -12,12 +12,14 @@
 <header class="topbar">
   <div class="brand"><span class="seal">字</span><h1>六書造字堂</h1><span class="subtitle">漢字造字法練功站</span></div>
   <nav class="tabs" id="navTabs" aria-label="主要練功頁面">
-    <button type="button" data-view="concept" class="active" aria-controls="view-concept" aria-current="page">概念導讀</button>
+    <button type="button" data-view="home" class="active" aria-controls="view-home" aria-current="page">今日主線</button>
+    <button type="button" data-view="concept" aria-controls="view-concept">概念導讀</button>
     <button type="button" data-view="story" aria-controls="view-story">造字故事</button>
     <button type="button" data-view="browse" aria-controls="view-browse">字例總覽</button>
     <button type="button" data-view="flash" aria-controls="view-flash">閃卡複習</button>
     <button type="button" data-view="quiz" aria-controls="view-quiz">自測闖關</button>
     <button type="button" data-view="battle" aria-controls="view-battle">大師對戰</button>
+    <button type="button" data-view="classroom" aria-controls="view-classroom">課堂共學</button>
     <button type="button" data-view="stats" aria-controls="view-stats">戰績</button>
   </nav>
   <p class="tab-scroll-hint" aria-hidden="true">← 左右滑動切換練功頁 →</p>
@@ -34,12 +36,14 @@
     <button type="button" class="btn small ghost" id="parentGuideToggle" aria-expanded="false" aria-controls="parentGuidePanel">打開陪學指南</button>
     <div id="parentGuidePanel" class="parent-guide-panel" hidden></div>
   </section>
-  <section id="view-concept" class="view active" aria-hidden="false"></section>
+  <section id="view-home" class="view active" aria-hidden="false"></section>
+  <section id="view-concept" class="view" aria-hidden="true"></section>
   <section id="view-story" class="view" aria-hidden="true"></section>
   <section id="view-browse" class="view" aria-hidden="true"></section>
   <section id="view-flash" class="view" aria-hidden="true"></section>
   <section id="view-quiz" class="view" aria-hidden="true"></section>
   <section id="view-battle" class="view" aria-hidden="true"></section>
+  <section id="view-classroom" class="view" aria-hidden="true"></section>
   <section id="view-stats" class="view" aria-hidden="true"></section>
 </main>
 
@@ -59,8 +63,10 @@
 <script src="js/concept.js"></script>
 <script src="js/story.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/journey.js"></script>
 <script src="js/flashcard.js"></script>
 <script src="js/battle.js"></script>
+<script src="js/classroom.js"></script>
 <script src="js/stats.js"></script>
 <script src="js/app.js"></script>
 <script src="js/parent.js"></script>

@@ -34,7 +34,7 @@ const LSProgress = (() => {
   function normalizeDay(value) {
     if (typeof value === 'number') {
       const total = int(value);
-      return { flash: total, quiz: 0, battle: 0, sessions: 0, flashSessions: 0, quizSessions: 0, battleSessions: 0, total, complete: total >= DAY_GOAL };
+      return { flash: total, quiz: 0, battle: 0, sessions: 0, flashSessions: 0, quizSessions: 0, battleSessions: 0, total, effective: 0, complete: total >= DAY_GOAL };
     }
     const day = value && typeof value === 'object' ? value : {};
     const flash = int(day.flash);
@@ -44,8 +44,27 @@ const LSProgress = (() => {
     const flashSessions = int(day.flashSessions);
     const quizSessions = int(day.quizSessions);
     const battleSessions = int(day.battleSessions);
+    const effective = int(day.effective);
     const total = Math.max(int(day.total), flash + quiz + battle);
-    return { flash, quiz, battle, sessions, flashSessions, quizSessions, battleSessions, total, complete: !!day.complete || total >= DAY_GOAL };
+    return { flash, quiz, battle, sessions, flashSessions, quizSessions, battleSessions, total, effective, complete: !!day.complete || effective >= DAY_GOAL };
+  }
+
+  function normalizeSkill(value) {
+    const skill = value && typeof value === 'object' ? value : {};
+    const days = Array.isArray(skill.distinctDays)
+      ? [...new Set(skill.distinctDays.filter(day => /^\d{4}-\d{2}-\d{2}$/.test(day)))].slice(-30)
+      : [];
+    return {
+      objectiveRight: int(skill.objectiveRight),
+      objectiveWrong: int(skill.objectiveWrong),
+      distinctDays: days,
+      delayedPasses: int(skill.delayedPasses),
+      rationalePasses: int(skill.rationalePasses),
+      transferPasses: int(skill.transferPasses),
+      lastCorrectAt: typeof skill.lastCorrectAt === 'string' ? skill.lastCorrectAt.slice(0, 40) : null,
+      dueAt: typeof skill.dueAt === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(skill.dueAt) ? skill.dueAt : null,
+      masteredAt: typeof skill.masteredAt === 'string' ? skill.masteredAt.slice(0, 40) : null
+    };
   }
 
   function boundedEventIds(values, now = new Date()) {
@@ -89,13 +108,35 @@ const LSProgress = (() => {
     save.sessions.battle = int(save.sessions.battle);
     save.sessions.lastQuiz = save.sessions.lastQuiz && typeof save.sessions.lastQuiz === 'object' ? save.sessions.lastQuiz : null;
     save.dailyChallenges = save.dailyChallenges && typeof save.dailyChallenges === 'object' ? save.dailyChallenges : {};
+    save.skillEvidence = save.skillEvidence && typeof save.skillEvidence === 'object' ? save.skillEvidence : {};
+    for (const [id, entry] of Object.entries(save.skillEvidence)) {
+      if (!entry || typeof entry !== 'object') { delete save.skillEvidence[id]; continue; }
+      save.skillEvidence[id] = {
+        formation: normalizeSkill(entry.formation),
+        usage: normalizeSkill(entry.usage)
+      };
+    }
+    save.recovery = save.recovery && typeof save.recovery === 'object' ? save.recovery : {};
+    const oldJourney = save.journey && typeof save.journey === 'object' ? save.journey : {};
+    save.journey = {
+      chapter: Math.min(7, int(oldJourney.chapter)),
+      completed: oldJourney.completed && typeof oldJourney.completed === 'object' ? oldJourney.completed : {},
+      pendingChapter: Number.isInteger(oldJourney.pendingChapter) ? Math.min(7, Math.max(0, oldJourney.pendingChapter)) : null,
+      lastVisit: typeof oldJourney.lastVisit === 'string' ? oldJourney.lastVisit.slice(0, 40) : null,
+      weeklyGoal: Math.min(7, Math.max(1, int(oldJourney.weeklyGoal, 3)))
+    };
+    const oldClassroom = save.classroom && typeof save.classroom === 'object' ? save.classroom : {};
+    save.classroom = {
+      sessions: Array.isArray(oldClassroom.sessions) ? oldClassroom.sessions.slice(-20) : [],
+      evidenceWall: oldClassroom.evidenceWall && typeof oldClassroom.evidenceWall === 'object' ? oldClassroom.evidenceWall : {}
+    };
     save.eventIds = boundedEventIds(save.eventIds);
     save.created = Number.isFinite(Number(save.created)) ? Number(save.created) : Date.now();
-    save.schemaVersion = Math.max(2, int(save.schemaVersion));
+    save.schemaVersion = Math.max(3, int(save.schemaVersion));
     return save;
   }
 
-  function recordActivity(save, mode, amount = 1, now = new Date()) {
+  function recordActivity(save, mode, amount = 1, now = new Date(), effective = 0) {
     migrateSave(save);
     if (!['flash', 'quiz', 'battle'].includes(mode)) return null;
     const key = localDateKey(now);
@@ -103,9 +144,62 @@ const LSProgress = (() => {
     const add = Math.max(0, int(amount));
     day[mode] += add;
     day.total += add;
-    day.complete = day.total >= DAY_GOAL;
+    day.effective += Math.max(0, int(effective));
+    day.complete = day.effective >= DAY_GOAL;
     save.days[key] = day;
     return day;
+  }
+
+  function skillAxis(cat, explicit = null) {
+    if (explicit === 'formation' || explicit === 'usage') return explicit;
+    return cat === '轉注' || cat === '假借' ? 'usage' : 'formation';
+  }
+
+  function skillState(save, id, axis) {
+    migrateSave(save);
+    save.skillEvidence[id] ||= { formation: normalizeSkill(), usage: normalizeSkill() };
+    save.skillEvidence[id][axis] = normalizeSkill(save.skillEvidence[id][axis]);
+    return save.skillEvidence[id][axis];
+  }
+
+  function isSkillMastered(skill) {
+    return int(skill?.objectiveRight) >= 3
+      && (skill?.distinctDays?.length || 0) >= 2
+      && int(skill?.delayedPasses) >= 1
+      && int(skill?.rationalePasses) >= 1;
+  }
+
+  function recordSkillEvidence(save, id, cat, ok, meta = {}, now = new Date()) {
+    migrateSave(save);
+    if (!id || id === '_concept') return null;
+    const axis = skillAxis(cat, meta.axis);
+    const skill = skillState(save, id, axis);
+    const date = localDateKey(now);
+    const previousDate = skill.lastCorrectAt ? localDateKey(new Date(skill.lastCorrectAt)) : null;
+    if (ok) {
+      skill.objectiveRight++;
+      if (!skill.distinctDays.includes(date)) skill.distinctDays.push(date);
+      if (previousDate && previousDate !== date) skill.delayedPasses++;
+      if (meta.rationale) skill.rationalePasses++;
+      if (meta.transfer) skill.transferPasses++;
+      skill.lastCorrectAt = now.toISOString();
+      skill.dueAt = shiftDateKey(date, skill.distinctDays.length >= 2 ? 2 : 1);
+      if (isSkillMastered(skill)) skill.masteredAt ||= now.toISOString();
+    } else {
+      skill.objectiveWrong++;
+      const key = `${id}:${axis}`;
+      save.recovery[key] = {
+        id, axis, misconception: String(meta.misconception || cat || '待釐清').slice(0, 80),
+        assignedAt: now.toISOString(), immediateRepairPassed: false,
+        delayedDueAt: shiftDateKey(date, 1), delayedRepairPassed: false
+      };
+    }
+    const recovery = save.recovery[`${id}:${axis}`];
+    if (ok && recovery) {
+      if (date >= recovery.delayedDueAt) recovery.delayedRepairPassed = true;
+      else if (meta.rationale) recovery.immediateRepairPassed = true;
+    }
+    return { axis, skill, mastered: isSkillMastered(skill) };
   }
 
   function recordSession(save, kind, summary = {}, now = new Date()) {
@@ -154,6 +248,16 @@ const LSProgress = (() => {
     return { current, longest, today: normalizeDay(save.days[today]), goal: DAY_GOAL };
   }
 
+  function weeklyRhythm(save, now = new Date()) {
+    migrateSave(save);
+    const today = localDateKey(now);
+    const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
+    const start = shiftDateKey(today, -((weekday + 6) % 7));
+    const days = Array.from({ length: 7 }, (_, i) => shiftDateKey(start, i));
+    const completed = days.filter(day => normalizeDay(save.days[day]).complete).length;
+    return { completed, goal: save.journey.weeklyGoal, start, days };
+  }
+
   function onboardingState(save) {
     migrateSave(save);
     return { ...save.onboarding, complete: !!save.onboarding.completedAt };
@@ -175,16 +279,33 @@ const LSProgress = (() => {
   function masteryStage(card) {
     if (!card || int(card.seen) === 0) return { id: 'unseen', label: '未見', rank: 0, next: '先認識這個字' };
     const box = Math.max(1, int(card.box, 1));
-    if (box >= 4 && int(card.right) >= 2) return { id: 'mastered', label: '精通', rank: 4, next: '保持間隔複習' };
-    if (box >= 3) return { id: 'solid', label: '穩固', rank: 3, next: '再升 1 盒即可精通' };
-    if (box >= 2) return { id: 'familiar', label: '熟悉', rank: 2, next: '再升 2 盒即可精通' };
+    if (box >= 4 && int(card.right) >= 2) return { id: 'rehearsed', label: '熟練', rank: 4, next: '跨日答題與說理由後才算有效精通' };
+    if (box >= 3) return { id: 'solid', label: '穩固', rank: 3, next: '再練可達熟練；有效精通另看跨日證據' };
+    if (box >= 2) return { id: 'familiar', label: '熟悉', rank: 2, next: '再練 2 盒可達熟練' };
     return { id: 'learning', label: '初識', rank: 1, next: '答熟可升到第 2 盒' };
   }
 
-  function masteredIds(save, validIds) {
+  function axesForChar(char) {
+    const axes = [];
+    if (char?.formation_category) axes.push('formation');
+    const relations = Array.isArray(char?.usage_relations) ? char.usage_relations : [];
+    if (relations.length) axes.push('usage');
+    return axes.length ? axes : ['formation'];
+  }
+
+  function validatedCharMastered(save, id, char = null) {
+    migrateSave(save);
+    const entry = save.skillEvidence[id];
+    if (!entry) return false;
+    return axesForChar(char).every(axis => isSkillMastered(entry[axis]));
+  }
+
+  function masteredIds(save, validIds, chars = null) {
     migrateSave(save);
     const valid = new Set(validIds || []);
-    return Object.keys(save.cards).filter(id => valid.has(id) && masteryStage(save.cards[id]).id === 'mastered');
+    const byId = chars ? Object.fromEntries(chars.map(char => [char.id, char]))
+      : (typeof LSData !== 'undefined' ? LSData.byId : {});
+    return [...valid].filter(id => validatedCharMastered(save, id, byId?.[id]));
   }
 
   function categoryMastery(save, chars) {
@@ -196,7 +317,8 @@ const LSProgress = (() => {
       const categories = new Set([char.formation_category, char.category, ...relations].filter(cat => out[cat]));
       for (const cat of categories) {
         out[cat].total++;
-        if (masteryStage(save.cards?.[char.id]).id === 'mastered') out[cat].mastered++;
+        const axis = cat === '轉注' || cat === '假借' ? 'usage' : 'formation';
+        if (isSkillMastered(save.skillEvidence?.[char.id]?.[axis])) out[cat].mastered++;
       }
     }
     return out;
@@ -312,20 +434,19 @@ const LSProgress = (() => {
 
   function todayMission({ save, dueCount = 0, weakCount = 0, newCount = 0, weakIds = [], mastered = 0, masters = [] }) {
     const streak = activityStreak(save);
-    if ((dueCount || weakCount || newCount) && streak.today.flash < DAY_GOAL) {
-      const target = Math.min(DAY_GOAL, Math.max(1, dueCount || weakCount || newCount));
+    if (streak.today.effective < DAY_GOAL) {
+      const target = DAY_GOAL;
       return {
-        id: weakCount ? 'weak' : dueCount ? 'due' : 'new',
-        label: weakCount ? `優先補強 ${target} 個弱點字` : dueCount ? `複習 ${target} 張到期卡` : `認識 ${target} 個新字`,
-        mode: 'flash', progress: Math.min(streak.today.flash, target), target,
+        id: weakCount ? 'weak' : dueCount ? 'due' : newCount ? 'new' : 'journey',
+        label: weakCount ? '完成今日 5 項任務，優先修復弱點' : dueCount ? '完成今日 5 項任務，先驗收到期字' : '完成今日 5 項有效任務',
+        mode: 'home', progress: Math.min(streak.today.effective, target), target,
         focusIds: weakCount ? weakIds.slice(0, target) : []
       };
     }
-    if (streak.today.quiz < DAY_GOAL) return { id: 'quiz', label: '完成 5 題均衡自測', mode: 'quiz', progress: Math.min(streak.today.quiz, DAY_GOAL), target: DAY_GOAL };
     const unbeaten = masters.find(m => mastered >= m.unlock && !int(save.battle?.beaten?.[m.id]));
     if (unbeaten && streak.today.battleSessions < 1) return { id: 'battle', label: `挑戰已解鎖的 ${unbeaten.name}`, mode: 'battle', progress: 0, target: 1 };
     const next = nextMaster(mastered, masters);
-    if (next) return { id: 'unlock', label: `精通 ${next.unlock} 字解鎖${next.name}`, mode: 'flash', progress: mastered, target: next.unlock, focusIds: weakIds.slice(0, DAY_GOAL) };
+    if (next) return { id: 'unlock', label: `有效精通 ${next.unlock} 字解鎖${next.name}`, mode: 'home', progress: mastered, target: next.unlock, focusIds: weakIds.slice(0, DAY_GOAL) };
     return { id: 'daily', label: '挑戰今日字陣', mode: 'quiz', progress: save.dailyChallenges?.[localDateKey()]?.attempts ? 1 : 0, target: 1 };
   }
 
@@ -333,9 +454,9 @@ const LSProgress = (() => {
     return [
       { id: 'first-quiz', name: '初試啼聲', description: '完成第一次自測' },
       { id: 'perfect-ten', name: '十全十美', description: '十題自測全對' },
-      ...CATS.map(cat => ({ id: `cat-${cat}`, name: `${cat}小篆`, description: `精通 5 個${cat}字` })),
+      ...CATS.map(cat => ({ id: `cat-${cat}`, name: `${cat}小篆`, description: `有效精通 5 個${cat}字` })),
       ...masters.map(m => ({ id: `master-${m.id}`, name: `${m.name}認可`, description: `首次擊敗${m.name}` })),
-      { id: 'all-chars', name: '六書宗師', description: '精通全字庫' }
+      { id: 'all-chars', name: '六書宗師', description: '有效精通全字庫' }
     ];
   }
 
@@ -353,19 +474,19 @@ const LSProgress = (() => {
     const categories = categoryMastery(save, chars);
     CATS.forEach(cat => { if (categories[cat].mastered >= 5) grant(`cat-${cat}`); });
     masters.forEach(m => { if (int(save.battle.beaten[m.id]) > 0) grant(`master-${m.id}`); });
-    if (chars.length && masteredIds(save, chars.map(c => c.id)).length === chars.length) grant('all-chars');
+    if (chars.length && masteredIds(save, chars.map(c => c.id), chars).length === chars.length) grant('all-chars');
     return earned;
   }
 
-  function challengeShareText({ date, score, total = 12, streak = 0 }) {
-    return `六書造字堂・每日字陣 ${date}\n答對 ${int(score)}／${int(total, 12)}｜連續修行 ${int(streak)} 天\n不暴雷，換你來破陣！`;
+  function challengeShareText({ date, score, total = 12, weekly = 0, goal = 3 }) {
+    return `六書造字堂・每日字陣 ${date}\n答對 ${int(score)}／${int(total, 12)}｜本週完成 ${int(weekly)}／${int(goal, 3)} 次\n不暴雷，換你來破陣！`;
   }
 
   function renderDashboard(el) {
     if (!el || typeof LSStore === 'undefined' || typeof LSData === 'undefined') return;
     const save = migrateSave(LSStore.raw);
     const ids = LSData.all.map(c => c.id);
-    const mastered = masteredIds(save, ids).length;
+    const mastered = masteredIds(save, ids, LSData.all).length;
     const due = LSStore.dueCards(ids).length;
     const weakIds = LSStore.weakIds(ids);
     const weak = weakIds.length;
@@ -374,9 +495,10 @@ const LSProgress = (() => {
     const mission = todayMission({ save, dueCount: due, weakCount: weak, newCount: fresh, weakIds, mastered, masters });
     const onboarding = onboardingState(save);
     const streak = activityStreak(save);
+    const weekly = weeklyRhythm(save);
     const stepCopy = ['先看懂修行路線', '完成一張真實閃卡', '答一題自測完成入門'];
     el.innerHTML = `${onboarding.complete ? '' : `<div class="card" data-onboarding-step="${onboarding.step}"><h2>三步入門 ${onboarding.step + 1}/3</h2><p>${stepCopy[onboarding.step] || stepCopy[2]}</p><div class="btnrow"><button class="btn" data-onboarding-next>${onboarding.step === 0 ? '看懂了' : onboarding.step === 1 ? '去翻閃卡' : '去答一題'}</button><button class="btn ghost" data-onboarding-skip>先跳過</button></div></div>`}
-      <div class="card"><h2>今日修行</h2><p><b>${mission.label}</b></p><p class="muted">${mission.progress}/${mission.target}　·　連續 ${streak.current} 天（最長 ${streak.longest} 天）</p><button class="btn" data-mission-mode="${mission.mode}">現在開始</button></div>`;
+      <div class="card"><h2>今日修行</h2><p><b>${mission.label}</b></p><p class="muted">有效進度 ${mission.progress}/${mission.target}　·　本週完成 ${weekly.completed}/${weekly.goal} 次</p><button class="btn" data-mission-mode="${mission.mode}">現在開始</button></div>`;
     el.querySelector('[data-onboarding-next]')?.addEventListener('click', () => {
       const state = onboardingState(save);
       if (state.step === 0) { advanceOnboarding(save, 'intro'); LSStore.persist(); renderDashboard(el); }
@@ -391,8 +513,8 @@ const LSProgress = (() => {
 
   return {
     CATS, DAY_GOAL, localDateKey, learningDayNumber, shiftDateKey, migrateSave, normalizeDay, boundedEventIds,
-    recordActivity, recordSession, activityStreak, onboardingState, advanceOnboarding,
-    masteryStage, masteredIds, categoryMastery, recentAccuracy, adaptiveLevel,
+    recordActivity, recordSession, recordSkillEvidence, activityStreak, weeklyRhythm, onboardingState, advanceOnboarding,
+    masteryStage, skillAxis, skillState, isSkillMastered, validatedCharMastered, masteredIds, categoryMastery, recentAccuracy, adaptiveLevel,
     weakestCats, balancedBlueprint, hashSeed, seededRandom, dailyChallengeBlueprint,
     battleBlueprint, recordDailyChallenge, recoveryIds, todayMission, badgeCatalog, evaluateBadges,
     challengeShareText, renderDashboard

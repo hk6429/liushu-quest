@@ -9,6 +9,7 @@ const LSStats = (() => {
     const beatenTotal = Object.values(s.battle.beaten).reduce((a, b) => a + b, 0);
     const days = Object.values(s.days).filter(day => p ? p.normalizeDay(day).total > 0 : Number(day) > 0).length;
     const streak = p ? p.activityStreak(s) : { current: 0, longest: 0, today: { total: 0 }, goal: 5 };
+    const weekly = p ? p.weeklyRhythm(s) : { completed: 0, goal: 3 };
     const mastery = p ? p.categoryMastery(s, LSData.all) : null;
     const stages = p ? LSData.all.reduce((out, c) => {
       const label = p.masteryStage(s.cards[c.id]).label;
@@ -35,20 +36,20 @@ const LSStats = (() => {
 <div class="card">
   <h2>練功戰績</h2>
   <div class="stat-grid">
-    <div class="stat-cell"><div class="num">${mastered}</div><div class="lbl">精通字數／${LSData.all.length}</div></div>
+    <div class="stat-cell"><div class="num">${mastered}</div><div class="lbl">有效精通／${LSData.all.length}</div></div>
     <div class="stat-cell"><div class="num">${s.quiz.answered}</div><div class="lbl">累計答題</div></div>
     <div class="stat-cell"><div class="num">${acc}%</div><div class="lbl">總正確率</div></div>
     <div class="stat-cell"><div class="num">${beatenTotal}</div><div class="lbl">擊敗大師次數</div></div>
     <div class="stat-cell"><div class="num">${days}</div><div class="lbl">練功天數</div></div>
-    <div class="stat-cell"><div class="num">${streak.current}</div><div class="lbl">目前連續／最長 ${streak.longest} 天</div></div>
+    <div class="stat-cell"><div class="num">${weekly.completed}</div><div class="lbl">本週完成／目標 ${weekly.goal} 次</div></div>
   </div>
-  <p class="muted">今日有效學習 ${streak.today.total}/${streak.goal}；達標才計入連續天數。</p>
+  <p class="muted">今日有效任務 ${streak.today.effective}/${streak.goal}；漏一天不會歸零，下次回來接著學。</p>
   <h3>各模式正確率</h3>
   <p>${modes}</p>
   <h3>六書分類正確率</h3>
   <p>${cats}</p>
   ${mastery ? `<h3>成長階段</h3><p>${Object.entries(stages).map(([label, count]) => `<span class="pill">${label} ${count}</span>`).join(' ')}</p>
-  <p>${LSData.CATS.map(cat => `<span class="pill cat-${cat}">${cat}精通 ${mastery[cat].mastered}/${mastery[cat].total}</span>`).join(' ')}</p>` : ''}
+  <p>${LSData.CATS.map(cat => `<span class="pill cat-${cat}">${cat}有效精通 ${mastery[cat].mastered}/${mastery[cat].total}</span>`).join(' ')}</p>` : ''}
 </div>
 <div class="card">
   <h2>弱點字（優先複習）</h2>

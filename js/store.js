@@ -43,8 +43,12 @@ const LSStore = (() => {
       badges: {},
       sessions: { quiz: 0, flash: 0, battle: 0, lastQuiz: null },
       dailyChallenges: {},
+      skillEvidence: {},
+      recovery: {},
+      journey: { chapter: 0, completed: {}, pendingChapter: null, lastVisit: null, weeklyGoal: 3 },
+      classroom: { sessions: [], evidenceWall: {} },
       eventIds: [],
-      schemaVersion: 2,
+      schemaVersion: 3,
       created: Date.now()
     };
   }
@@ -68,6 +72,10 @@ const LSStore = (() => {
     s.badges = s.badges && typeof s.badges === 'object' ? s.badges : {};
     s.sessions = s.sessions && typeof s.sessions === 'object' ? s.sessions : { quiz: 0, flash: 0, battle: 0 };
     s.dailyChallenges = s.dailyChallenges && typeof s.dailyChallenges === 'object' ? s.dailyChallenges : {};
+    s.skillEvidence = s.skillEvidence && typeof s.skillEvidence === 'object' ? s.skillEvidence : {};
+    s.recovery = s.recovery && typeof s.recovery === 'object' ? s.recovery : {};
+    s.journey = s.journey && typeof s.journey === 'object' ? s.journey : {};
+    s.classroom = s.classroom && typeof s.classroom === 'object' ? s.classroom : {};
     s.eventIds = Array.isArray(s.eventIds) ? s.eventIds.filter(id => typeof id === 'string').slice(-500) : [];
     return s;
   }
@@ -118,9 +126,9 @@ const LSStore = (() => {
     return save.cards[id];
   }
 
-  function noteActivity(mode) {
+  function noteActivity(mode, effective = 0) {
     const p = progress();
-    if (p) p.recordActivity(save, mode);
+    if (p) p.recordActivity(save, mode, 1, new Date(), effective);
   }
 
   // 閃卡評分：again(0) / hard(1) / good(2)
@@ -142,7 +150,7 @@ const LSStore = (() => {
   }
 
   // 自測／對戰皆記總統計；概念題傳入 null，不建立假字卡。
-  function recordAnswer(id, cat, ok, mode = 'quiz', eventId = null) {
+  function recordAnswer(id, cat, ok, mode = 'quiz', eventId = null, meta = {}) {
     save = normalize(save);
     if (!claimEvent(eventId)) return false;
     const c = id && id !== '_concept' ? card(id) : null;
@@ -162,7 +170,8 @@ const LSStore = (() => {
     save.quiz.byMode[safeMode][ok ? 'r' : 'w']++;
     save.quiz.recent.push({ ok: !!ok, cat, mode: safeMode });
     save.quiz.recent = save.quiz.recent.slice(-20);
-    noteActivity(safeMode === 'battle' ? 'battle' : 'quiz');
+    if (c && progress()) progress().recordSkillEvidence(save, id, cat, ok, meta);
+    noteActivity(safeMode === 'battle' ? 'battle' : 'quiz', ok && c ? 1 : 0);
     if (progress() && safeMode !== 'battle') progress().advanceOnboarding(save, 'quiz');
     persist();
     return true;
@@ -175,8 +184,9 @@ const LSStore = (() => {
 
   function isMastered(id) {
     save = normalize(save);
-    const c = save.cards[id];
-    return !!c && c.box >= 4 && c.right >= 2;
+    if (!progress()) return false;
+    const char = typeof LSData !== 'undefined' ? LSData.byId?.[id] : null;
+    return progress().validatedCharMastered(save, id, char);
   }
   function masteredCount(ids = validIds()) {
     save = normalize(save);
@@ -252,7 +262,7 @@ const LSStore = (() => {
   function sanitizeImport(value) {
     if (!isRecord(value)) throw new Error('備份內容必須是 JSON 物件');
     const version = value.schemaVersion == null ? 1 : Number(value.schemaVersion);
-    if (!Number.isInteger(version) || version < 1 || version > 2) throw new Error('不支援的存檔版本');
+    if (!Number.isInteger(version) || version < 1 || version > 3) throw new Error('不支援的存檔版本');
     const out = blank();
     out.created = Number.isFinite(Number(value.created)) ? Number(value.created) : out.created;
 
@@ -313,7 +323,7 @@ const LSStore = (() => {
           flash: boundedInt(day.flash, 10000), quiz: boundedInt(day.quiz, 10000), battle: boundedInt(day.battle, 10000),
           sessions: boundedInt(day.sessions, 10000), flashSessions: boundedInt(day.flashSessions, 10000),
           quizSessions: boundedInt(day.quizSessions, 10000), battleSessions: boundedInt(day.battleSessions, 10000),
-          total: boundedInt(day.total, 30000), complete: !!day.complete
+          total: boundedInt(day.total, 30000), effective: boundedInt(day.effective, 30000), complete: !!day.complete
         };
       }
     }
@@ -353,7 +363,60 @@ const LSStore = (() => {
       const p = progress();
       out.eventIds = p?.boundedEventIds ? p.boundedEventIds(eventIds) : eventIds.slice(-500);
     }
-    out.schemaVersion = 2;
+    if (isRecord(value.skillEvidence)) {
+      const axes = ['formation', 'usage'];
+      for (const [id, entry] of Object.entries(value.skillEvidence).slice(0, 1000)) {
+        if (!safeKey(id) || (knownIds && !knownIds.has(id)) || !isRecord(entry)) continue;
+        out.skillEvidence[id] = {};
+        for (const axis of axes) {
+          const skill = isRecord(entry[axis]) ? entry[axis] : {};
+          out.skillEvidence[id][axis] = {
+            objectiveRight: boundedInt(skill.objectiveRight), objectiveWrong: boundedInt(skill.objectiveWrong),
+            distinctDays: Array.isArray(skill.distinctDays) ? [...new Set(skill.distinctDays.filter(day => /^\d{4}-\d{2}-\d{2}$/.test(day)))].slice(-30) : [],
+            delayedPasses: boundedInt(skill.delayedPasses), rationalePasses: boundedInt(skill.rationalePasses), transferPasses: boundedInt(skill.transferPasses),
+            lastCorrectAt: typeof skill.lastCorrectAt === 'string' ? skill.lastCorrectAt.slice(0, 40) : null,
+            dueAt: typeof skill.dueAt === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(skill.dueAt) ? skill.dueAt : null,
+            masteredAt: typeof skill.masteredAt === 'string' ? skill.masteredAt.slice(0, 40) : null
+          };
+        }
+      }
+    }
+    if (isRecord(value.recovery)) {
+      for (const item of Object.values(value.recovery).slice(0, 1000)) {
+        if (!isRecord(item) || !safeKey(item.id) || !['formation', 'usage'].includes(item.axis)) continue;
+        if (knownIds && !knownIds.has(item.id)) continue;
+        const key = `${item.id}:${item.axis}`;
+        out.recovery[key] = {
+          id: item.id, axis: item.axis, misconception: typeof item.misconception === 'string' ? item.misconception.slice(0, 80) : '待釐清',
+          assignedAt: typeof item.assignedAt === 'string' ? item.assignedAt.slice(0, 40) : null,
+          immediateRepairPassed: !!item.immediateRepairPassed,
+          delayedDueAt: typeof item.delayedDueAt === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.delayedDueAt) ? item.delayedDueAt : null,
+          delayedRepairPassed: !!item.delayedRepairPassed
+        };
+      }
+    }
+    if (isRecord(value.journey)) {
+      out.journey = {
+        chapter: Math.min(7, boundedInt(value.journey.chapter, 7)),
+        completed: {}, pendingChapter: Number.isInteger(value.journey.pendingChapter) ? Math.min(7, Math.max(0, value.journey.pendingChapter)) : null,
+        lastVisit: typeof value.journey.lastVisit === 'string' ? value.journey.lastVisit.slice(0, 40) : null,
+        weeklyGoal: Math.min(7, Math.max(1, boundedInt(value.journey.weeklyGoal, 7) || 3))
+      };
+      if (isRecord(value.journey.completed)) {
+        for (const [chapter, completedAt] of Object.entries(value.journey.completed)) {
+          if (/^[0-7]$/.test(chapter) && typeof completedAt === 'string') out.journey.completed[chapter] = completedAt.slice(0, 40);
+        }
+      }
+    }
+    if (isRecord(value.classroom)) {
+      out.classroom.evidenceWall = {};
+      const evidenceLabels = new Set(['輪廓描畫', '指示記號', '部件會義', '讀音線索', '借音用字', '近義互訓']);
+      if (isRecord(value.classroom.evidenceWall)) {
+        for (const [label, count] of Object.entries(value.classroom.evidenceWall)) if (evidenceLabels.has(label)) out.classroom.evidenceWall[label] = boundedInt(count, 10000);
+      }
+      out.classroom.sessions = [];
+    }
+    out.schemaVersion = 3;
     return normalize(out);
   }
 
