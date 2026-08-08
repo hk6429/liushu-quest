@@ -39,6 +39,13 @@ await step('今日主線預設載入', async () => {
   const active = await page.locator('.tabs [aria-current="page"]').getAttribute('data-view');
   if (active !== 'home') throw new Error(`預設分頁=${active}`);
   if (await page.locator('.chapter-map li').count() !== 8) throw new Error('故事旅程不是八卷');
+  const reportButton = page.locator('[data-report-launcher]');
+  if (!await reportButton.isVisible() || await reportButton.evaluate(node => node.getBoundingClientRect().height) < 44) throw new Error('問題回報入口不可見或不足 44px');
+  await reportButton.click();
+  await page.waitForSelector('.report-dialog[role="dialog"]');
+  if (!await page.locator('#reportNote').count()) throw new Error('問題回報缺少說明欄位');
+  await page.keyboard.press('Escape');
+  if (await page.locator('.report-dialog').count()) throw new Error('問題回報視窗無法用 Escape 關閉');
   await page.click('[data-view="concept"]');
 });
 
@@ -190,6 +197,8 @@ await step('自測：作答一題含回饋', async () => {
   await page.click('[data-practice="quiz"]');
   await page.click('#quizQuick');
   await page.waitForSelector('#quizArea .opt');
+  const reportPayload = await page.evaluate(() => LSReport.buildPayload('question', '測試題目情境是否完整'));
+  if (!reportPayload.context.question || reportPayload.context.options.length < 2 || 'cards' in reportPayload.context) throw new Error(`回報情境不完整或誤含學習存檔：${JSON.stringify(reportPayload.context)}`);
   await page.locator('#quizArea .opt').first().click();
   await page.waitForSelector('#qFb .feedback');
   const nonColorCue = await page.locator('#quizArea .opt.correct').evaluate(e => getComputedStyle(e, '::after').content);

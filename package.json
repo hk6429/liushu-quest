@@ -12,8 +12,9 @@
   "copyright": "node scripts/copyright.test.mjs",
   "logic": "node scripts/logic.mjs",
   "retention": "node scripts/retention.test.mjs",
+  "report": "node scripts/report.test.mjs",
   "smoke": "node scripts/smoke.mjs",
-  "test": "npm run validate && npm run content && npm run philology && npm run teacher && npm run char-images && npm run copyright && npm run logic && npm run retention && npm run smoke"
+  "test": "npm run validate && npm run content && npm run philology && npm run teacher && npm run char-images && npm run copyright && npm run logic && npm run retention && npm run report && npm run smoke"
  },
  "devDependencies": {
   "playwright-core": "^1.62.1"

@@ -15,6 +15,7 @@
 - **戰績與備份**：分類正確率、弱點字聚合、JSON 檔下載／選檔匯入，以及文字進度碼備援
 - **共用學習工具**：家庭／課堂、學習紀錄、自學星圖與匿名到訪統計
 - **家長陪學**：白話進度摘要、10 分鐘三步驟、陪問句、放大字級、家庭模式與休息計時
+- **問題回報**：全站可回報字例、題目、故事或介面問題；自動附帶當下情境，由伺服器安全轉送教師 Telegram，不在前端保存 Bot Token
 
 ## 資料紀律
 
@@ -48,6 +49,8 @@ python3 -m http.server 8080
 ## 部署
 
 Cloudflare Pages（liushu-quest.pages.dev）＋ Netlify（liushu-quest.netlify.app）鏡射。
+
+問題回報的 `/api/report` 由 Cloudflare Pages Function 提供；正式環境只設定加密 secrets `TELEGRAM_BOT_TOKEN`、`TELEGRAM_CHAT_ID`，不得把值寫入 Git 或前端。Netlify 鏡射會將回報送往 Cloudflare 主站 API。
 
 ## 權利與來源
 
